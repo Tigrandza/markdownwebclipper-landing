@@ -18,7 +18,11 @@ https://markdownwebclipper.com
 | `index.html` | Landing page with demo, feature list, pricing, CWS install CTA |
 | `privacy.html` | Privacy policy page (`/privacy`) — single source of truth for the published policy |
 | `style.css` | Lean, framework-free styling |
-| `wrangler.toml` | Cloudflare Pages config (used by the manual-deploy fallback) |
+
+Cloudflare Pages config (production branch, output dir, HTML handling) is
+maintained via the Pages dashboard, not via a `wrangler.toml` in this repo —
+having `wrangler.toml` at the root caused Cloudflare's build runner to invoke
+the Workers CLI by mistake.
 
 ## Deployment
 
