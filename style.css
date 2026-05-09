@@ -1,0 +1,435 @@
+/* Markdown Web Clipper — landing page styles.
+ *
+ * Plain CSS, no framework. Single-file, no build step. Matches the
+ * extension's zinc palette + system font stack so the landing page
+ * and the in-extension UI feel like the same product.
+ *
+ * Cloudflare Pages serves this verbatim from /style.css. Edit and
+ * redeploy via `wrangler pages deploy landing` — see
+ * docs/OPERATIONAL-RUNBOOK.md → "Cloudflare Pages redeploy".
+ */
+
+:root {
+  --bg: #fafaf9;
+  --fg: #18181b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --primary: #18181b;
+  --primary-hover: #3f3f46;
+  --accent: #d97706;
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --max-width: 1100px;
+  --radius: 8px;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #09090b;
+    --fg: #fafafa;
+    --muted: #a1a1aa;
+    --border: #27272a;
+    --primary: #fafafa;
+    --primary-hover: #d4d4d8;
+    --card-bg: #18181b;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 4.5rem 0 2.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.cta-primary,
+.cta-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.cta-primary {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+.cta-primary:hover {
+  background: var(--primary-hover);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+}
+
+.cta-secondary:hover {
+  border-color: var(--primary);
+}
+
+.trust-line {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* ---------- Demo ---------- */
+
+.demo {
+  padding: 1rem 0 4rem;
+}
+
+.demo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* ---------- Features ---------- */
+
+.features {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.features h2,
+.pricing h2 {
+  font-size: 2rem;
+  margin: 0 0 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.features article {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.features article h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.features article p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Pricing ---------- */
+
+.pricing {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.card.pro {
+  border-color: var(--primary);
+  border-width: 2px;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card .price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.card .price-strike {
+  font-size: 1.5rem;
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.card .price-now {
+  color: var(--accent);
+}
+
+.card .price-note {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.card ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.card ul li:last-child {
+  border-bottom: none;
+}
+
+.card .cta-row {
+  margin: 1rem 0 0.75rem;
+}
+
+.card .refund-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  margin: 0 0 1rem;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--muted);
+  padding-bottom: 1px;
+}
+
+.site-footer a:hover {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+.site-footer .footer-trademark,
+.site-footer .footer-license {
+  font-size: 0.75rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ---------- Privacy / docs page ---------- */
+
+.doc-page {
+  background: var(--bg);
+}
+
+.doc-header {
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-header .back-link {
+  text-align: left;
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+}
+
+.doc-header .back-link a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.doc-header .back-link a:hover {
+  color: var(--fg);
+}
+
+.doc-header h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.doc-header .doc-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.doc-body {
+  padding: 3rem 0;
+}
+
+.doc-body .container {
+  max-width: 760px;
+}
+
+.doc-body h2 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.doc-body h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.doc-body p {
+  margin: 0 0 1rem;
+}
+
+.doc-body ul {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.doc-body ul li {
+  margin: 0.25rem 0;
+}
+
+.doc-body code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.0625rem 0.25rem;
+}
+
+.doc-body a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.doc-body a:hover {
+  text-decoration-color: var(--fg);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 0 1.5rem;
+  }
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+  .hero .tagline {
+    font-size: 1.125rem;
+  }
+  .features,
+  .pricing {
+    padding: 3rem 0;
+  }
+  .features h2,
+  .pricing h2 {
+    font-size: 1.5rem;
+  }
+}

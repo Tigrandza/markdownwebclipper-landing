@@ -1,0 +1,16 @@
+# Cloudflare Pages config for markdownwebclipper.com
+#
+# This repo auto-deploys to Cloudflare Pages on every push to `main`.
+# Manual deploy fallback (see README.md):
+#   pnpm dlx wrangler pages deploy . --project-name=clipper-landing
+
+name = "clipper-landing"
+compatibility_date = "2026-05-08"
+pages_build_output_dir = "."
+
+# Strip trailing slashes on .html routes so /privacy and /privacy/
+# both resolve to /privacy.html cleanly. Without this, /privacy/
+# 404s under default Pages routing.
+[[rules]]
+type = "html_handling"
+behavior = "drop_trailing_slash"
