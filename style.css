@@ -146,6 +146,84 @@ body {
   border: 1px solid var(--border);
 }
 
+/* Demo placeholder — used until /demo.gif lands. Browser-window
+   skeleton + "video coming soon" CTA. Keeps the hero composed
+   while the recording is in flight; remove these rules once the
+   real <img> goes live. */
+.demo-placeholder {
+  display: block;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at top, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--card-bg), var(--bg));
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-placeholder-window {
+  width: 100%;
+  max-width: 720px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.demo-placeholder-chrome {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.625rem 0.75rem;
+  background: color-mix(in srgb, var(--border) 60%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-placeholder-chrome span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.demo-placeholder-body {
+  padding: 1.75rem 1.5rem;
+}
+
+.demo-placeholder-bar {
+  height: 0.625rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--muted) 25%, transparent),
+    color-mix(in srgb, var(--muted) 12%, transparent));
+  margin-bottom: 0.625rem;
+}
+
+.demo-placeholder-bar-1 { width: 70%; }
+.demo-placeholder-bar-2 { width: 90%; }
+.demo-placeholder-bar-3 { width: 55%; margin-bottom: 1.5rem; }
+
+.demo-placeholder-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--muted);
+  background: var(--bg);
+}
+
+.demo-placeholder-cta svg {
+  color: var(--accent);
+}
+
 /* ---------- Features ---------- */
 
 .features {

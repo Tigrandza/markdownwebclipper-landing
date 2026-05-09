@@ -41,16 +41,32 @@
 
     <section class="demo">
       <div class="container">
-        <!-- Demo media — placeholder; the actual demo GIF is captured per
-             RESEARCH §4.2 (LICEcap or Kap, 8s loop, ≤5MB, 720p) and
-             dropped here at /demo.gif before CWS submission (plan-13). -->
-        <img
-          src="/demo.gif"
-          alt="Demo: clipping a Wikipedia article into an Obsidian vault folder"
-          width="960"
-          height="540"
-          loading="eager"
-        />
+        <!-- Demo media — styled placeholder until the actual demo GIF
+             ships from plan-10/13 (LICEcap or Kap, 8s loop, ≤5MB,
+             720p, dropped at /demo.gif). The placeholder degrades
+             gracefully while the GIF is being recorded. -->
+        <div class="demo-placeholder" role="img"
+             aria-label="Demo: clipping a Wikipedia article into an Obsidian vault folder — video coming soon">
+          <div class="demo-placeholder-window">
+            <div class="demo-placeholder-chrome">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="demo-placeholder-body">
+              <div class="demo-placeholder-bar demo-placeholder-bar-1"></div>
+              <div class="demo-placeholder-bar demo-placeholder-bar-2"></div>
+              <div class="demo-placeholder-bar demo-placeholder-bar-3"></div>
+              <div class="demo-placeholder-cta">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                     stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>Demo video coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
