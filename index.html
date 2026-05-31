@@ -9,6 +9,9 @@
       content="One keystroke converts any webpage to clean Markdown and saves it where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible."
     />
     <link rel="canonical" href="https://markdownwebclipper.com/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icon-128.png" />
     <link rel="stylesheet" href="/style.css" />
     <meta property="og:title" content="Markdown Web Clipper — Save Pages to Obsidian" />
     <meta
@@ -17,6 +20,24 @@
     />
     <meta property="og:url" content="https://markdownwebclipper.com/" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://markdownwebclipper.com/demo.gif" />
+    <meta property="og:image:alt" content="Demo: clipping a Wikipedia article into an Obsidian vault folder" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Markdown Web Clipper",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Chrome, Edge, Brave",
+  "description": "One keystroke converts any webpage to clean Markdown and saves it where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible.",
+  "url": "https://markdownwebclipper.com/",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+    </script>
   </head>
   <body>
     <header class="hero">
@@ -143,7 +164,13 @@
               <li>Custom templates</li>
             </ul>
             <p class="cta-row">
-              <a class="cta-primary" href="https://extensionpay.com">Buy Pro</a>
+              <!-- TODO(plan-14d): substitute the placeholder product id below
+                   with the live DodoPayments product UUID after the Dodo
+                   Product is configured in the plan-14d Dodo dashboard step.
+                   The literal `__DODO_PRODUCT_ID_PLACEHOLDER__` is recognized
+                   by the landing-site deploy substitution (same static-replace
+                   pattern plan-13a used for its prior LS placeholder). -->
+              <a class="cta-primary" href="https://checkout.dodopayments.com/buy/__DODO_PRODUCT_ID_PLACEHOLDER__">Buy Pro</a>
             </p>
             <p class="refund-note">
               14-day money-back guarantee — email

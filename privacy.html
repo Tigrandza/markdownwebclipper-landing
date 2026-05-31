@@ -9,6 +9,9 @@
       content="What Markdown Web Clipper reads, writes, and sends. Local-first, no analytics, no telemetry."
     />
     <link rel="canonical" href="https://markdownwebclipper.com/privacy" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icon-128.png" />
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body class="doc-page">
@@ -127,7 +130,7 @@
 
         <h2>Remote calls</h2>
         <p>
-          The extension makes exactly four kinds of remote calls. All
+          The extension makes exactly five kinds of remote calls. All
           are listed below verbatim; nothing else leaves your device.
         </p>
         <ul>
@@ -164,12 +167,29 @@
           <li>
             <strong>License verification</strong> — at most once per
             hour, the service worker calls
-            <code>https://extensionpay.com/api/v2/user?api_key=&lt;random&gt;</code>
-            to refresh the cached license state. The
-            <code>api_key</code> is generated locally by ExtensionPay
-            and stored only on this device. No payload beyond the
-            api_key is sent. There are no analytics, no telemetry, and
-            no other remote calls.
+            <code>https://api.markdownwebclipper.com/api/license/check</code>
+            to refresh the cached Pro license state. This is a
+            developer-controlled Cloudflare Worker that proxies the
+            upstream license validation request to DodoPayments. The
+            request body contains only the locally-stored DodoPayments
+            license key and a per-install instance UUID; no email, no
+            analytics identifier, no telemetry. The Worker stores
+            hashed-email → license_key mapping in Cloudflare Workers
+            KV; raw email addresses are NEVER logged.
+          </li>
+          <li>
+            <strong>License restore (magic link)</strong> — when you
+            use Settings → Pro → Restore Purchase, the extension POSTs
+            your email to
+            <code>https://api.markdownwebclipper.com/api/restore</code>.
+            If a Pro license is registered to that email, the Worker
+            sends a one-time magic-link email via Resend (10-minute
+            expiry, single-use). Per privacy posture, the response is
+            identical whether the email is registered or not — we do
+            not confirm registration status to defeat email
+            enumeration. Per-email rate-limit (60 seconds) prevents
+            abuse. There are no analytics, no telemetry, and no other
+            remote calls.
           </li>
         </ul>
 
@@ -189,7 +209,8 @@
         </ul>
         <p>
           <strong>Pro features</strong> require a one-time purchase via
-          ExtensionPay/Stripe:
+          DodoPayments (merchant of record, hosted checkout at
+          <code>checkout.dodopayments.com</code>):
         </p>
         <ul>
           <li>Multi-tab batch (&gt;3 tabs at once)</li>
@@ -253,9 +274,14 @@
             <code>chrome://extensions</code>.
           </li>
           <li>
-            <strong>Revoke license</strong> — Settings → Pro →
-            "Restore Purchase" opens the ExtensionPay login page where
-            you can manage your license.
+            <strong>Revoke license</strong> — email
+            <a href="mailto:support@markdownwebclipper.com"
+              >support@markdownwebclipper.com</a
+            >
+            to request a refund or license cancellation (DodoPayments,
+            the merchant of record, processes these). Refunds and
+            cancellations propagate within the 7-day revocation window
+            per D-15.
           </li>
           <li>
             <strong>Uninstall</strong> — removes the extension and
