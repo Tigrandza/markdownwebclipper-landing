@@ -19,7 +19,7 @@
       <div class="container">
         <p class="back-link"><a href="/">← Markdown Web Clipper home</a></p>
         <h1>Privacy Policy — Markdown Web Clipper</h1>
-        <p class="doc-meta"><em>Last updated: 2026-05-09</em></p>
+        <p class="doc-meta"><em>Last updated: 2026-06-06</em></p>
       </div>
     </header>
 
@@ -191,7 +191,40 @@
             abuse. There are no analytics, no telemetry, and no other
             remote calls.
           </li>
+          <li>
+            <strong>Uninstall survey URL</strong>
+            (<code>chrome.runtime.setUninstallURL</code>) — when you
+            uninstall the extension via <code>chrome://extensions</code>,
+            Chrome itself opens a Tally form in a new tab asking why.
+            This is a Chrome platform feature, not a Clipper-initiated
+            remote call. The URL is set once at service-worker
+            activation; you can close the form tab without submitting.
+            The form is unauthenticated and collects only the fields
+            you choose to fill in (an optional dropdown reason,
+            optional free-text detail, optional email if you'd like a
+            follow-up). Tally privacy policy:
+            <a href="https://tally.so/help/privacy-policy">https://tally.so/help/privacy-policy</a>.
+          </li>
         </ul>
+
+        <h2>Image viewer notes</h2>
+        <p>
+          This is product behavior, not a privacy or data disclosure —
+          included here so the choice is documented in one place.
+        </p>
+        <p>
+          <strong>Remote images in downloaded <code>.md</code> files:</strong>
+          by default, Clipper writes image URLs as
+          <code>![](https://...)</code> (reference mode — zero network
+          use during clipping, fastest output). When you open the
+          <code>.md</code> in a viewer that does not fetch remote URLs
+          (e.g. macOS Preview, QuickLook, some plain-text editors), the
+          images appear blank. Network-capable viewers (Obsidian,
+          browsers, most Markdown editors) render them correctly. To
+          embed images directly into the <code>.md</code> so they work
+          in every viewer offline, change Image Handling mode to
+          "Base64 inline" in Settings.
+        </p>
 
         <h2>Freemium model &amp; refund policy</h2>
         <p>
