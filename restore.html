@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Restoring your Pro license</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icon-128.png" />
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 480px; margin: 4em auto; padding: 0 1em; line-height: 1.5; color: #222; }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1.5em; }
+      .ok { color: #0a7d3b; }
+      .err { color: #b00020; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Restoring your Pro license</h1>
+      <p id="status">Talking to your extension…</p>
+    </div>
+    <script>
+      // 05-13a — magic-link bridge.
+      // The literal `dpkinbemdemheacegfjbbkclcpbfedif` MUST be substituted at
+      // landing-page deploy time. The public landing repo
+      // (github.com/Tigrandza/markdownwebclipper-landing) build pipeline
+      // performs a `sed`-style replacement of `dpkinbemdemheacegfjbbkclcpbfedif`
+      // with the real extension id once 05-13f reserves the canonical id
+      // from the CWS listing. See OPERATIONAL-RUNBOOK.md "Worker section"
+      // → "Landing page deploy" sub-section for the substitution command.
+      // Until substitution runs, the placeholder is intentionally not a
+      // valid extension id — the magic-link return path will fail with
+      // "Could not reach the Clipper extension" until deploy.
+      var EXT_ID = window.__CLIPPER_EXT_ID__ || 'dpkinbemdemheacegfjbbkclcpbfedif';
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get('token');
+      var statusEl = document.getElementById('status');
+
+      if (!token) {
+        statusEl.textContent = 'Missing token. Please re-request the magic link from Clipper Settings.';
+        statusEl.className = 'err';
+      } else if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage(EXT_ID, { type: 'RESTORE_TOKEN', token: token }, function (response) {
+          if (chrome.runtime.lastError) {
+            statusEl.textContent = 'Could not reach the Clipper extension. Make sure it is installed.';
+            statusEl.className = 'err';
+          } else if (response && response.ok) {
+            statusEl.textContent = 'Pro license restored. You can close this tab.';
+            statusEl.className = 'ok';
+          } else {
+            statusEl.textContent = (response && response.error) || 'Restore failed. Please try again.';
+            statusEl.className = 'err';
+          }
+        });
+      } else {
+        statusEl.textContent = 'Open this link inside Chrome with Clipper installed.';
+        statusEl.className = 'err';
+      }
+    </script>
+  </body>
+</html>
