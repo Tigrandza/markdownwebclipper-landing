@@ -58,4 +58,72 @@
       });
     });
   });
+
+  // Installed-detection. When the Markdown Web Clipper extension is installed,
+  // every Chrome Web Store button on this site swaps to a "✓ Installed — Open
+  // Clipper" state pointing at the in-product next-step section. When NOT
+  // installed (or chrome.runtime isn't available, or detection throws), every
+  // store button stays byte-for-byte the default store link — this safe default
+  // is mandatory: nothing is touched unless the extension actually replies.
+  //
+  // chrome.runtime is injected on this origin only because the extension
+  // declares externally_connectable for https://markdownwebclipper.com/* (see
+  // wxt.config.ts). If that declaration is ever removed, this feature goes inert
+  // and the buttons silently keep their default behavior (correct fallback).
+  var CLIPPER_EXT_ID = "dpkinbemdemheacegfjbbkclcpbfedif";
+  var STORE_SELECTOR =
+    'a[href*="chromewebstore.google.com/detail/' + CLIPPER_EXT_ID + '"]';
+  // Absolute path: correct on index.html AND non-dead on privacy/pro-faq with
+  // zero per-page branching. #destinations already exists at index.html.
+  var OPEN_TARGET = "/#destinations";
+
+  // Standalone, idempotent. Only rewrites anchors still matching STORE_SELECTOR;
+  // after a swap the href is OPEN_TARGET, so a re-run no longer selects them.
+  // Never touches className / styles — button CSS is preserved exactly.
+  function swapStoreButtons(root) {
+    var scope = root || document;
+    var links = scope.querySelectorAll(STORE_SELECTOR);
+    links.forEach(function (link) {
+      link.textContent = "✓ Installed — Open Clipper";
+      link.setAttribute("href", OPEN_TARGET);
+    });
+    return links.length;
+  }
+
+  // Detection — swaps ONLY when the extension replies with no lastError.
+  function detectInstalled() {
+    if (
+      typeof chrome === "undefined" ||
+      !chrome.runtime ||
+      typeof chrome.runtime.sendMessage !== "function"
+    ) {
+      return; // no chrome / not an extension-connected origin → leave untouched
+    }
+    try {
+      chrome.runtime.sendMessage(CLIPPER_EXT_ID, { type: "PING" }, function () {
+        // Read lastError FIRST so Chrome doesn't log an unchecked-error warning.
+        if (chrome.runtime.lastError) {
+          return; // not installed / unreachable → do nothing
+        }
+        // No lastError → INSTALLED. (The shipped extension replies to any
+        // external message from markdownwebclipper.com, so a callback with no
+        // lastError reliably means installed even before a PING handler ships.)
+        swapStoreButtons(document);
+      });
+    } catch (e) {
+      // Treat any throw as not-installed; leave buttons untouched.
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", detectInstalled);
+  } else {
+    detectInstalled();
+  }
+
+  // Test-only bridge (browser-safe, zero runtime cost): lets the unit test call
+  // the REAL shipped swap function rather than a copy.
+  if (typeof window !== "undefined") {
+    window.__clipperDetect = { swapStoreButtons: swapStoreButtons };
+  }
 })();
