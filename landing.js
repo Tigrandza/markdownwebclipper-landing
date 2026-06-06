@@ -73,19 +73,26 @@
   var CLIPPER_EXT_ID = "dpkinbemdemheacegfjbbkclcpbfedif";
   var STORE_SELECTOR =
     'a[href*="chromewebstore.google.com/detail/' + CLIPPER_EXT_ID + '"]';
-  // Absolute path: correct on index.html AND non-dead on privacy/pro-faq with
-  // zero per-page branching. #destinations already exists at index.html.
-  var OPEN_TARGET = "/#destinations";
+  // A web page cannot open the extension popup (no API for that), so an installed
+  // user's most useful action is leaving a review — point them at the CWS reviews
+  // tab in a new tab. The selector below stops matching once href is rewritten.
+  var REVIEW_TARGET =
+    "https://chromewebstore.google.com/detail/markdown-web-clipper-save-pages-to-obsidian/" +
+    CLIPPER_EXT_ID +
+    "/reviews";
 
   // Standalone, idempotent. Only rewrites anchors still matching STORE_SELECTOR;
-  // after a swap the href is OPEN_TARGET, so a re-run no longer selects them.
+  // after a swap the href is REVIEW_TARGET (a /reviews URL — no longer matches the
+  // detail-page selector), so a re-run no longer selects them.
   // Never touches className / styles — button CSS is preserved exactly.
   function swapStoreButtons(root) {
     var scope = root || document;
     var links = scope.querySelectorAll(STORE_SELECTOR);
     links.forEach(function (link) {
-      link.textContent = "✓ Installed — Open Clipper";
-      link.setAttribute("href", OPEN_TARGET);
+      link.textContent = "✓ Installed — leave a review ★";
+      link.setAttribute("href", REVIEW_TARGET);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
     });
     return links.length;
   }
