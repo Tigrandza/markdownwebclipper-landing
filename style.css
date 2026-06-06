@@ -147,11 +147,15 @@ h3.display { font-size: clamp(24px, 2.4vw, 30px); }
 .brand .wordmark { font-size: 16px; }
 .brand .tld { color: var(--fg-faint); font-weight: 500; }
 .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-.nav a {
+/* :not(.btn) so the rust "Add to Chrome" button keeps its --on-accent
+   white text. Without this exclusion .nav a (specificity 0,1,1) wins
+   over .btn-primary (0,1,0) and paints dark fg-muted on the rust
+   surface — unreadable contrast. */
+.nav a:not(.btn) {
   padding: 8px 12px; border-radius: var(--r-sm); font-size: 14px; color: var(--fg-muted);
   font-weight: 500; transition: color .15s, background .15s;
 }
-.nav a:hover { color: var(--fg-strong); background: var(--surface-2); }
+.nav a:not(.btn):hover { color: var(--fg-strong); background: var(--surface-2); }
 .nav .sep { width: 1px; height: 20px; background: var(--border); margin-inline: 6px; }
 
 /* ---------- 3. Buttons / badges / chips ---------- */
