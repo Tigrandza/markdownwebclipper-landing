@@ -1,35 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Markdown Web Clipper — Save Pages to Obsidian</title>
-    <meta
-      name="description"
-      content="One keystroke converts any webpage to clean Markdown and saves it where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible."
-    />
-    <link rel="canonical" href="https://markdownwebclipper.com/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/icon-128.png" />
-    <link rel="stylesheet" href="/style.css" />
-    <meta property="og:title" content="Markdown Web Clipper — Save Pages to Obsidian" />
-    <meta
-      property="og:description"
-      content="One keystroke. Any page → clean Markdown → your notes folder. No cloud, no cleanup."
-    />
-    <meta property="og:url" content="https://markdownwebclipper.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://markdownwebclipper.com/demo.gif" />
-    <meta property="og:image:alt" content="Demo: clipping a Wikipedia article into an Obsidian vault folder" />
-    <script type="application/ld+json">
+<!DOCTYPE html>
+<!--
+  Production version of the Claude Design landing-page handoff
+  (bundle id 0F12Zd1Js5TqGEaPBBKLFg → /tmp/clipper-landing-page).
+  Companion to the May extension redesign (.design/DECISIONS.md +
+  .design/markdown-clipper/). Source of truth in this private repo;
+  mirror to public github.com/Tigrandza/markdownwebclipper-landing,
+  substituting pdt_0NfuGhRc7PfiD3aSfckyG at deploy time.
+
+  Differences vs the bundle's index.html:
+  - Only the SPLIT hero ships (centered + compare were dev review
+    variants for the Tweaks panel; DECISIONS.md picks split).
+  - Tweaks dev overlay (#tweaks + its <template>) stripped — defaults
+    locked on <html> via data-* attributes.
+  - SEO/favicons/OG/JSON-LD preserved from the previous index.html.
+  - Asset paths normalised to root-relative (existing landing repo
+    keeps icon-128.png / favicon.svg / favicon-32.png at /).
+  - CSS split: tokens.css (the variables block) + home.css (the rest).
+    Old style.css stays in place for /privacy /pro-faq /restore, which
+    use the older long-form-doc styles; only the home page picks up
+    the redesign.
+-->
+<html lang="en" data-hero="split" data-density="standard" data-accent="100" data-pro="standard">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Markdown Web Clipper — one keystroke, clean Markdown</title>
+<meta name="description" content="A Chrome extension that converts any webpage to high-fidelity Markdown — tables, code, math, footnotes — and saves it exactly where you keep your notes. No cloud, no cleanup. Free & MIT-licensed." />
+<link rel="canonical" href="https://markdownwebclipper.com/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+
+<!-- Open Graph (carries forward from the previous landing) -->
+<meta property="og:title" content="Markdown Web Clipper — one keystroke, clean Markdown" />
+<meta property="og:description" content="Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes — local folder, clipboard, Obsidian, or Gist. No cloud, no cleanup." />
+<meta property="og:url" content="https://markdownwebclipper.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://markdownwebclipper.com/demo.gif" />
+<meta property="og:image:alt" content="Demo: clipping a Wikipedia article into an Obsidian vault folder" />
+
+<!--
+  TODO production-self-host fonts: copy Inter Tight + JetBrains Mono
+  WOFF2 from extension's public/fonts/ into landing/fonts/ and add a
+  @font-face block at the top of home.css. The handoff bundle and the
+  brief both flag this; deferred to keep the design-implementation
+  patch minimal.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/home.css" />
+
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Markdown Web Clipper",
   "applicationCategory": "ProductivityApplication",
   "operatingSystem": "Chrome, Edge, Brave",
-  "description": "One keystroke converts any webpage to clean Markdown and saves it where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible.",
+  "description": "One keystroke converts any webpage to high-fidelity Markdown and saves it exactly where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible.",
   "url": "https://markdownwebclipper.com/",
   "offers": {
     "@type": "Offer",
@@ -37,182 +68,430 @@
     "priceCurrency": "USD"
   }
 }
-    </script>
-  </head>
-  <body>
-    <header class="hero">
-      <div class="container">
-        <h1>Markdown Web Clipper</h1>
-        <p class="tagline">
-          Save Pages to Obsidian. One keystroke converts any webpage to
-          clean Markdown and saves it exactly where you keep your notes.
-        </p>
-        <p class="cta-row">
-          <!-- TODO(plan-13): replace placeholder with the live CWS listing URL once submitted. -->
-          <a class="cta-primary" href="https://chrome.google.com/webstore/category/extensions"
-            >Install on Chrome Web Store</a
-          >
-          <a class="cta-secondary" href="#pricing">See pricing</a>
-        </p>
-        <p class="trust-line">
-          Local-first. No analytics. No cloud lock-in. Works offline.
-        </p>
-      </div>
-    </header>
+</script>
+</head>
+<body>
 
-    <section class="demo">
-      <div class="container">
-        <!-- Source: store-assets/demo/demo.gif (720x405, recorded with LICEcap) -->
-        <img src="/demo.gif"
-             alt="Demo: clipping a Wikipedia article into an Obsidian vault folder"
-             loading="lazy"
-             width="720"
-             height="405" />
-      </div>
-    </section>
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a class="hide-sm" href="#different">Why</a>
+      <a class="hide-sm" href="#destinations">Destinations</a>
+      <a class="hide-sm" href="#fidelity">Fidelity</a>
+      <a class="hide-sm" href="#pro">Pro</a>
+      <span class="sep hide-sm" aria-hidden="true"></span>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
 
-    <section class="features">
-      <div class="container">
-        <h2>What it does, in one keystroke</h2>
-        <div class="grid-3">
-          <article>
-            <h3>High-fidelity Markdown</h3>
-            <p>
-              Defuddle-extracted body, Turndown + GFM tables,
-              code-fence preservation, math (LaTeX from MathML),
-              footnotes, frontmatter — the things every other clipper
-              breaks.
-            </p>
-          </article>
-          <article>
-            <h3>Save where you keep notes</h3>
-            <p>
-              Pick your Obsidian vault folder once. Files land
-              there directly via the File System Access API — no
-              sync server, no cloud round-trip, no copy-paste.
-              Obsidian URI handoff opens the file immediately if you
-              want it.
-            </p>
-          </article>
-          <article>
-            <h3>Local-first, privacy-respecting</h3>
-            <p>
-              No analytics, no telemetry. Activated only when you
-              click the toolbar button or press the keyboard
-              shortcut — never on a tab you didn't ask for. Open
-              source clipping engine.
-            </p>
-          </article>
-          <article>
-            <h3>Built-in site rules</h3>
-            <p>
-              Reddit, Hacker News, Stack Overflow, GitHub README,
-              ChatGPT/Claude/Gemini conversations, news sites — all
-              pre-tuned. Add your own rules in seconds (Pro).
-            </p>
-          </article>
-          <article>
-            <h3>Image control, your way</h3>
-            <p>
-              Inline as base64 (free), reference the original URL
-              (free), or co-locate binary image files alongside the
-              .md file (Pro). Whatever your vault structure expects.
-            </p>
-          </article>
-          <article>
-            <h3>Multi-tab batch (Pro)</h3>
-            <p>
-              Open 30 research tabs, clip them all into your vault
-              with one shortcut. The free tier supports up to 3
-              tabs at a time; Pro removes the cap.
-            </p>
-          </article>
+<main>
+
+<!-- ============================ HERO: SPLIT ============================ -->
+<section class="hero hero-split band" data-variant="split">
+  <div class="wrap">
+    <div class="grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">
+          <span class="badge-free">Free &amp; MIT-licensed</span>
+          <span class="eyebrow">Chrome · Manifest V3</span>
+        </div>
+        <h1 class="display">One keystroke.<br /><span class="rust">Clean Markdown.</span></h1>
+        <p class="lede">Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes — local folder, clipboard, download, Obsidian, or Gist. No cloud, no cleanup.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome — free</a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/Tigrandza/markdown-web-clipper">View source <span class="kbd">↗</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> No account</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> No telemetry</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Works offline</span>
         </div>
       </div>
-    </section>
 
-    <section class="pricing" id="pricing">
-      <div class="container">
-        <h2>One-time price. No subscriptions.</h2>
-        <div class="grid-2">
-          <article class="card free">
-            <h3>Free, forever</h3>
-            <p class="price">$0</p>
-            <ul>
-              <li>Single-page clipping</li>
-              <li>Inline images, reference images</li>
-              <li>FSA folder, clipboard, download, Obsidian URI destinations</li>
-              <li>Built-in templates and site rules</li>
-              <li>Multi-tab batch up to 3 tabs at once</li>
-            </ul>
-          </article>
-          <article class="card pro">
-            <h3>Pro</h3>
-            <p class="price">
-              <span class="price-now">$9</span>
-              <span class="price-strike">$19</span>
-            </p>
-            <p class="price-note">
-              Intro pricing for the first 1,000 buyers. After that, $19
-              lifetime. Single one-time payment, no subscription.
-            </p>
-            <ul>
-              <li>Multi-tab batch with no cap</li>
-              <li>Co-located image mode (binary files alongside .md)</li>
-              <li>GitHub Gist destination</li>
-              <li>Custom site rules</li>
-              <li>Custom templates</li>
-            </ul>
-            <p class="cta-row">
-              <!-- TODO(plan-14d): substitute the placeholder product id below
-                   with the live DodoPayments product UUID after the Dodo
-                   Product is configured in the plan-14d Dodo dashboard step.
-                   The literal `pdt_0NfuGhRc7PfiD3aSfckyG` is recognized
-                   by the landing-site deploy substitution (same static-replace
-                   pattern plan-13a used for its prior LS placeholder). -->
-              <a class="cta-primary" href="https://checkout.dodopayments.com/buy/pdt_0NfuGhRc7PfiD3aSfckyG">Buy Pro</a>
-            </p>
-            <p class="refund-note">
-              14-day money-back guarantee — email
-              <a href="mailto:support@markdownwebclipper.com"
-                >support@markdownwebclipper.com</a
-              >
-              for a refund, no questions asked.
-            </p>
-          </article>
+      <div class="hero-stage">
+        <!-- LIVE popup recreation (crisp at any size) -->
+        <div class="popup" role="img" aria-label="The Clipper popup, Clip tab">
+          <div class="popup-tabs">
+            <button class="popup-tab active">Clip</button>
+            <button class="popup-tab">Edit</button>
+            <button class="popup-tab">Settings</button>
+          </div>
+          <div class="popup-body">
+            <p class="popup-hint">Clip a page first to edit</p>
+            <div class="popup-input">Page title</div>
+            <p class="popup-fm"><span class="tri">▸</span> Frontmatter (YAML, 7 keys)</p>
+            <div class="popup-row">
+              <div class="seg">
+                <button class="active">Auto</button>
+                <button>Full Page</button>
+                <button>Selection</button>
+              </div>
+              <div class="spacer"></div>
+              <button class="icon-btn" aria-label="Re-extract"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg></button>
+              <button class="icon-btn" aria-label="More"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></button>
+            </div>
+            <div class="fmt-select">Article <span class="built-in">built-in</span><span class="caret"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span></div>
+            <div class="dest-row">
+              <button class="icon-btn" aria-label="Download .md"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></button>
+              <button class="icon-btn" aria-label="Copy to clipboard"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+              <button class="icon-btn" aria-label="Save to local folder"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
+              <button class="icon-btn" aria-label="Send to Obsidian"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 7 5-3 13H8L5 7z"/><path d="m9 20 3-9 4 4"/></svg></button>
+              <button class="icon-btn" aria-label="Save to GitHub Gist (Pro)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 20 4.8 4.9 4.9 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A4.9 4.9 0 0 0 5 4.8a5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7A3.4 3.4 0 0 0 9 17.6V22"/></svg><span class="pro-dot">P</span></button>
+            </div>
+            <div class="popup-foot"><span>~28 tokens</span><span>⌥⇧S</span></div>
+          </div>
+        </div>
+
+        <span class="flow-arrow" aria-hidden="true"><svg width="36" height="20" viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 10h30m0 0-7-7m7 7-7 7"/></svg></span>
+
+        <!-- rendered markdown output -->
+        <div class="md-card">
+          <h4># Markdown</h4>
+          <p>From Wikipedia, the free encyclopedia</p>
+          <p><b style="color:var(--fg-strong)">Markdown</b> is a lightweight markup language for creating formatted text.</p>
+          <p class="sub">## Code blocks</p>
+          <div class="code-well">const clipper = save(page);</div>
+          <table class="mini-table">
+            <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Tables</td><td><span class="ok">✓</span></td></tr>
+              <tr><td>Math</td><td><span class="ok">✓</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>
-          <a href="/privacy">Privacy</a>
-          ·
-          <a href="/restore">Restore Purchase</a>
-          ·
+<!-- ============================ WHY DIFFERENT ============================ -->
+<section class="band" id="different">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why it's different</p>
+      <h2 class="display" style="margin-top:14px">You've tried a clipper before.<br />It broke the <span class="rust">tables.</span></h2>
+      <p class="lede">Readability-based clippers flatten the parts that matter. Clipper runs Defuddle for extraction, then Turndown + GFM for conversion — locally, on the page you're looking at.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-cell">
+        <span class="n">01</span>
+        <h3>Tables survive</h3>
+        <p>Wikipedia infoboxes with <code>rowspan</code> / <code>colspan</code> come through as real GFM tables — not a wall of run-together text.</p>
+      </div>
+      <div class="why-cell">
+        <span class="n">02</span>
+        <h3>Math stays math</h3>
+        <p>KaTeX and MathML render to <code>$…$</code> / <code>$$…$$</code> so equations land readable in your notes, not as broken glyphs.</p>
+      </div>
+      <div class="why-cell">
+        <span class="n">03</span>
+        <h3>Code keeps its language</h3>
+        <p>Fenced blocks keep their language hint and indentation — <code>```ts</code> stays <code>```ts</code>, never collapsed to plain text.</p>
+      </div>
+      <div class="why-cell">
+        <span class="n">04</span>
+        <h3>No cloud round-trip</h3>
+        <p>Extraction runs in your browser on the live DOM. Nothing is uploaded to a server to be "processed" and sent back.</p>
+      </div>
+      <div class="why-cell">
+        <span class="n">05</span>
+        <h3>One keystroke</h3>
+        <p>Bind a shortcut and clip without touching the mouse. The popup remembers your last destination and format.</p>
+      </div>
+      <div class="why-cell">
+        <span class="n">06</span>
+        <h3>Frontmatter that's yours</h3>
+        <p>Title, URL, date, source, tags — emitted as YAML you control, ready for Dataview queries the moment it lands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DESTINATIONS ============================ -->
+<section class="band" id="destinations">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What's free — all of it</p>
+      <h2 class="display" style="margin-top:14px">Five <span class="rust">destinations.</span> Zero accounts.</h2>
+      <p class="lede">Every destination below ships in the free edition. Pick where a clip lands; Clipper remembers it next time.</p>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr><th>Destination</th><th>Works offline</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="dest">
+                <span class="di"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+                <span><span class="name">Local folder</span><br /><span class="sub">File System Access API</span></span>
+              </div>
+            </td>
+            <td><span class="yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Yes</span></td>
+            <td class="best"><b>Obsidian &amp; Logseq vaults.</b> Files write straight into the folder you pick once — no sync server in the loop.</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="dest">
+                <span class="di"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span>
+                <span><span class="name">Clipboard</span><br /><span class="sub">System clipboard</span></span>
+              </div>
+            </td>
+            <td><span class="yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Yes</span></td>
+            <td class="best"><b>Piping into an LLM.</b> Clip an article and paste clean Markdown straight into a ChatGPT, Claude, or Gemini context window.</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="dest">
+                <span class="di"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span>
+                <span><span class="name">.md download</span><br /><span class="sub">Browser download</span></span>
+              </div>
+            </td>
+            <td><span class="yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Yes</span></td>
+            <td class="best"><b>One-off saves.</b> A plain <code>.md</code> file in your Downloads — drag it anywhere, archive it, send it on.</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="dest">
+                <span class="di"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 7 5-3 13H8L5 7z"/><path d="m9 20 3-9 4 4"/></svg></span>
+                <span><span class="name">Obsidian</span><br /><span class="sub">obsidian:// URI</span></span>
+              </div>
+            </td>
+            <td><span class="yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Yes</span></td>
+            <td class="best"><b>A specific vault + folder.</b> Hands the clip to Obsidian via its URI scheme — append, create, or route by template.</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="dest">
+                <span class="di"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 20 4.8 4.9 4.9 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A4.9 4.9 0 0 0 5 4.8a5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7A3.4 3.4 0 0 0 9 17.6V22"/></svg></span>
+                <span><span class="name">GitHub Gist <span class="badge-pro outline tag-pro">Pro</span></span><br /><span class="sub">Authenticated API</span></span>
+              </div>
+            </td>
+            <td><span class="partial"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Needs network</span></td>
+            <td class="best"><b>Shareable, versioned snippets.</b> Pushes the clip to a secret or public Gist — the one destination that, by nature, talks to a server.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="matrix-note"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Four of five destinations work with your network cable unplugged. Only Gist — a publishing target — needs to reach out.</p>
+  </div>
+</section>
+
+<!-- ============================ FIDELITY (before/after) ============================ -->
+<section class="band" id="fidelity" data-ba="rendered">
+  <div class="wrap">
+    <div class="ba-head">
+      <div class="section-head" style="margin-bottom:0">
+        <p class="eyebrow">The fidelity problem</p>
+        <h2 class="display" style="margin-top:14px">See exactly what <span class="rust">survives.</span></h2>
+        <p class="lede">Toggle between how a clip looks rendered and the raw Markdown source it writes to disk. Both are lossless.</p>
+      </div>
+      <div class="ba-toggle" role="tablist" aria-label="View mode">
+        <button data-ba-mode="rendered" class="active">Rendered</button>
+        <button data-ba-mode="source">Markdown source</button>
+      </div>
+    </div>
+
+    <div class="ba-grid">
+      <!-- LEFT: what other clippers do (broken) -->
+      <div class="ba-card">
+        <div class="cap bad">Readability-style clipper</div>
+        <div class="ba-body">
+          <!-- rendered view of a broken clip -->
+          <div class="ba-show-rendered ba-broken">## Quick reference
+
+Common usage examples:
+
+function clip(page) { return md(page); }   <span class="lost">← code fence lost</span>
+
+Feature Status <span class="strip">Tables ✓ Code blocks ✓ Math ✓</span>   <span class="lost">← table flattened</span>
+
+Energy: E = mc^2   <span class="lost">← math stripped to plain text</span></div>
+          <!-- source view of a broken clip -->
+          <div class="ba-show-source ba-source">## Quick reference
+
+Common usage examples:
+
+function clip(page) { return md(page); }
+
+Feature Status Tables ✓ Code
+blocks ✓ Math ✓
+
+Energy: E = mc^2</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: what Clipper does (clean) -->
+      <div class="ba-card">
+        <div class="cap good">Markdown Web Clipper</div>
+        <div class="ba-body">
+          <!-- rendered -->
+          <div class="ba-show-rendered ba-render">
+            <h4>Quick reference</h4>
+            <p>Common usage examples:</p>
+            <pre>function clip(page) {
+  return md(page);
+}</pre>
+            <table>
+              <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Tables</td><td><span class="ok">✓</span></td></tr>
+                <tr><td>Code blocks</td><td><span class="ok">✓</span></td></tr>
+                <tr><td>Math (KaTeX)</td><td><span class="ok">✓</span></td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top:12px">Energy: <em>E = mc²</em></p>
+          </div>
+          <!-- source -->
+          <div class="ba-show-source ba-source"><span class="h">## Quick reference</span>
+
+Common usage examples:
+
+<span class="fence">```javascript</span>
+function clip(page) {
+  return md(page);
+}
+<span class="fence">```</span>
+
+<span class="pipe">| Feature      | Status |</span>
+<span class="pipe">|--------------|--------|</span>
+<span class="pipe">| Tables       | ✓      |</span>
+<span class="pipe">| Code blocks  | ✓      |</span>
+<span class="pipe">| Math (KaTeX) | ✓      |</span>
+
+Energy: <span class="fence">$E = mc^2$</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRO ============================ -->
+<section class="band pro-band" id="pro">
+  <div class="wrap">
+    <div class="pro-card">
+      <div>
+        <div class="head">
+          <span class="badge-pro">Pro</span>
+          <p class="eyebrow">Optional · one-time</p>
+        </div>
+        <h2 class="display">If you live in your <span class="rust">vault</span> all day.</h2>
+        <p class="lede" style="margin-top:14px">The free edition is the whole product. Pro is a tip for the power-user minority who clip dozens of pages a day — and a way to keep the lights on.</p>
+        <ul class="pro-feats">
+          <li><span class="tick"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>GitHub Gist destination</b> — push clips to secret or public Gists, versioned.</span></li>
+          <li><span class="tick"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Co-located images</b> — download referenced images next to the <code>.md</code>, with rewritten relative links.</span></li>
+          <li><span class="tick"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Unlimited batch</b> — clip every open tab in one shot; free caps the batch size.</span></li>
+          <li><span class="tick"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Multi-vault routing</b> — keep separate folders per project and switch between them.</span></li>
+        </ul>
+        <p class="pro-tip">Reference-mode images don't render in macOS Preview — switch to Base64 inline if you need fully-offline files. We'd rather tell you than surprise you.</p>
+      </div>
+      <div class="price-box">
+        <p class="eyebrow">Launch price</p>
+        <div style="margin-top:14px"><span class="now">$9</span><span class="was">$19</span></div>
+        <p class="once">One-time purchase · lifetime updates · no subscription</p>
+        <span class="badge-pro promo">$9 → $19 soon</span>
+        <a class="btn btn-primary btn-lg" href="https://checkout.dodopayments.com/buy/pdt_0NfuGhRc7PfiD3aSfckyG">Buy Pro</a>
+        <p class="fine">Already bought it? <a href="/restore" style="color:var(--accent)">Restore your purchase</a>. Questions? <a href="/pro-faq" style="color:var(--accent)">Read the Pro FAQ</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CREDIBILITY ============================ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Honest by construction</p>
+      <h2 class="display" style="margin-top:14px">Open where it <span class="rust">counts.</span></h2>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 7v5c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V7z"/></svg></span>
+        <h3>No analytics, no telemetry</h3>
+        <p>Clipper makes no network calls except the destination you choose. There's no usage pixel, no error beacon, no "anonymous" stats. Verify it in the source.</p>
+      </div>
+      <div class="cred-card">
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+        <h3>MIT-licensed free edition</h3>
+        <p>The free edition is open source under MIT. Read it, fork it, audit exactly what touches the page you're clipping.</p>
+        <a class="repo" href="https://github.com/Tigrandza/markdown-web-clipper"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1A11 11 0 0 0 8.5 22c.5.1.7-.2.7-.5v-2c-3 .6-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.8 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.4.2 2.5.1 2.8.7.8 1.1 1.7 1.1 2.9 0 4.1-2.6 5-5 5.3.4.3.8 1 .8 2.1v3c0 .3.2.6.7.5A11 11 0 0 0 12 1"/></svg> Tigrandza/markdown-web-clipper</a>
+      </div>
+      <div class="cred-card">
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h3>Trade-offs in the open</h3>
+        <p>We document the sharp edges — reference vs. inline images, what each destination can and can't do offline — instead of hiding them behind a "Pro" wall.</p>
+      </div>
+    </div>
+
+    <!-- honest social-proof placeholder -->
+    <div class="tbd" style="margin-top:24px">
+      <p class="eyebrow">Reviews · TBD</p>
+      <p>The extension is pending its first Chrome Web Store review cycle. When real ratings and quotes exist, they'll live here — we won't invent testimonials to fill the space.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA + DEMO SLOT ============================ -->
+<section class="band">
+  <div class="wrap" style="text-align:center">
+    <h2 class="display">One keystroke away.</h2>
+    <p class="lede" style="margin:16px auto 0">Watch a real clip land in a folder — then go make your own.</p>
+    <div class="demo-slot" style="margin:36px auto 32px">
+      <div>
+        <div class="label">demo.gif slot</div>
+        <div class="dim">720 × 405 (16:9) · @2× source 1440 × 810 · ~8s loop · clip → file-save</div>
+      </div>
+    </div>
+    <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome — free</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/">Home</a>
+          <a href="#destinations">Destinations</a>
+          <a href="#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
           <a href="/pro-faq">Pro FAQ</a>
-          ·
+          <a href="/restore">Restore Purchase</a>
           <a href="mailto:support@markdownwebclipper.com">Contact</a>
-        </p>
-        <p class="footer-trademark">
-          Obsidian, Notion, GitHub, ChatGPT, Claude, and Gemini are
-          trademarks of their respective owners. Markdown Web Clipper
-          is not affiliated with or endorsed by any of them; the
-          extension is independently developed and uses
-          "Obsidian-compatible" / "Save to Obsidian" purely as
-          descriptive use-case copy. See
-          <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/TRADEMARK.md"
-            >TRADEMARK.md</a
-          >
-          for the full descriptive-phrase rationale.
-        </p>
-        <p class="footer-license">
-          Conversion engine open source under MIT (future public-fork
-          repo). Pro features in this hosted private build.
-          markdownwebclipper.com — built independently.
-        </p>
+        </div>
+        <div class="footer-col">
+          <h4>Legal &amp; source</h4>
+          <a href="/privacy">Privacy</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
       </div>
-    </footer>
-  </body>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/home.js"></script>
+</body>
 </html>

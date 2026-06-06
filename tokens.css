@@ -1,0 +1,144 @@
+/* ============================================================================
+   Markdown Web Clipper — landing tokens
+   Drop-in replacement for the :root block in the existing style.css.
+   Light is the default; dark applies via prefers-color-scheme OR a manual
+   [data-theme="dark"] on <html> (manual choice wins — see style.css).
+
+   Palette is LOCKED (matches the extension UI). Rust is a ~5%-of-pixels
+   accent: primary CTA, "Pro" badges, one heading word per section. Nothing
+   else.
+   ============================================================================ */
+
+:root {
+  /* ---- Core neutrals (warm stone) ---- */
+  --bg:            #fafaf9;
+  --surface:       #ffffff;   /* cards, popup, window chrome body */
+  --surface-2:     #f5f5f4;   /* insets: code wells, table headers, toolbars */
+  --fg:            #1c1917;
+  --fg-strong:     #0c0a09;
+  --fg-muted:      #57534e;
+  --fg-faint:      #a8a29e;
+  --border:        #e7e5e4;
+  --border-strong: #d6d3d1;
+
+  /* ---- Accent (rust) — three intensities for the sanity dial ----
+     100 = locked brand value. 60 = softer, 140 = punchier.
+     style.css picks one into --accent via [data-accent]. */
+  --accent-60:     #c5795c;
+  --accent-100:    #b4451f;
+  --accent-140:    #a5380f;
+  --accent:        var(--accent-100);
+  --accent-ink:    #6e2710;   /* text on rust-subtle, pressed states */
+  --accent-subtle: #fbeae3;   /* rust wash: Pro panels, accent-tinted chips */
+  --on-accent:     #ffffff;   /* text/icon on a filled rust surface */
+
+  /* ---- Semantic ---- */
+  --success:       #166534;
+  --success-bg:    #dcfce7;
+
+  /* ---- Code / syntax (frontmatter + fences, matches the screenshots) ---- */
+  --code-bg:       #0c0a09;   /* dark inline code well in the popup preview */
+  --code-fg:       #f5f5f4;
+  --syn-key:       #57534e;   /* frontmatter keys, punctuation */
+  --syn-val:       #b4451f;   /* frontmatter values, urls, strings */
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --lh-display: 1.05;
+  --lh-tight:   1.15;
+  --lh-body:    1.55;
+  --tracking-display: -0.022em;
+
+  /* ---- Radii ---- */
+  --r-xs:  6px;
+  --r-sm:  8px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-xl:  18px;
+  --r-2xl: 22px;
+  --r-pill: 999px;
+
+  /* ---- Elevation (soft, warm-tinted — never blue/black SaaS shadows) ---- */
+  --shadow-sm:  0 1px 2px rgba(28, 25, 23, 0.06);
+  --shadow-md:  0 4px 16px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-lg:  0 18px 50px -16px rgba(28, 25, 23, 0.18), 0 4px 12px rgba(28, 25, 23, 0.05);
+  --shadow-pop: 0 24px 64px -20px rgba(28, 25, 23, 0.22), 0 2px 8px rgba(28, 25, 23, 0.06);
+
+  /* ---- Layout rhythm (driven by [data-density] in style.css) ---- */
+  --section-y: 112px;   /* vertical padding per major section (standard) */
+  --gap-block: 28px;
+  --maxw: 1120px;
+  --maxw-prose: 720px;
+}
+
+/* ---- Dark, via system preference (manual override handled in style.css) ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:            #0c0a09;
+    --surface:       #1c1917;
+    --surface-2:     #171311;
+    --fg:            #f5f5f4;
+    --fg-strong:     #f5f5f4;
+    --fg-muted:      #a8a29e;
+    --fg-faint:      #57534e;
+    --border:        #27272a;
+    --border-strong: #3a3a3e;
+
+    --accent-60:     #e2a285;
+    --accent-100:    #e07a4f;
+    --accent-140:    #ef6a36;
+    --accent:        var(--accent-100);
+    --accent-ink:    #f0c3ae;
+    --accent-subtle: #2a160c;
+    --on-accent:     #1c0f08;
+
+    --success:       #4ade80;
+    --success-bg:    #143323;
+
+    --code-bg:       #000000;
+    --code-fg:       #f5f5f4;
+    --syn-key:       #a8a29e;
+    --syn-val:       #e07a4f;
+
+    --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-lg:  0 18px 50px -16px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-pop: 0 24px 64px -20px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ---- Dark, via manual toggle (wins over system) ---- */
+:root[data-theme="dark"] {
+  --bg:            #0c0a09;
+  --surface:       #1c1917;
+  --surface-2:     #171311;
+  --fg:            #f5f5f4;
+  --fg-strong:     #f5f5f4;
+  --fg-muted:      #a8a29e;
+  --fg-faint:      #57534e;
+  --border:        #27272a;
+  --border-strong: #3a3a3e;
+
+  --accent-60:     #e2a285;
+  --accent-100:    #e07a4f;
+  --accent-140:    #ef6a36;
+  --accent:        var(--accent-100);
+  --accent-ink:    #f0c3ae;
+  --accent-subtle: #2a160c;
+  --on-accent:     #1c0f08;
+
+  --success:       #4ade80;
+  --success-bg:    #143323;
+
+  --code-bg:       #000000;
+  --code-fg:       #f5f5f4;
+  --syn-key:       #a8a29e;
+  --syn-val:       #e07a4f;
+
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 18px 50px -16px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 24px 64px -20px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+}
