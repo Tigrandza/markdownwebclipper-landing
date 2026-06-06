@@ -1,354 +1,174 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy — Markdown Web Clipper</title>
-    <meta
-      name="description"
-      content="What Markdown Web Clipper reads, writes, and sends. Local-first, no analytics, no telemetry."
-    />
-    <link rel="canonical" href="https://markdownwebclipper.com/privacy" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/icon-128.png" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body class="doc-page">
-    <header class="doc-header">
-      <div class="container">
-        <p class="back-link"><a href="/">← Markdown Web Clipper home</a></p>
-        <h1>Privacy Policy — Markdown Web Clipper</h1>
-        <p class="doc-meta"><em>Last updated: 2026-06-06</em></p>
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Markdown Web Clipper</title>
+<meta name="description" content="What Markdown Web Clipper reads, writes, and sends. Local-first, no analytics, no telemetry." />
+<link rel="canonical" href="https://markdownwebclipper.com/privacy" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/pro-faq">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1 class="display" style="margin-top:12px">Privacy <span class="rust">policy.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">Clipper reads the page you're on, converts it locally, and sends it only to the destination you pick. Nothing else leaves your machine.</p>
+      <p class="meta">Last updated 2026-06-06 · sourced from <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md" style="color:var(--accent)">PRIVACY.md</a></p>
+    </div>
+  </section>
+
+  <!--
+    Content sourced verbatim from PRIVACY.md at the time of this edit.
+    Re-sync from PRIVACY.md on any future doc-only commit. The sticky
+    TOC must list each <h2 id="…"> heading below; the bundle's prose-
+    layout shows/hides the rail at >960px viewport.
+  -->
+  <div class="prose-layout">
+    <aside class="toc">
+      <h4>On this page</h4>
+      <a href="#data-read">Data we read</a>
+      <a href="#data-write">Data we write</a>
+      <a href="#remote-calls">Remote calls</a>
+      <a href="#image-viewer">Image viewer notes</a>
+      <a href="#freemium">Freemium &amp; refund</a>
+      <a href="#control">Your control</a>
+      <a href="#contact">Contact</a>
+    </aside>
+    <article class="prose">
+      <div class="callout"><p>Clipper performs <strong>no analytics, no telemetry,</strong> and requires no account. The free edition is open source under MIT — every claim on this page is auditable in the <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md">repository</a>.</p></div>
+
+      <p>Markdown Web Clipper ("the extension") is a Chrome extension that converts the page you are looking at into a Markdown file and saves it where you choose. The extension is local-first: it does not have a cloud backend, no analytics, no telemetry, and no remote calls beyond the narrowly-scoped cases listed below in <a href="#remote-calls">Remote calls</a>.</p>
+
+      <p>This policy describes exactly what the extension reads, writes, and sends, and how to control or remove that data. The repo-source version of this document at <code>PRIVACY.md</code> is the single source of truth; the rendered version on this page is a copy maintained alongside it. The <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md">GitHub PRIVACY.md</a> is the authoritative version.</p>
+
+      <h2 id="data-read">Data we read</h2>
+      <p>The extension only reads page data when <strong>you invoke the clipping action</strong> (toolbar click, keyboard shortcut, or context menu). It does not run on any tab you have not explicitly clipped, and the manifest does not request <code>&lt;all_urls&gt;</code> at install time.</p>
+      <p>When you invoke a clip, the extension reads:</p>
+      <ul>
+        <li><strong>Page HTML</strong> — the DOM of the active tab at the moment of the click, passed to Defuddle (extraction) and Turndown (HTML→Markdown) inside an offscreen document running locally in your browser.</li>
+        <li><strong>Current tab URL</strong> — used as the source/canonical URL in the generated Markdown frontmatter.</li>
+        <li><strong>Page metadata</strong> — <code>&lt;title&gt;</code>, <code>&lt;meta&gt;</code> tags, <code>&lt;link rel="canonical"&gt;</code>, Open Graph tags, JSON-LD blocks. All used to populate the Markdown frontmatter.</li>
+      </ul>
+      <p>Multi-tab batch clipping requires the optional <code>&lt;all_urls&gt;</code> permission, which is <strong>off by default</strong> and only granted at runtime when you explicitly enable Settings → Privacy → Multi-tab batch. You can revoke it at any time from the same toggle or from <code>chrome://extensions</code>.</p>
+
+      <h2 id="data-write">Data we write</h2>
+      <p>The extension persists data in four locations, all on your device:</p>
+      <ul>
+        <li><strong><code>chrome.storage.local</code></strong> — clipping templates, custom site rules, the cached license status (paid / grace-until / last-verified timestamps), the chosen FSA vault folder reference, the debug-log ring buffer, and your image-mode preference (inline / reference / co-located).</li>
+        <li><strong><code>chrome.storage.sync</code></strong> — small (~≤8&nbsp;KB) general settings (UI language, default destination, default frontmatter, keyboard shortcut overrides). Synced by Chrome across devices signed in to the same Google account; the extension does not read or transmit this data anywhere else.</li>
+        <li><strong><code>IndexedDB</code> (via <code>idb</code>)</strong> — the <code>FileSystemDirectoryHandle</code> for your chosen vault folder, plus highlights and clip history if enabled.</li>
+        <li><strong>The folder you chose</strong> — the converted Markdown files (and co-located image files when image mode is co-located) are written to whichever directory you granted the extension write access to via the File System Access picker. The extension cannot read or write any file outside that folder.</li>
+      </ul>
+      <p>GitHub Personal Access Tokens for the Gist destination are stored in <code>chrome.storage.session</code> by default (cleared when the browser closes). You may opt-in to <code>chrome.storage.local</code> persistence; toggling that option back off cascades a purge of the persisted token.</p>
+
+      <h2 id="remote-calls">Remote calls</h2>
+      <p>The extension makes exactly five kinds of remote calls. All are listed below verbatim; nothing else leaves your device.</p>
+      <ul>
+        <li><strong>Image fetches</strong> — when image mode is <code>reference</code> or <code>co-located</code>, the extension fetches images from their original source domains (i.e., wherever the page's <code>&lt;img src&gt;</code> already pointed). No extension-specific headers are added; the request mode is <code>no-cors</code>. These are the same network calls your browser would have made when loading the page; the extension does not reach any server beyond the image's own host.</li>
+        <li><strong>GitHub Gist API (optional)</strong> — only when you choose the Gist destination AND provide a Personal Access Token. The extension posts your converted Markdown to <code>https://api.github.com/gists</code> using the PAT as the <code>Authorization</code> header. The PAT is stored in <code>chrome.storage.session</code> by default; an opt-in setting persists it to <code>chrome.storage.local</code> and a cascade-purge runs on toggle-off.</li>
+        <li><strong>Obsidian URI handoff</strong> — when the destination is "Obsidian", the extension dispatches an <code>obsidian://new?vault=…&amp;file=…</code> URL via <code>chrome.tabs.update</code>. This is a local OS scheme; no remote call occurs. Your Obsidian app handles the URL on-device.</li>
+        <li><strong>License verification</strong> — at most once per hour, the service worker calls <code>https://api.markdownwebclipper.com/api/license/check</code> to refresh the cached Pro license state. This is a developer-controlled Cloudflare Worker that proxies the upstream license validation request to DodoPayments. The request body contains only the locally-stored DodoPayments license key and a per-install instance UUID; no email, no analytics identifier, no telemetry. The Worker stores hashed-email → license_key mapping in Cloudflare Workers KV; raw email addresses are NEVER logged.</li>
+        <li><strong>License restore (magic link)</strong> — when you use Settings → Pro → Restore Purchase, the extension POSTs your email to <code>https://api.markdownwebclipper.com/api/restore</code>. If a Pro license is registered to that email, the Worker sends a one-time magic-link email via Resend (10-minute expiry, single-use). Per privacy posture, the response is identical whether the email is registered or not — we do not confirm registration status to defeat email enumeration. Per-email rate-limit (60 seconds) prevents abuse.</li>
+        <li><strong>Uninstall survey URL</strong> (<code>chrome.runtime.setUninstallURL</code>) — when you uninstall the extension via <code>chrome://extensions</code>, Chrome itself opens a Tally form in a new tab asking why. This is a Chrome platform feature, not a Clipper-initiated remote call. The URL is set once at service-worker activation; you can close the form tab without submitting. The form is unauthenticated and collects only the fields you choose to fill in. Tally privacy policy: <a href="https://tally.so/help/privacy-policy">tally.so/help/privacy-policy</a>.</li>
+      </ul>
+
+      <h2 id="image-viewer">Image viewer notes</h2>
+      <p>This is product behavior, not a privacy or data disclosure — included here so the choice is documented in one place.</p>
+      <p><strong>Remote images in downloaded <code>.md</code> files:</strong> by default, Clipper writes image URLs as <code>![](https://...)</code> (reference mode — zero network use during clipping, fastest output). When you open the <code>.md</code> in a viewer that does not fetch remote URLs (e.g. macOS Preview, QuickLook, some plain-text editors), the images appear blank. Network-capable viewers (Obsidian, browsers, most Markdown editors) render them correctly. To embed images directly into the <code>.md</code> so they work in every viewer offline, change Image Handling mode to "Base64 inline" in Settings.</p>
+
+      <h2 id="freemium">Freemium model &amp; refund policy</h2>
+      <p>Markdown Web Clipper is <strong>freemium from v1</strong>. Core clipping functionality is free for everyone, forever, with no time limit and no feature degradation:</p>
+      <ul>
+        <li>Single-page clipping to inline image mode, to clipboard, to download, or to your FSA folder.</li>
+        <li>Built-in templates and built-in site rules.</li>
+        <li>Obsidian URI destination.</li>
+      </ul>
+      <p><strong>Pro features</strong> require a one-time purchase via DodoPayments (merchant of record, hosted checkout at <code>checkout.dodopayments.com</code>):</p>
+      <ul>
+        <li>Multi-tab batch (more than 3 tabs at once)</li>
+        <li>Co-located image mode (binary image files alongside the <code>.md</code>)</li>
+        <li>GitHub Gist destination</li>
+        <li>Custom site rules (yours, not the built-in set)</li>
+        <li>Custom templates (yours, not the built-in set)</li>
+      </ul>
+      <p>Pricing: <strong>$9 launch for the first wave, $19 lifetime thereafter.</strong> Single one-time payment; no subscription; no recurring charges.</p>
+      <p><strong>Refund policy:</strong> 14-day money-back guarantee. Email <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a> from the address you used at checkout, within 14 days of purchase, for a full refund — no questions asked. Refund propagation may take up to ~37 days to clear the local license cache by design (a 30-day local grace window protects offline users from spurious downgrades); the refund itself is processed immediately.</p>
+
+      <h2 id="control">Your control</h2>
+      <p>You can remove or restrict any of the data above at any time:</p>
+      <ul>
+        <li><strong>Revoke FSA folder access</strong> — Settings → Destinations → "Forget vault folder" (also available from <code>chrome://settings/content/all</code> by removing the host's File System Access permission).</li>
+        <li><strong>Clear all stored data</strong> — Settings → Advanced → "Reset all data". This wipes <code>chrome.storage.local</code>, <code>chrome.storage.sync</code>, <code>chrome.storage.session</code>, and the IndexedDB store. The folder contents on disk are not touched (you can delete those manually).</li>
+        <li><strong>Revoke <code>&lt;all_urls&gt;</code> (multi-tab)</strong> — Settings → Privacy → "Multi-tab batch" toggle off. Equivalent to revoking the optional permission from <code>chrome://extensions</code>.</li>
+        <li><strong>Revoke license</strong> — email <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a> to request a refund or license cancellation. DodoPayments, the merchant of record, processes these.</li>
+        <li><strong>Uninstall</strong> — removes the extension and clears all <code>chrome.storage.*</code> data. The contents of the FSA folder remain on disk; the IndexedDB store is removed by Chrome.</li>
+      </ul>
+
+      <h2 id="contact">Contact</h2>
+      <p>Questions, refund requests, security reports, or trademark concerns: <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
       </div>
-    </header>
-
-    <main class="doc-body">
-      <div class="container">
-        <p>
-          Markdown Web Clipper ("the extension") is a Chrome extension
-          that converts the page you are looking at into a Markdown file
-          and saves it where you choose. The extension is local-first:
-          it does not have a cloud backend, no analytics, no telemetry,
-          and no remote calls beyond the four narrowly-scoped cases
-          listed below in §"Remote calls".
-        </p>
-        <p>
-          This policy describes exactly what the extension reads,
-          writes, and sends, and how to control or remove that data.
-        </p>
-        <p>
-          The repo-source version of this document at
-          <code>PRIVACY.md</code> is the single source of truth; the
-          rendered version on this page is a copy maintained alongside
-          it (see the operational runbook → "Cloudflare Pages
-          redeploy"). The
-          <a
-            href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md"
-            >GitHub PRIVACY.md</a
-          >
-          is the authoritative version.
-        </p>
-
-        <h2>Data we read</h2>
-        <p>
-          The extension only reads page data when <strong>you invoke
-          the clipping action</strong> (toolbar click, keyboard
-          shortcut, or context menu). It does not run on any tab you
-          have not explicitly clipped, and the manifest does not
-          request <code>&lt;all_urls&gt;</code> at install time.
-        </p>
-        <p>When you invoke a clip, the extension reads:</p>
-        <ul>
-          <li>
-            <strong>Page HTML</strong> — the DOM of the active tab at
-            the moment of the click, passed to Defuddle (extraction)
-            and Turndown (HTML→Markdown) inside an offscreen document
-            running locally in your browser.
-          </li>
-          <li>
-            <strong>Current tab URL</strong> — used as the
-            source/canonical URL in the generated Markdown frontmatter.
-          </li>
-          <li>
-            <strong>Page metadata</strong> — <code>&lt;title&gt;</code>,
-            <code>&lt;meta&gt;</code> tags,
-            <code>&lt;link rel="canonical"&gt;</code>, Open Graph tags,
-            JSON-LD blocks. All used to populate the Markdown
-            frontmatter.
-          </li>
-        </ul>
-        <p>
-          Multi-tab batch clipping requires the optional
-          <code>&lt;all_urls&gt;</code> permission, which is
-          <strong>off by default</strong> and only granted at runtime
-          when you explicitly enable Settings → Privacy → Multi-tab
-          batch. You can revoke it at any time from the same toggle or
-          from <code>chrome://extensions</code>.
-        </p>
-
-        <h2>Data we write</h2>
-        <p>The extension persists data in four locations, all on your device:</p>
-        <ul>
-          <li>
-            <strong><code>chrome.storage.local</code></strong> —
-            clipping templates, custom site rules, the cached license
-            status (paid/grace-until/last-verified timestamps), the
-            chosen FSA vault folder reference, the debug-log ring
-            buffer, and your image-mode preference (inline / reference
-            / co-located).
-          </li>
-          <li>
-            <strong><code>chrome.storage.sync</code></strong> — small
-            (~≤8KB) general settings (UI language, default destination,
-            default frontmatter, keyboard shortcut overrides). Synced
-            by Chrome across devices signed in to the same Google
-            account; the extension does not read or transmit this data
-            anywhere else.
-          </li>
-          <li>
-            <strong><code>IndexedDB</code> (via <code>idb</code>)</strong>
-            — the <code>FileSystemDirectoryHandle</code> for your chosen
-            vault folder, plus highlights and clip history if enabled.
-          </li>
-          <li>
-            <strong>The folder you chose</strong> — the converted
-            Markdown files (and co-located image files when image mode
-            is co-located) are written to whichever directory you
-            granted the extension write access to via the File System
-            Access picker. The extension cannot read or write any file
-            outside that folder.
-          </li>
-        </ul>
-        <p>
-          GitHub Personal Access Tokens for the Gist destination are
-          stored in <code>chrome.storage.session</code> by default
-          (cleared when the browser closes). You may opt-in to
-          <code>chrome.storage.local</code> persistence; toggling that
-          option back off cascades a purge of the persisted token.
-        </p>
-
-        <h2>Remote calls</h2>
-        <p>
-          The extension makes exactly five kinds of remote calls. All
-          are listed below verbatim; nothing else leaves your device.
-        </p>
-        <ul>
-          <li>
-            <strong>Image fetches</strong> — when image mode is
-            <code>reference</code> or <code>co-located</code>, the
-            extension fetches images from their original source domains
-            (i.e., wherever the page's <code>&lt;img src&gt;</code>
-            already pointed). No extension-specific headers are added;
-            the request mode is <code>no-cors</code>. These are the
-            same network calls your browser would have made when
-            loading the page; the extension does not reach any server
-            beyond the image's own host.
-          </li>
-          <li>
-            <strong>GitHub Gist API (optional)</strong> — only when you
-            choose the Gist destination AND provide a Personal Access
-            Token. The extension posts your converted Markdown to
-            <code>https://api.github.com/gists</code> using the PAT as
-            the <code>Authorization</code> header. The PAT is stored in
-            <code>chrome.storage.session</code> by default; an opt-in
-            setting persists it to
-            <code>chrome.storage.local</code> and a cascade-purge runs
-            on toggle-off.
-          </li>
-          <li>
-            <strong>Obsidian URI handoff</strong> — when the
-            destination is "Obsidian", the extension dispatches an
-            <code>obsidian://new?vault=…&amp;file=…</code> URL via
-            <code>chrome.tabs.update</code>. This is a local OS scheme;
-            no remote call occurs. Your Obsidian app handles the URL
-            on-device.
-          </li>
-          <li>
-            <strong>License verification</strong> — at most once per
-            hour, the service worker calls
-            <code>https://api.markdownwebclipper.com/api/license/check</code>
-            to refresh the cached Pro license state. This is a
-            developer-controlled Cloudflare Worker that proxies the
-            upstream license validation request to DodoPayments. The
-            request body contains only the locally-stored DodoPayments
-            license key and a per-install instance UUID; no email, no
-            analytics identifier, no telemetry. The Worker stores
-            hashed-email → license_key mapping in Cloudflare Workers
-            KV; raw email addresses are NEVER logged.
-          </li>
-          <li>
-            <strong>License restore (magic link)</strong> — when you
-            use Settings → Pro → Restore Purchase, the extension POSTs
-            your email to
-            <code>https://api.markdownwebclipper.com/api/restore</code>.
-            If a Pro license is registered to that email, the Worker
-            sends a one-time magic-link email via Resend (10-minute
-            expiry, single-use). Per privacy posture, the response is
-            identical whether the email is registered or not — we do
-            not confirm registration status to defeat email
-            enumeration. Per-email rate-limit (60 seconds) prevents
-            abuse. There are no analytics, no telemetry, and no other
-            remote calls.
-          </li>
-          <li>
-            <strong>Uninstall survey URL</strong>
-            (<code>chrome.runtime.setUninstallURL</code>) — when you
-            uninstall the extension via <code>chrome://extensions</code>,
-            Chrome itself opens a Tally form in a new tab asking why.
-            This is a Chrome platform feature, not a Clipper-initiated
-            remote call. The URL is set once at service-worker
-            activation; you can close the form tab without submitting.
-            The form is unauthenticated and collects only the fields
-            you choose to fill in (an optional dropdown reason,
-            optional free-text detail, optional email if you'd like a
-            follow-up). Tally privacy policy:
-            <a href="https://tally.so/help/privacy-policy">https://tally.so/help/privacy-policy</a>.
-          </li>
-        </ul>
-
-        <h2>Image viewer notes</h2>
-        <p>
-          This is product behavior, not a privacy or data disclosure —
-          included here so the choice is documented in one place.
-        </p>
-        <p>
-          <strong>Remote images in downloaded <code>.md</code> files:</strong>
-          by default, Clipper writes image URLs as
-          <code>![](https://...)</code> (reference mode — zero network
-          use during clipping, fastest output). When you open the
-          <code>.md</code> in a viewer that does not fetch remote URLs
-          (e.g. macOS Preview, QuickLook, some plain-text editors), the
-          images appear blank. Network-capable viewers (Obsidian,
-          browsers, most Markdown editors) render them correctly. To
-          embed images directly into the <code>.md</code> so they work
-          in every viewer offline, change Image Handling mode to
-          "Base64 inline" in Settings.
-        </p>
-
-        <h2>Freemium model &amp; refund policy</h2>
-        <p>
-          Markdown Web Clipper is <strong>freemium from v1</strong>.
-          Core clipping functionality is free for everyone, forever,
-          with no time limit and no feature degradation:
-        </p>
-        <ul>
-          <li>
-            Single-page clipping to inline image mode, to clipboard, to
-            download, or to your FSA folder.
-          </li>
-          <li>Built-in templates and built-in site rules.</li>
-          <li>Obsidian URI destination.</li>
-        </ul>
-        <p>
-          <strong>Pro features</strong> require a one-time purchase via
-          DodoPayments (merchant of record, hosted checkout at
-          <code>checkout.dodopayments.com</code>):
-        </p>
-        <ul>
-          <li>Multi-tab batch (&gt;3 tabs at once)</li>
-          <li>Co-located image mode (binary image files alongside the .md)</li>
-          <li>GitHub Gist destination</li>
-          <li>Custom site rules (yours, not the built-in set)</li>
-          <li>Custom templates (yours, not the built-in set)</li>
-        </ul>
-        <p>
-          Pricing: <strong>$9 intro for the first 1,000 buyers, $19
-          lifetime thereafter.</strong> Single one-time payment; no
-          subscription; no recurring charges. After the 1,000-buyer
-          intro window closes, the price flips automatically (operationally
-          per the operational runbook → "Buyer #1000 manual plan-flip").
-        </p>
-        <p>
-          <strong>Refund policy:</strong> <strong>14-day money-back
-          guarantee.</strong> Email
-          <a href="mailto:support@markdownwebclipper.com"
-            >support@markdownwebclipper.com</a
-          >
-          from the address you used at checkout, within 14 days of
-          purchase, for a full refund — no questions asked. Refund
-          propagation: per the license-verification design, the local
-          license cache re-verifies once per hour and there is a
-          30-day local grace window after re-verify failure, so a
-          refunded user may continue to see Pro features for up to 37
-          days before the local cache catches up. This is intentional
-          behavior to protect offline users from spurious downgrades;
-          it does not affect the validity of the refund.
-        </p>
-        <p>
-          For chargebacks, the same 7-day max revocation window
-          applies.
-        </p>
-
-        <h2>Your control</h2>
-        <p>
-          You can remove or restrict any of the data above at any time:
-        </p>
-        <ul>
-          <li>
-            <strong>Revoke FSA folder access</strong> — Settings →
-            Destinations → "Forget vault folder" (also available from
-            <code>chrome://settings/content/all</code> by removing the
-            host's File System Access permission).
-          </li>
-          <li>
-            <strong>Clear all stored data</strong> — Settings →
-            Advanced → "Reset all data". This wipes
-            <code>chrome.storage.local</code>,
-            <code>chrome.storage.sync</code>,
-            <code>chrome.storage.session</code>, and the IndexedDB
-            store. The folder contents on disk are not touched (you
-            can delete those manually).
-          </li>
-          <li>
-            <strong>Revoke <code>&lt;all_urls&gt;</code> (multi-tab)</strong>
-            — Settings → Privacy → "Multi-tab batch" toggle off.
-            Equivalent to revoking the optional permission from
-            <code>chrome://extensions</code>.
-          </li>
-          <li>
-            <strong>Revoke license</strong> — email
-            <a href="mailto:support@markdownwebclipper.com"
-              >support@markdownwebclipper.com</a
-            >
-            to request a refund or license cancellation (DodoPayments,
-            the merchant of record, processes these). Refunds and
-            cancellations propagate within the 7-day revocation window
-            per D-15.
-          </li>
-          <li>
-            <strong>Uninstall</strong> — removes the extension and
-            clears all <code>chrome.storage.*</code> data. The
-            contents of the FSA folder remain on disk; the IndexedDB
-            store is removed by Chrome.
-          </li>
-        </ul>
-
-        <h2>Contact</h2>
-        <p>
-          Questions, refund requests, security reports, or trademark
-          concerns:
-          <a href="mailto:support@markdownwebclipper.com"
-            >support@markdownwebclipper.com</a
-          >
-        </p>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
           <a href="/">Home</a>
-          ·
-          <a href="/privacy">Privacy</a>
-          ·
-          <a href="/restore">Restore Purchase</a>
-          ·
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
           <a href="/pro-faq">Pro FAQ</a>
-          ·
+          <a href="/restore">Restore Purchase</a>
           <a href="mailto:support@markdownwebclipper.com">Contact</a>
-        </p>
+        </div>
+        <div class="footer-col">
+          <h4>Legal &amp; source</h4>
+          <a href="/privacy">Privacy</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
       </div>
-    </footer>
-  </body>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
 </html>

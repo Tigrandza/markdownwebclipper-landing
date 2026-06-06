@@ -1,83 +1,104 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <title>Restoring your Pro license</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/icon-128.png" />
-    <style>
-      body { font-family: system-ui, sans-serif; max-width: 480px; margin: 4em auto; padding: 0 1em; line-height: 1.5; color: #222; }
-      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1.5em; }
-      .ok { color: #0a7d3b; }
-      .err { color: #b00020; }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h1>Restoring your Pro license</h1>
-      <p id="status">Talking to your extension…</p>
-    </div>
-    <script>
-      // 05-13a — magic-link bridge.
-      // The literal `dpkinbemdemheacegfjbbkclcpbfedif` MUST be substituted at
-      // landing-page deploy time. The public landing repo
-      // (github.com/Tigrandza/markdownwebclipper-landing) build pipeline
-      // performs a `sed`-style replacement of `dpkinbemdemheacegfjbbkclcpbfedif`
-      // with the real extension id once 05-13f reserves the canonical id
-      // from the CWS listing. See OPERATIONAL-RUNBOOK.md "Worker section"
-      // → "Landing page deploy" sub-section for the substitution command.
-      // Until substitution runs, the placeholder is intentionally not a
-      // valid extension id — the magic-link return path will fail with
-      // "Could not reach the Clipper extension" until deploy.
-      //
-      // Dev/UAT override (added 2026-06-06 during pre-CWS-publish testing):
-      // `?ext=<32-char-extension-id>` on the URL takes precedence over the
-      // baked-in production EXT_ID. This lets developers test the
-      // magic-link return path against a locally-loaded unpacked
-      // extension (which has a different EXT_ID than the CWS-published
-      // build) without rebuilding/redeploying this page. The override is
-      // bounded: a valid extension id matches /^[a-p]{32}$/ (Chrome
-      // restricts EXT_IDs to a..p), so a malicious URL can't dispatch
-      // the token to an arbitrary string. The token itself is single-use
-      // and 10-min-expiring; even if a user clicked an attacker-crafted
-      // `?ext=<attacker-id>` URL, the attacker's extension would need to
-      // be installed AND declare an onMessageExternal handler that
-      // matches markdownwebclipper.com — both of which they'd have full
-      // control over independently of this query param. The override
-      // strictly reduces the attack surface for dev UAT vs hand-rolled
-      // console invocations.
-      var DEFAULT_EXT_ID = window.__CLIPPER_EXT_ID__ || 'dpkinbemdemheacegfjbbkclcpbfedif';
-      var params = new URLSearchParams(window.location.search);
-      var token = params.get('token');
-      var extOverride = params.get('ext');
-      var EXT_ID = (extOverride && /^[a-p]{32}$/.test(extOverride))
-        ? extOverride
-        : DEFAULT_EXT_ID;
-      var statusEl = document.getElementById('status');
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Restoring your Pro license — Markdown Web Clipper</title>
+<meta name="description" content="Restore your Markdown Web Clipper Pro license via a magic link." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
 
-      if (!token) {
-        statusEl.textContent = 'Missing token. Please re-request the magic link from Clipper Settings.';
-        statusEl.className = 'err';
-      } else if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
-        chrome.runtime.sendMessage(EXT_ID, { type: 'RESTORE_TOKEN', token: token }, function (response) {
-          if (chrome.runtime.lastError) {
-            statusEl.textContent = 'Could not reach the Clipper extension. Make sure it is installed.';
-            statusEl.className = 'err';
-          } else if (response && response.ok) {
-            statusEl.textContent = 'Pro license restored. You can close this tab.';
-            statusEl.className = 'ok';
-          } else {
-            statusEl.textContent = (response && response.error) || 'Restore failed. Please try again.';
-            statusEl.className = 'err';
-          }
-        });
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/pro-faq">Pro FAQ</a>
+      <a href="mailto:support@markdownwebclipper.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="restore-screen">
+  <div class="restore-card">
+    <img class="mark" src="/icon-128.png" alt="Markdown Web Clipper" />
+    <h1 id="title">Restoring your Pro license</h1>
+    <p id="status" class="status">Talking to your extension…</p>
+    <p class="help">Bought through the Chrome Web Store? Open the extension's <strong>Settings → Pro</strong> tab and use Restore Purchase from there. Still stuck? <a href="mailto:support@markdownwebclipper.com">Email support</a>.</p>
+  </div>
+</main>
+
+<script>
+  // 05-13a — magic-link bridge.
+  // The literal `dpkinbemdemheacegfjbbkclcpbfedif` MUST be substituted at
+  // landing-page deploy time. The public landing repo
+  // (github.com/Tigrandza/markdownwebclipper-landing) build pipeline
+  // performs a `sed`-style replacement of `dpkinbemdemheacegfjbbkclcpbfedif`
+  // with the real extension id once 05-13f reserves the canonical id
+  // from the CWS listing. See OPERATIONAL-RUNBOOK.md "Worker section"
+  // → "Landing page deploy" sub-section for the substitution command.
+  // Until substitution runs, the placeholder is intentionally not a
+  // valid extension id — the magic-link return path will fail with
+  // "Could not reach the Clipper extension" until deploy.
+  //
+  // Dev/UAT override (added 2026-06-06 during pre-CWS-publish testing):
+  // `?ext=<32-char-extension-id>` on the URL takes precedence over the
+  // baked-in production EXT_ID. This lets developers test the
+  // magic-link return path against a locally-loaded unpacked
+  // extension (which has a different EXT_ID than the CWS-published
+  // build) without rebuilding/redeploying this page. The override is
+  // bounded: a valid extension id matches /^[a-p]{32}$/ (Chrome
+  // restricts EXT_IDs to a..p), so a malicious URL can't dispatch
+  // the token to an arbitrary string. The token itself is single-use
+  // and 10-min-expiring; even if a user clicked an attacker-crafted
+  // `?ext=<attacker-id>` URL, the attacker's extension would need to
+  // be installed AND declare an onMessageExternal handler that
+  // matches markdownwebclipper.com — both of which they'd have full
+  // control over independently of this query param. The override
+  // strictly reduces the attack surface for dev UAT vs hand-rolled
+  // console invocations.
+  var DEFAULT_EXT_ID = window.__CLIPPER_EXT_ID__ || 'dpkinbemdemheacegfjbbkclcpbfedif';
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('token');
+  var extOverride = params.get('ext');
+  var EXT_ID = (extOverride && /^[a-p]{32}$/.test(extOverride))
+    ? extOverride
+    : DEFAULT_EXT_ID;
+  var statusEl = document.getElementById('status');
+  var titleEl = document.getElementById('title');
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  if (!token) {
+    setStatus('Missing token. Please re-request the magic link from Clipper Settings → Pro.', 'err');
+  } else if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+    chrome.runtime.sendMessage(EXT_ID, { type: 'RESTORE_TOKEN', token: token }, function (response) {
+      if (chrome.runtime.lastError) {
+        setStatus('Could not reach the Clipper extension. Make sure it is installed and enabled.', 'err');
+      } else if (response && response.ok) {
+        titleEl.textContent = 'Pro license restored';
+        setStatus('You can close this tab. Pro is active in the extension.', 'ok');
       } else {
-        statusEl.textContent = 'Open this link inside Chrome with Clipper installed.';
-        statusEl.className = 'err';
+        setStatus((response && response.error) || 'Restore failed. Please request a fresh magic link.', 'err');
       }
-    </script>
-  </body>
+    });
+  } else {
+    setStatus('Open this link inside Chrome with the Clipper extension installed.', 'err');
+  }
+</script>
+<script src="/landing.js"></script>
+</body>
 </html>

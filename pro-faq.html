@@ -1,279 +1,168 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pro FAQ — Markdown Web Clipper</title>
-    <meta
-      name="description"
-      content="One-time purchase, lifetime license. Promo $9, Standard $19. What Pro unlocks, how activation works, refund policy, and how to restore on a new device."
-    />
-    <link rel="canonical" href="https://markdownwebclipper.com/pro-faq" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/icon-128.png" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body class="doc-page">
-    <header class="doc-header">
-      <div class="container">
-        <p class="back-link"><a href="/">← Markdown Web Clipper home</a></p>
-        <h1>Pro FAQ — Markdown Web Clipper</h1>
-        <p class="doc-meta">
-          <em>One-time purchase, lifetime license. No subscription.</em>
-        </p>
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pro FAQ — Markdown Web Clipper</title>
+<meta name="description" content="One-time purchase, lifetime license. Promo $9, Standard $19. What Pro unlocks, how activation works, refund policy, and how to restore on a new device." />
+<link rel="canonical" href="https://markdownwebclipper.com/pro-faq" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Pro</p>
+      <h1 class="display" style="margin-top:12px">One-time purchase.<br /><span class="rust">Lifetime license.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">No subscription. The free edition is the whole product; Pro is a tip for the power-user minority — and a way to keep the lights on.</p>
+      <p class="meta">$9 launch · $19 standard · 14-day refund</p>
+    </div>
+  </section>
+
+  <!-- Content sourced verbatim from the canonical Pro FAQ. -->
+  <div class="prose-layout">
+    <aside class="toc">
+      <h4>On this page</h4>
+      <a href="#free">What's free</a>
+      <a href="#pro">What Pro unlocks</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#activation">How activation works</a>
+      <a href="#restore">Restore on new device</a>
+      <a href="#refund">Refund policy</a>
+      <a href="#payments">Payments &amp; privacy</a>
+      <a href="#multi">Multi-device</a>
+      <a href="#cancel">Cancelling</a>
+      <a href="#contact">Contact</a>
+    </aside>
+    <article class="prose">
+      <div class="callout"><p>Pro adds four power-user features on top of an already-complete free edition. It is <strong>one purchase, billed once,</strong> with no recurring charges and a 14-day refund window — no questions asked.</p></div>
+
+      <p>Markdown Web Clipper is freemium from v1. Core clipping is free for everyone, forever, with no time limit and no feature degradation. Pro adds a few power-user destinations and handling modes — buy it once and own it forever.</p>
+
+      <h2 id="free">What's free</h2>
+      <p>Everything the extension exists to do is free. You can install Markdown Web Clipper today, never pay anything, and clip the web losslessly:</p>
+      <ul>
+        <li>One-keystroke clip of any page to clean, high-fidelity Markdown — preserving tables, fenced code blocks, math, footnotes, and image references.</li>
+        <li>Save to a local folder via the File System Access API (direct write to your Obsidian vault, Logseq graph, Foam workspace, or any folder of plain Markdown files).</li>
+        <li>Copy Markdown to clipboard.</li>
+        <li>Save as <code>.md</code> download.</li>
+        <li>Open directly in Obsidian via the <code>obsidian://</code> URI scheme — no plugin required.</li>
+        <li>Built-in templates (Article, AI Chat, etc.) and built-in site rules for the most common sources (Wikipedia, ChatGPT, Claude, Gemini, Reddit, Hacker News, GitHub, …).</li>
+        <li>Inline (base64-embedded) images, reference-mode images, or skip-images — your choice, per clip.</li>
+        <li>Custom keyboard shortcuts. Multi-tab batch clipping at a small free-tier tab cap.</li>
+      </ul>
+
+      <h2 id="pro">What Pro unlocks</h2>
+      <p>Pro adds:</p>
+      <ul>
+        <li><strong>GitHub Gist destination.</strong> Push the converted Markdown to a public or secret Gist using your own Personal Access Token (the token is stored locally; never transmitted to us). Re-saving an edited clip updates the same Gist via <code>PATCH /gists/{id}</code>, so GitHub records each save as a revision.</li>
+        <li><strong>Co-located image folders.</strong> Choose the "co-located" image mode and Clipper writes each clip's images into a sibling folder under your vault, alongside the <code>.md</code> file. The Markdown body uses relative references that survive folder moves.</li>
+        <li><strong>Unlimited multi-tab batch cap.</strong> Clip as many open tabs as you want in a single batch (the free tier caps at a modest number, large enough for casual research sessions but not for end-of-day archive sweeps).</li>
+        <li><strong>Multi-vault FSA support (reserved).</strong> Pin more than one vault folder simultaneously and pick at clip time. Reserved for a near-future release; if you buy Pro today you have it the moment it ships.</li>
+      </ul>
+
+      <h2 id="pricing">Pricing</h2>
+      <p>Two prices, both one-time, both lifetime. You'll see one or the other in the popup's "Buy Pro" modal depending on whether the launch promo window is still active:</p>
+      <ul>
+        <li><strong>$9 — Promo.</strong> Launch-window pricing for the first wave of buyers. Same features as Standard.</li>
+        <li><strong>$19 — Standard.</strong> Lifetime, one-time. Same features as Promo.</li>
+      </ul>
+      <p>Both buy you the same Pro license. The price you pay is the price you pay forever — no recurring charges, no "subscription that secretly renewed," no $0.99-trial trap. You'll never see a renewal notice from us because there's nothing to renew.</p>
+
+      <h2 id="activation">How activation works</h2>
+      <p>Click "Buy Pro" in the popup. You're sent to a hosted checkout page at <code>checkout.dodopayments.com</code> (DodoPayments is the merchant of record — see "Payments and privacy" below). Pay with any card.</p>
+      <p>The moment the payment succeeds, your extension auto-activates — no email entry, no copy-paste of a license key, no "magic-link-in-your-inbox" first run. Behind the scenes the extension passes a one-shot install-correlation token to the checkout, the payment processor passes it back in the webhook, and the extension polls until it sees its own license appear (typically within seconds). Pro features unlock live without a reload.</p>
+      <p>If anything goes wrong with auto-activation (very rare, but possible if you close the checkout tab early or your network drops), the extension's 60-minute background check picks the license up automatically — or you can use Restore Purchase (next section) immediately.</p>
+
+      <h2 id="restore">How to restore on a new device or Chrome profile</h2>
+      <p>Pro is bound to the email address you paid with, not to a specific device. To activate Pro on a fresh Chrome profile or a second computer:</p>
+      <ol>
+        <li>Install Markdown Web Clipper from the Chrome Web Store.</li>
+        <li>Open the popup → "Settings" tab → "Pro" section.</li>
+        <li>Under "Restore your purchase," enter the email you bought with and click "Send magic link."</li>
+        <li>Check that email. Click the deeplink we sent. Your extension activates within a few seconds.</li>
+      </ol>
+      <p>The magic link is one-time-use and expires after 10 minutes. You can request a new one any time at no cost. For privacy, the "Magic link sent" confirmation message is shown whether or not the email is registered — this stops anyone from probing which email addresses bought the extension.</p>
+      <p>You can restore on as many devices as you like; the license isn't seat-limited.</p>
+
+      <h2 id="refund">Refund policy</h2>
+      <p>If Pro doesn't work for you for any reason within <strong>14 days</strong> of purchase, email <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a> and we'll refund your purchase. No questions asked, no "tell us why" survey, no clawback of your local clips.</p>
+      <p>DodoPayments processes the refund within their normal window (typically 5-10 business days back to the original payment method). Your locally-saved Markdown files stay yours — the refund only reverses the payment.</p>
+
+      <h2 id="payments">Payments and privacy</h2>
+      <p>Card data never touches our servers. DodoPayments is the merchant of record; the entire checkout (card form, 3-D Secure flow, billing address) runs on their hosted page at <code>checkout.dodopayments.com</code>. We see the result of your purchase (a license-key record and your billing email), nothing more.</p>
+      <p>After purchase, the only data we hold about you is a hashed version of your email → license-key mapping in our developer-controlled Cloudflare Worker KV store. Raw email addresses are never logged. License verification happens at most once per hour and only sends the license-key and a per-install UUID; no analytics, no telemetry, no usage data. The full breakdown is at <a href="/privacy">/privacy</a>.</p>
+
+      <h2 id="multi">Multi-device, multi-profile, multi-vault</h2>
+      <p>The Pro license is bound to your email, not to a Chrome profile or a device. Buy once; restore on every device + every profile that you sign into. Switching to a new computer? Just re-run Restore Purchase. There is no "transfer" step — the old install simply stops being verified on its 60-minute alarm if you uninstall it; until then both installs are happily active.</p>
+
+      <h2 id="cancel">Cancelling</h2>
+      <p>There's nothing to cancel — Pro is a one-time purchase, not a subscription. Uninstalling the extension is the only "cancel" there is, and it has no effect on billing because there's no recurring charge to stop.</p>
+
+      <h2 id="contact">Contact and support</h2>
+      <p>For refund requests, license issues, restoring purchases on a difficult email, accessibility concerns, security reports, or trademark questions: <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a>.</p>
+      <p>For feature requests, bug reports, or general feedback (Pro or not), the <a href="https://github.com/Tigrandza/markdown-web-clipper/issues">GitHub issue tracker</a> on the public free-edition repo is the fastest path.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
       </div>
-    </header>
-
-    <main class="doc-body">
-      <div class="container">
-        <p>
-          Markdown Web Clipper is freemium from v1. Core clipping is
-          free for everyone, forever, with no time limit and no feature
-          degradation. Pro adds a few power-user destinations and
-          handling modes — buy it once and own it forever.
-        </p>
-
-        <h2>What's free</h2>
-        <p>
-          Everything the extension exists to do is free. You can install
-          Markdown Web Clipper today, never pay anything, and clip the
-          web losslessly:
-        </p>
-        <ul>
-          <li>
-            One-keystroke clip of any page to clean, high-fidelity
-            Markdown — preserving tables, fenced code blocks, math,
-            footnotes, and image references.
-          </li>
-          <li>
-            Save to a local folder via the File System Access API
-            (direct write to your Obsidian vault, Logseq graph, Foam
-            workspace, or any folder of plain Markdown files).
-          </li>
-          <li>Copy Markdown to clipboard.</li>
-          <li>Save as <code>.md</code> download.</li>
-          <li>
-            Open directly in Obsidian via the <code>obsidian://</code>
-            URI scheme — no plugin required.
-          </li>
-          <li>
-            Built-in templates (Article, AI Chat, etc.) and built-in
-            site rules for the most common sources (Wikipedia, ChatGPT,
-            Claude, Gemini, Reddit, Hacker News, GitHub, …).
-          </li>
-          <li>
-            Inline (base64-embedded) images, reference-mode images, or
-            skip-images — your choice, per clip.
-          </li>
-          <li>
-            Custom keyboard shortcuts. Multi-tab batch clipping at a
-            small free-tier tab cap.
-          </li>
-        </ul>
-
-        <h2>What Pro unlocks</h2>
-        <p>Pro adds:</p>
-        <ul>
-          <li>
-            <strong>GitHub Gist destination.</strong> Push the converted
-            Markdown to a public or secret Gist using your own Personal
-            Access Token (the token is stored locally; never transmitted
-            to us). Re-saving an edited clip updates the same Gist
-            via <code>PATCH /gists/{id}</code>, so GitHub records each
-            save as a revision.
-          </li>
-          <li>
-            <strong>Co-located image folders.</strong> Choose the
-            "co-located" image mode and Clipper writes each clip's
-            images into a sibling folder under your vault, alongside the
-            <code>.md</code> file. The Markdown body uses relative
-            references that survive folder moves.
-          </li>
-          <li>
-            <strong>Unlimited multi-tab batch cap.</strong> Clip as many
-            open tabs as you want in a single batch (the free tier caps
-            at a modest number, large enough for casual research
-            sessions but not for end-of-day archive sweeps).
-          </li>
-          <li>
-            <strong>Multi-vault FSA support (reserved).</strong> Pin
-            more than one vault folder simultaneously and pick at clip
-            time. Reserved for a near-future release; if you buy Pro
-            today you have it the moment it ships.
-          </li>
-        </ul>
-
-        <h2>Pricing</h2>
-        <p>
-          Two prices, both one-time, both lifetime. You'll see one or
-          the other in the popup's "Buy Pro" modal depending on whether
-          the launch promo window is still active:
-        </p>
-        <ul>
-          <li>
-            <strong>$9 — Promo.</strong> Launch-window pricing for the
-            first wave of buyers. Same features as Standard.
-          </li>
-          <li>
-            <strong>$19 — Standard.</strong> Lifetime, one-time. Same
-            features as Promo.
-          </li>
-        </ul>
-        <p>
-          Both buy you the same Pro license. The price you pay is the
-          price you pay forever — no recurring charges, no
-          "subscription that secretly renewed," no $0.99-trial trap.
-          You'll never see a renewal notice from us because there's
-          nothing to renew.
-        </p>
-
-        <h2>How activation works</h2>
-        <p>
-          Click "Buy Pro" in the popup. You're sent to a hosted
-          checkout page at <code>checkout.dodopayments.com</code>
-          (DodoPayments is the merchant of record — see "Payments and
-          privacy" below). Pay with any card.
-        </p>
-        <p>
-          The moment the payment succeeds, your extension auto-activates
-          — no email entry, no copy-paste of a license key, no
-          "magic-link-in-your-inbox" first run. Behind the scenes the
-          extension passes a one-shot install-correlation token to the
-          checkout, the payment processor passes it back in the webhook,
-          and the extension polls until it sees its own license appear
-          (typically within seconds). Pro features unlock live without
-          a reload.
-        </p>
-        <p>
-          If anything goes wrong with auto-activation (very rare, but
-          possible if you close the checkout tab early or your network
-          drops), the extension's 60-minute background check picks the
-          license up automatically — or you can use Restore Purchase
-          (next section) immediately.
-        </p>
-
-        <h2>How to restore on a new device or Chrome profile</h2>
-        <p>
-          Pro is bound to the email address you paid with, not to a
-          specific device. To activate Pro on a fresh Chrome profile or
-          a second computer:
-        </p>
-        <ol>
-          <li>Install Markdown Web Clipper from the Chrome Web Store.</li>
-          <li>Open the popup → "Settings" tab → "Pro" section.</li>
-          <li>
-            Under "Restore your purchase," enter the email you bought
-            with and click "Send magic link."
-          </li>
-          <li>
-            Check that email. Click the deeplink we sent. Your extension
-            activates within a few seconds.
-          </li>
-        </ol>
-        <p>
-          The magic link is one-time-use and expires after 10 minutes.
-          You can request a new one any time at no cost. For privacy,
-          the "Magic link sent" confirmation message is shown whether or
-          not the email is registered — this stops anyone from probing
-          which email addresses bought the extension.
-        </p>
-        <p>
-          You can restore on as many devices as you like; the license
-          isn't seat-limited.
-        </p>
-
-        <h2>Refund policy</h2>
-        <p>
-          If Pro doesn't work for you for any reason within
-          <strong>7 days</strong> of purchase, email
-          <a href="mailto:support@markdownwebclipper.com"
-            >support@markdownwebclipper.com</a
-          >
-          and we'll refund your purchase. No questions asked, no
-          "tell us why" survey, no clawback of your local clips.
-        </p>
-        <p>
-          DodoPayments processes the refund within their normal window
-          (typically 5-10 business days back to the original payment
-          method). Your locally-saved Markdown files stay yours — the
-          refund only reverses the payment.
-        </p>
-
-        <h2>Payments and privacy</h2>
-        <p>
-          Card data never touches our servers. DodoPayments is the
-          merchant of record; the entire checkout (card form, 3-D
-          Secure flow, billing address) runs on their hosted page at
-          <code>checkout.dodopayments.com</code>. We see the result of
-          your purchase (a license-key record and your billing email),
-          nothing more.
-        </p>
-        <p>
-          After purchase, the only data we hold about you is a hashed
-          version of your email → license-key mapping in our developer-
-          controlled Cloudflare Worker KV store. Raw email addresses
-          are never logged. License verification happens at most once
-          per hour and only sends the license-key and a per-install
-          UUID; no analytics, no telemetry, no usage data. The full
-          breakdown is at
-          <a href="/privacy">/privacy</a>.
-        </p>
-
-        <h2>Multi-device, multi-profile, multi-vault</h2>
-        <p>
-          The Pro license is bound to your email, not to a Chrome
-          profile or a device. Buy once; restore on every device + every
-          profile that you sign into. Switching to a new computer? Just
-          re-run Restore Purchase. There is no "transfer" step — the
-          old install simply stops being verified on its 60-minute alarm
-          if you uninstall it; until then both installs are happily
-          active.
-        </p>
-
-        <h2>Cancelling</h2>
-        <p>
-          There's nothing to cancel — Pro is a one-time purchase, not a
-          subscription. Uninstalling the extension is the only "cancel"
-          there is, and it has no effect on billing because there's no
-          recurring charge to stop.
-        </p>
-
-        <h2>Contact and support</h2>
-        <p>
-          For refund requests, license issues, restoring purchases on a
-          difficult email, accessibility concerns, security reports, or
-          trademark questions:
-          <a href="mailto:support@markdownwebclipper.com"
-            >support@markdownwebclipper.com</a
-          >.
-        </p>
-        <p>
-          For feature requests, bug reports, or general feedback (Pro
-          or not), the
-          <a
-            href="https://github.com/Tigrandza/markdown-web-clipper/issues"
-            >GitHub issue tracker</a
-          >
-          on the public free-edition repo is the fastest path.
-        </p>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
           <a href="/">Home</a>
-          ·
-          <a href="/privacy">Privacy</a>
-          ·
-          <a href="/restore">Restore Purchase</a>
-          ·
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
           <a href="/pro-faq">Pro FAQ</a>
-          ·
+          <a href="/restore">Restore Purchase</a>
           <a href="mailto:support@markdownwebclipper.com">Contact</a>
-        </p>
+        </div>
+        <div class="footer-col">
+          <h4>Legal &amp; source</h4>
+          <a href="/privacy">Privacy</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
       </div>
-    </footer>
-  </body>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
 </html>
