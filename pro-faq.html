@@ -9,10 +9,81 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icon-128.png" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta property="og:title" content="Pro FAQ — Markdown Web Clipper" />
+<meta property="og:description" content="One-time purchase, lifetime license. $9 launch, $19 standard. What Pro unlocks, refund policy, restore on a new device." />
+<meta property="og:url" content="https://markdownwebclipper.com/pro-faq" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
 <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/tokens.css" />
 <link rel="stylesheet" href="/style.css" />
+
+<!-- FAQPage schema — drives Google rich-results expandable Q/A
+     cards in SERPs. Top 6 questions selected for highest pricing-
+     and-restore-decision relevance per CWS keyword research §4.4. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does Markdown Web Clipper Pro cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two prices, both one-time and lifetime: $9 launch promo for the first wave of buyers, $19 standard thereafter. Both buy the same Pro features — no subscription, no recurring charges, ever."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Pro unlock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four power-user features on top of an already-complete free edition: GitHub Gist destination (with revision history via PATCH), co-located image folders that travel with your Markdown files, unlimited multi-tab batch clipping (vs the free tier cap), and multi-vault routing for switching between separate folders per project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the free edition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Everything the extension exists to do is free, forever: one-keystroke clip of any page to high-fidelity Markdown preserving tables, code, math, and footnotes; save to local folder (File System Access API), clipboard, .md download, or directly to Obsidian via obsidian:// URI; built-in templates and site rules; inline or reference image modes; custom keyboard shortcuts; multi-tab batch at the free-tier cap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does activation work after I buy Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The extension auto-activates the moment payment succeeds — no email entry, no copy-paste of a license key. Behind the scenes a one-shot install-correlation token is passed through the hosted DodoPayments checkout, the payment processor returns it in the webhook, and the extension polls until it sees its own license. Pro features unlock live without a reload."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I restore Pro on a new device or Chrome profile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Markdown Web Clipper, open Settings → Pro, enter the email you bought with, and click \"Send magic link.\" A one-time deeplink arrives within seconds; clicking it activates the extension. The license is bound to your email, not to a device or seat — restore on as many devices as you like."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the refund policy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "14-day money-back guarantee. Email support@markdownwebclipper.com from the address you paid with within 14 days of purchase for a full refund — no questions asked. DodoPayments processes the refund back to the original payment method within 5–10 business days."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -31,13 +31,25 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icon-128.png" />
 
-<!-- Open Graph (carries forward from the previous landing) -->
+<!-- Theme color — paints mobile browser chrome to match the rust palette. -->
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+
+<!-- Open Graph + Twitter Cards. Image is the dedicated 1200×630 hero card
+     (landing/og-hero.png) — Slack/Twitter/Discord/LinkedIn unfurl as
+     a still card rather than a still frame of demo.gif. -->
 <meta property="og:title" content="Markdown Web Clipper — one keystroke, clean Markdown" />
 <meta property="og:description" content="Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes — local folder, clipboard, Obsidian, or Gist. No cloud, no cleanup." />
 <meta property="og:url" content="https://markdownwebclipper.com/" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://markdownwebclipper.com/demo.gif" />
-<meta property="og:image:alt" content="Demo: clipping a Wikipedia article into an Obsidian vault folder" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Markdown Web Clipper popup with the &quot;Saved to ~/Notes/Clippings/Markdown.md&quot; signature toast" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Markdown Web Clipper — one keystroke, clean Markdown" />
+<meta name="twitter:description" content="Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes. Free, MIT-licensed, no cloud." />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
 
 <!-- Self-hosted Inter Tight + JetBrains Mono (latin + latin-ext WOFF2s
      under /fonts/). @font-face declarations live at the top of home.css
@@ -49,6 +61,9 @@
 <link rel="stylesheet" href="/tokens.css" />
 <link rel="stylesheet" href="/style.css" />
 
+<!-- SoftwareApplication schema covers the free CWS install. Listed as a
+     free offer because the extension itself is $0 to download/use; Pro
+     is an in-app upgrade modeled separately as a Product below. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,11 +73,51 @@
   "operatingSystem": "Chrome, Edge, Brave",
   "description": "One keystroke converts any webpage to high-fidelity Markdown and saves it exactly where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible.",
   "url": "https://markdownwebclipper.com/",
+  "downloadUrl": "https://chromewebstore.google.com/detail/markdown-web-clipper-save-pages-to-obsidian/dpkinbemdemheacegfjbbkclcpbfedif",
+  "softwareVersion": "0.1.0",
+  "license": "https://opensource.org/licenses/MIT",
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD"
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
   }
+}
+</script>
+<!-- Product schema for Pro tier — drives rich-results pricing cards on
+     SERPs for "Markdown Web Clipper Pro" / pricing queries. Two offers
+     surface the $9 promo vs $19 standard tiers honestly. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Markdown Web Clipper Pro",
+  "description": "Pro upgrade for Markdown Web Clipper. Adds GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault routing. One-time purchase, lifetime license, no subscription.",
+  "brand": { "@type": "Brand", "name": "Markdown Web Clipper" },
+  "category": "Productivity Software Upgrade",
+  "url": "https://markdownwebclipper.com/pro-faq",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Pro — launch promo",
+      "description": "Launch-window pricing for the first wave of buyers. Same features as Standard.",
+      "price": "9.00",
+      "priceCurrency": "USD",
+      "url": "https://markdownwebclipper.com/#pro",
+      "availability": "https://schema.org/InStock",
+      "category": "OneTimePayment"
+    },
+    {
+      "@type": "Offer",
+      "name": "Pro — standard",
+      "description": "Lifetime, one-time. Same features as the launch promo.",
+      "price": "19.00",
+      "priceCurrency": "USD",
+      "url": "https://markdownwebclipper.com/#pro",
+      "availability": "https://schema.org/InStock",
+      "category": "OneTimePayment"
+    }
+  ]
 }
 </script>
 </head>
