@@ -32,9 +32,30 @@
       // Until substitution runs, the placeholder is intentionally not a
       // valid extension id — the magic-link return path will fail with
       // "Could not reach the Clipper extension" until deploy.
-      var EXT_ID = window.__CLIPPER_EXT_ID__ || 'dpkinbemdemheacegfjbbkclcpbfedif';
+      //
+      // Dev/UAT override (added 2026-06-06 during pre-CWS-publish testing):
+      // `?ext=<32-char-extension-id>` on the URL takes precedence over the
+      // baked-in production EXT_ID. This lets developers test the
+      // magic-link return path against a locally-loaded unpacked
+      // extension (which has a different EXT_ID than the CWS-published
+      // build) without rebuilding/redeploying this page. The override is
+      // bounded: a valid extension id matches /^[a-p]{32}$/ (Chrome
+      // restricts EXT_IDs to a..p), so a malicious URL can't dispatch
+      // the token to an arbitrary string. The token itself is single-use
+      // and 10-min-expiring; even if a user clicked an attacker-crafted
+      // `?ext=<attacker-id>` URL, the attacker's extension would need to
+      // be installed AND declare an onMessageExternal handler that
+      // matches markdownwebclipper.com — both of which they'd have full
+      // control over independently of this query param. The override
+      // strictly reduces the attack surface for dev UAT vs hand-rolled
+      // console invocations.
+      var DEFAULT_EXT_ID = window.__CLIPPER_EXT_ID__ || 'dpkinbemdemheacegfjbbkclcpbfedif';
       var params = new URLSearchParams(window.location.search);
       var token = params.get('token');
+      var extOverride = params.get('ext');
+      var EXT_ID = (extOverride && /^[a-p]{32}$/.test(extOverride))
+        ? extOverride
+        : DEFAULT_EXT_ID;
       var statusEl = document.getElementById('status');
 
       if (!token) {
