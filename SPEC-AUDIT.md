@@ -35,6 +35,22 @@ All findings below were fixed in the same commit. Summary of what shipped:
 Deferred items (per the audit's "Out of scope" list) remain deferred. The sections
 below are the original audit, kept for the rationale.
 
+**Verified live after deploy:** CSP, `X-Content-Type-Options: nosniff`,
+`Referrer-Policy`, `Permissions-Policy`, the `Link:` discovery header, `.md` served as
+`text/markdown`, immutable font caching, and all new endpoints (llms.txt, security.txt,
+manifest, favicon.ico, feed.xml, .md twins) return 200.
+
+**One item needs a Cloudflare dashboard change (cannot be fixed from the repo):**
+HSTS still serves `max-age=0` because a zone-level Cloudflare HSTS setting overrides the
+`_headers` value. Enable it at **SSL/TLS → Edge Certificates → HTTP Strict Transport
+Security** (max-age 12 months, includeSubDomains; add preload only when ready — it's an
+irreversible commitment).
+
+**Restore page fix:** the strict global `script-src 'self'` would have blocked
+`restore.html`'s inline bridge (Cloudflare *appends* rather than replaces per-path CSP, so a
+path override didn't work). The script was externalised to `/restore.js`, which the global
+policy covers cleanly — no inline-script exception needed.
+
 ---
 
 ## Scorecard

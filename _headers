@@ -2,6 +2,10 @@
 # Applied to every response served from this repo. Closes the security-header
 # gaps from SPEC-AUDIT.md + sets sane caching and the .md content-type.
 
+# NOTE: HSTS below is overridden by Cloudflare's zone-level HSTS setting, which is
+# currently disabled (serves max-age=0). To actually enable HSTS, turn it on in the
+# Cloudflare dashboard: SSL/TLS → Edge Certificates → HTTP Strict Transport Security.
+# The line here documents the intended value and is harmless once the zone setting matches.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
@@ -9,16 +13,9 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
-# /restore is the magic-link bridge — it carries an inline <script> that the
-# strict script-src above would block. Relax script-src for this one transient,
-# noindex page only (it reflects no untrusted HTML; the ?ext= param is regex-
-# validated and only ever set as textContent). More-specific path wins over /*.
-/restore
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
-/restore.html
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
-
 # Un-fingerprinted CSS/JS: revalidate so a deploy is picked up promptly.
+# (restore.js is external so the strict global script-src 'self' above covers it
+# — the magic-link bridge no longer needs an inline-script CSP exception.)
 /style.css
   Cache-Control: public, max-age=3600, must-revalidate
 /tokens.css
@@ -26,10 +23,9 @@
 /landing.js
   Cache-Control: public, max-age=3600, must-revalidate
 
-# Fonts never change between deploys — cache hard.
+# Fonts never change between deploys — cache hard. (All fonts live under /fonts/,
+# so one rule covers them; a second /*.woff2 rule would duplicate the header.)
 /fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-/*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
 # Static media — long but not immutable (may be re-exported).
