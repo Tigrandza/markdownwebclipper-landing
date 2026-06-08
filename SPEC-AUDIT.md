@@ -56,11 +56,11 @@ empty body because Workers static-assets defaults `not_found_handling` to "none"
 - **dashboard**: `clipper-landing` → Settings → Static assets → set "Not found handling" to
   "Single-page app off / 404 page". Lowest risk if you'd rather not touch deploy config in-repo.
 
-Still open (one required-tier item, deferred for a decision):
-- **Image optimisation** — `demo.gif` is a ~1.2 MB animated GIF. It has explicit dimensions
-  and lazy-loads (no CLS, not LCP-blocking), but a muted/looping `<video>` (MP4/WebM) or
-  animated WebP would cut the payload by ~5–10×. Bigger change (markup + re-encode); left for
-  a follow-up.
+**Image optimisation (required) — fixed.** The 1.2 MB `demo.gif` was re-encoded to `demo.mp4`
+(72 KB) + `demo.webm` (43 KB) + `demo-poster.png` (5 KB) and the hero `<img>` became a `<video>`
+(~10× smaller). It also now **respects `prefers-reduced-motion`**: `landing.js` only autoplays it
+when reduced motion is off — otherwise the static poster stays. (`demo.gif` is kept in the repo,
+unreferenced, as a safety net against any external hotlinks.)
 
 **Verified live after deploy:** CSP, `X-Content-Type-Options: nosniff`,
 `Referrer-Policy`, `Permissions-Policy`, the `Link:` discovery header, `.md` served as

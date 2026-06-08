@@ -61,6 +61,17 @@
     });
   });
 
+  // Demo video — autoplay ONLY when the visitor hasn't asked for reduced motion.
+  // (We don't use the native autoplay attribute, so reduced-motion users just see
+  // the static poster. A genuine improvement over the old always-animating GIF.)
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion) {
+    document.querySelectorAll("video[data-autoplay]").forEach(function (v) {
+      var p = v.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
+    });
+  }
+
   // Installed-detection. When the Markdown Web Clipper extension is installed,
   // every Chrome Web Store button on this site swaps to a "✓ Installed — Open
   // Clipper" state pointing at the in-product next-step section. When NOT

@@ -29,6 +29,12 @@
   Cache-Control: public, max-age=31536000, immutable
 
 # Static media — long but not immutable (may be re-exported).
+/demo.mp4
+  Cache-Control: public, max-age=604800
+/demo.webm
+  Cache-Control: public, max-age=604800
+/demo-poster.png
+  Cache-Control: public, max-age=604800
 /demo.gif
   Cache-Control: public, max-age=604800
 /og-hero.png

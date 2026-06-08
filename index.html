@@ -505,9 +505,19 @@ Energy: <span class="fence">$E = mc^2$</span></div>
   <div class="wrap" style="text-align:center">
     <h2 class="display">One keystroke away.</h2>
     <p class="lede" style="margin:16px auto 0">Watch a real clip land in a folder — then go make your own.</p>
-    <img src="/demo.gif" alt="Animated demo: Markdown Web Clipper popup, clipping a Wikipedia article and saving it as ~/Notes/Clippings/Markdown.md"
-         width="720" height="405" loading="lazy" decoding="async"
-         style="margin:36px auto 32px; display:block; max-width:100%; width:720px; height:auto; border-radius:18px; box-shadow: var(--shadow-lg); background: var(--surface);" />
+    <!-- Was a 1.2MB demo.gif; now MP4+WebM (~115KB total). JS plays it only when
+         the visitor hasn't requested reduced motion (see landing.js) — the poster
+         stays put otherwise. Fallback <img> uses the lightweight poster, not the GIF. -->
+    <video class="demo-video" width="720" height="405" muted loop playsinline preload="none"
+           poster="/demo-poster.png" data-autoplay
+           aria-label="Animated demo: Markdown Web Clipper popup, clipping a Wikipedia article and saving it as ~/Notes/Clippings/Markdown.md"
+           style="margin:36px auto 32px; display:block; max-width:100%; width:720px; height:auto; border-radius:18px; box-shadow: var(--shadow-lg); background: var(--surface);">
+      <source src="/demo.webm" type="video/webm" />
+      <source src="/demo.mp4" type="video/mp4" />
+      <img src="/demo-poster.png" alt="Markdown Web Clipper popup, clipping a Wikipedia article and saving it as ~/Notes/Clippings/Markdown.md"
+           width="720" height="405" loading="lazy" decoding="async"
+           style="display:block; max-width:100%; width:720px; height:auto; border-radius:18px;" />
+    </video>
     <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome — free</a>
   </div>
 </section>
