@@ -217,7 +217,8 @@
           <p class="sub">## Code blocks</p>
           <div class="code-well">const clipper = save(page);</div>
           <table class="mini-table">
-            <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+            <caption class="sr-only">Sample of a rendered Markdown table: features and their support status.</caption>
+            <thead><tr><th scope="col">Feature</th><th scope="col">Status</th></tr></thead>
             <tbody>
               <tr><td>Tables</td><td><span class="ok">✓</span></td></tr>
               <tr><td>Math</td><td><span class="ok">✓</span></td></tr>
@@ -282,8 +283,9 @@
     </div>
     <div class="matrix-wrap">
       <table class="matrix">
+        <caption class="sr-only">Clip destinations compared by whether they work offline and what each is best for.</caption>
         <thead>
-          <tr><th>Destination</th><th>Works offline</th><th>Best for</th></tr>
+          <tr><th scope="col">Destination</th><th scope="col">Works offline</th><th scope="col">Best for</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -399,7 +401,8 @@ Energy: E = mc^2</div>
   return md(page);
 }</pre>
             <table>
-              <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+              <caption class="sr-only">Sample of a rendered Markdown table: features and their support status.</caption>
+              <thead><tr><th scope="col">Feature</th><th scope="col">Status</th></tr></thead>
               <tbody>
                 <tr><td>Tables</td><td><span class="ok">✓</span></td></tr>
                 <tr><td>Code blocks</td><td><span class="ok">✓</span></td></tr>

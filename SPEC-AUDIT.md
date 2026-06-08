@@ -35,6 +35,23 @@ All findings below were fixed in the same commit. Summary of what shipped:
 Deferred items (per the audit's "Out of scope" list) remain deferred. The sections
 below are the original audit, kept for the rationale.
 
+### Re-audit round 2 (2026-06-08, via native MCP)
+
+Re-ran the full `required`-tier checklist (35 items) through the spec MCP against the live
+deploy. HSTS now serves `max-age=31536000; includeSubDomains` (the zone-level dashboard
+setting was enabled — fixed). Two required-tier gaps the first pass missed, now fixed:
+
+| Finding | Fix |
+|---|---|
+| **Custom 404 page** (resilience, required) — site returned a 404 status but an empty Cloudflare-default body | Added `404.html` (site-styled, explains + links home/blog/FAQ). Pages serves it at 404 automatically. |
+| **Accessible data tables** (a11y, required) — comparison tables had `<th>` but no `<caption>`/`scope` | Added `<caption class="sr-only">` + `scope="col"` to the destinations matrix, the blog compare-table, and the two demo tables; added an `.sr-only` utility. |
+
+Still open (one required-tier item, deferred for a decision):
+- **Image optimisation** — `demo.gif` is a ~1.2 MB animated GIF. It has explicit dimensions
+  and lazy-loads (no CLS, not LCP-blocking), but a muted/looping `<video>` (MP4/WebM) or
+  animated WebP would cut the payload by ~5–10×. Bigger change (markup + re-encode); left for
+  a follow-up.
+
 **Verified live after deploy:** CSP, `X-Content-Type-Options: nosniff`,
 `Referrer-Policy`, `Permissions-Policy`, the `Link:` discovery header, `.md` served as
 `text/markdown`, immutable font caching, and all new endpoints (llms.txt, security.txt,
