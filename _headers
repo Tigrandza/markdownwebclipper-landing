@@ -1,0 +1,49 @@
+# Cloudflare Pages / Workers static-assets _headers
+# Applied to every response served from this repo. Closes the security-header
+# gaps from SPEC-AUDIT.md + sets sane caching and the .md content-type.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+# /restore is the magic-link bridge — it carries an inline <script> that the
+# strict script-src above would block. Relax script-src for this one transient,
+# noindex page only (it reflects no untrusted HTML; the ?ext= param is regex-
+# validated and only ever set as textContent). More-specific path wins over /*.
+/restore
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+/restore.html
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+# Un-fingerprinted CSS/JS: revalidate so a deploy is picked up promptly.
+/style.css
+  Cache-Control: public, max-age=3600, must-revalidate
+/tokens.css
+  Cache-Control: public, max-age=3600, must-revalidate
+/landing.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Fonts never change between deploys — cache hard.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static media — long but not immutable (may be re-exported).
+/demo.gif
+  Cache-Control: public, max-age=604800
+/og-hero.png
+  Cache-Control: public, max-age=604800
+
+# Raw Markdown twin endpoints (per-page .md source for agents).
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+
+# Link-header discovery for agents that never parse the HTML.
+/
+  Link: </llms.txt>; rel="llms-txt"
+  Link: </sitemap.xml>; rel="sitemap"
+  Link: </blog/feed.xml>; rel="alternate"; type="application/rss+xml"

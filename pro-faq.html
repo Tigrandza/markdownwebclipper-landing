@@ -6,11 +6,15 @@
 <title>Pro FAQ — Markdown Web Clipper</title>
 <meta name="description" content="One-time purchase, lifetime license. Promo $9, Standard $19. What Pro unlocks, how activation works, refund policy, and how to restore on a new device." />
 <link rel="canonical" href="https://markdownwebclipper.com/pro-faq" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/pro-faq.md" />
 <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
 <meta property="og:title" content="Pro FAQ — Markdown Web Clipper" />
 <meta property="og:description" content="One-time purchase, lifetime license. $9 launch, $19 standard. What Pro unlocks, refund policy, restore on a new device." />
 <meta property="og:url" content="https://markdownwebclipper.com/pro-faq" />
@@ -84,8 +88,19 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Pro FAQ", "item": "https://markdownwebclipper.com/pro-faq" }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
@@ -102,10 +117,10 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow">Pro</p>
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <span>Pro FAQ</span></nav>
       <h1 class="display" style="margin-top:12px">One-time purchase.<br /><span class="rust">Lifetime license.</span></h1>
       <p class="lede" style="margin-top:14px; max-width:60ch">No subscription. The free edition is the whole product; Pro is a tip for the power-user minority — and a way to keep the lights on.</p>
       <p class="meta">$9 launch · $19 standard · 14-day refund</p>
@@ -115,7 +130,7 @@
   <!-- Content sourced verbatim from the canonical Pro FAQ. -->
   <div class="prose-layout">
     <aside class="toc">
-      <h4>On this page</h4>
+      <h2>On this page</h2>
       <a href="#free">What's free</a>
       <a href="#pro">What Pro unlocks</a>
       <a href="#pricing">Pricing</a>
@@ -208,21 +223,21 @@
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Product</h4>
+          <h2>Product</h2>
           <a href="/">Home</a>
           <a href="/#destinations">Destinations</a>
           <a href="/#pro">Pro</a>
           <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome</a>
         </div>
         <div class="footer-col">
-          <h4>Reading</h4>
+          <h2>Reading</h2>
           <a href="/blog/">Blog</a>
           <a href="/pro-faq">Pro FAQ</a>
           <a href="/restore">Restore Purchase</a>
           <a href="mailto:support@markdownwebclipper.com">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Legal &amp; source</h4>
+          <h2>Legal &amp; source</h2>
           <a href="/privacy">Privacy</a>
           <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
         </div>

@@ -1,0 +1,25 @@
+# Markdown Web Clipper
+
+> A Chrome (Manifest V3) extension that converts any webpage to high-fidelity
+> Markdown — tables, code, math, footnotes — and saves it exactly where you keep
+> your notes: local folder, clipboard, .md download, Obsidian, or GitHub Gist.
+> Local-first, no cloud round-trip, no telemetry. Free & MIT-licensed; an
+> optional one-time Pro upgrade adds Gist, co-located images, unlimited batch,
+> and multi-vault routing.
+
+## Core pages
+
+- [Home](https://markdownwebclipper.com/): what it does, the five destinations, the fidelity before/after. ([Markdown](https://markdownwebclipper.com/index.md))
+- [Pro FAQ](https://markdownwebclipper.com/pro-faq): pricing ($9 launch / $19 standard, one-time), what Pro unlocks, activation, restore, refunds. ([Markdown](https://markdownwebclipper.com/pro-faq.md))
+- [Privacy](https://markdownwebclipper.com/privacy): exactly what data is read/written and the (minimal) remote calls. ([Markdown](https://markdownwebclipper.com/privacy.md))
+
+## Blog
+
+- [Blog index](https://markdownwebclipper.com/blog/)
+- [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026): honest six-way comparison. ([Markdown](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026.md))
+
+## Source & feeds
+
+- [Source code (MIT)](https://github.com/Tigrandza/markdown-web-clipper)
+- [Blog RSS feed](https://markdownwebclipper.com/blog/feed.xml)
+- [Sitemap](https://markdownwebclipper.com/sitemap.xml)

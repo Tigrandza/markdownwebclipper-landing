@@ -1,0 +1,407 @@
+# Markdown Web Clipper — full content (llms-full.txt)
+
+> Concatenation of the key pages' Markdown twins. Generated from index.md, pro-faq.md,
+> privacy.md, and the blog post. See llms.txt for the curated index.
+
+
+---
+
+<!-- source: /index.md -->
+
+<!-- Raw Markdown twin of the home page (/). Kept in sync manually. -->
+
+# Markdown Web Clipper — one keystroke, clean Markdown
+
+Free & MIT-licensed · Chrome · Manifest V3
+
+Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes —
+local folder, clipboard, download, Obsidian, or Gist. No cloud, no cleanup. No account, no
+telemetry, works offline.
+
+- [Add to Chrome — free](https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif)
+- [View source (MIT)](https://github.com/Tigrandza/markdown-web-clipper)
+
+## Why it's different
+
+Readability-based clippers flatten the parts that matter. Clipper runs Defuddle for
+extraction, then Turndown + GFM for conversion — locally, on the page you're looking at.
+
+1. **Tables survive** — Wikipedia infoboxes with `rowspan`/`colspan` come through as real GFM
+   tables.
+2. **Math stays math** — KaTeX and MathML render to `$…$` / `$$…$$`.
+3. **Code keeps its language** — fenced blocks keep their language hint and indentation.
+4. **No cloud round-trip** — extraction runs in your browser on the live DOM.
+5. **One keystroke** — bind a shortcut; the popup remembers your last destination and format.
+6. **Frontmatter that's yours** — title, URL, date, source, tags emitted as YAML you control.
+
+## Five destinations, zero accounts
+
+| Destination | Works offline | Best for |
+|---|---|---|
+| Local folder (File System Access API) | Yes | Obsidian & Logseq vaults — direct write, no sync server |
+| Clipboard | Yes | Piping into an LLM (ChatGPT, Claude, Gemini) |
+| .md download | Yes | One-off saves |
+| Obsidian (`obsidian://` URI) | Yes | A specific vault + folder |
+| GitHub Gist (Pro) | Needs network | Shareable, versioned snippets |
+
+Four of five destinations work with the network unplugged. Only Gist — a publishing target —
+needs to reach out.
+
+## Honest by construction
+
+- **No analytics, no telemetry.** Clipper makes no network calls except the destination you
+  choose. Verify it in the source.
+- **MIT-licensed free edition.** Read it, fork it, audit what touches the page you're clipping.
+- **Trade-offs in the open.** Reference vs. inline images, what each destination can and can't
+  do offline — documented, not hidden behind a Pro wall.
+
+## Pro — optional, one-time
+
+The free edition is the whole product. Pro ($9 launch / $19 standard, one-time, lifetime) adds
+GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault
+routing. See [/pro-faq](https://markdownwebclipper.com/pro-faq).
+
+---
+
+<!-- source: /pro-faq.md -->
+
+<!-- Raw Markdown twin of /pro-faq. Kept in sync manually. -->
+
+# Pro FAQ — Markdown Web Clipper
+
+One-time purchase. Lifetime license. $9 launch · $19 standard · 14-day refund. No subscription.
+
+Pro adds four power-user features on top of an already-complete free edition. It is one
+purchase, billed once, with no recurring charges and a 14-day refund window — no questions
+asked.
+
+## What's free
+
+Everything the extension exists to do is free, forever, with no time limit or feature
+degradation:
+
+- One-keystroke clip of any page to clean, high-fidelity Markdown — tables, fenced code, math,
+  footnotes, image references.
+- Save to a local folder via the File System Access API (Obsidian vault, Logseq graph, Foam,
+  or any folder of plain Markdown files).
+- Copy Markdown to clipboard.
+- Save as `.md` download.
+- Open directly in Obsidian via the `obsidian://` URI scheme — no plugin required.
+- Built-in templates (Article, AI Chat, …) and site rules (Wikipedia, ChatGPT, Claude,
+  Gemini, Reddit, Hacker News, GitHub, …).
+- Inline (base64), reference-mode, or skip-images — your choice, per clip.
+- Custom keyboard shortcuts; multi-tab batch clipping at a small free-tier cap.
+
+## What Pro unlocks
+
+- **GitHub Gist destination.** Push converted Markdown to a public or secret Gist with your
+  own Personal Access Token (stored locally, never transmitted to us). Re-saving updates the
+  same Gist via `PATCH /gists/{id}`, so GitHub records each save as a revision.
+- **Co-located image folders.** Images write into a sibling folder under your vault, alongside
+  the `.md`; the body uses relative references that survive folder moves.
+- **Unlimited multi-tab batch.** Clip as many open tabs as you want (free tier caps at a
+  modest number).
+- **Multi-vault FSA support (reserved).** Pin more than one vault folder and pick at clip time;
+  ships in a near-future release — buy today, have it the moment it ships.
+
+## Pricing
+
+Two prices, both one-time, both lifetime: **$9 promo** (launch window) and **$19 standard**.
+Same features either way. The price you pay is the price you pay forever — no recurring
+charges, no secretly-renewing subscription, no trial trap.
+
+## How activation works
+
+Click "Buy Pro" → hosted checkout at `checkout.dodopayments.com` (DodoPayments is the merchant
+of record). The moment payment succeeds, the extension auto-activates — no email entry, no
+license-key copy-paste. A one-shot install-correlation token is passed through checkout and
+returned in the webhook; the extension polls until it sees its own license (seconds). If
+auto-activation fails (e.g. you closed the tab early), the 60-minute background check picks it
+up, or use Restore Purchase immediately.
+
+## How to restore on a new device or Chrome profile
+
+Pro is bound to the email you paid with, not to a device:
+
+1. Install Markdown Web Clipper from the Chrome Web Store.
+2. Open the popup → Settings → Pro.
+3. Under "Restore your purchase," enter your purchase email and click "Send magic link."
+4. Click the deeplink in that email; the extension activates within seconds.
+
+The magic link is one-time-use and expires after 10 minutes (request new ones free). The
+confirmation message shows whether or not the email is registered, so nobody can probe which
+emails bought the extension. Restore on as many devices as you like — no seat limit.
+
+## Refund policy
+
+14-day money-back guarantee. Email support@markdownwebclipper.com from the address you paid
+with within 14 days for a full refund — no questions asked. DodoPayments processes refunds
+back to the original method within 5–10 business days. Your locally-saved Markdown files stay
+yours.
+
+## Payments and privacy
+
+Card data never touches our servers — the entire checkout runs on DodoPayments' hosted page.
+After purchase, the only data held is a hashed email → license-key mapping in a
+developer-controlled Cloudflare Worker KV store; raw emails are never logged. License
+verification happens at most once per hour and sends only the license key and a per-install
+UUID. No analytics, no telemetry. Full breakdown at /privacy.
+
+## Cancelling
+
+Nothing to cancel — Pro is a one-time purchase, not a subscription. Uninstalling is the only
+"cancel," and it has no billing effect because there's no recurring charge.
+
+## Contact
+
+Refunds, license issues, accessibility, security, or trademark questions:
+support@markdownwebclipper.com. Feature requests and bug reports: the GitHub issue tracker on
+the public free-edition repo.
+
+---
+
+<!-- source: /privacy.md -->
+
+<!-- Raw Markdown twin of /privacy. The authoritative source is PRIVACY.md in the
+     extension repo: https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md -->
+
+# Privacy Policy — Markdown Web Clipper
+
+Markdown Web Clipper ("the extension") converts the page you are looking at into a Markdown
+file and saves it where you choose. It is local-first: no cloud backend, no analytics, no
+telemetry, and no remote calls beyond the narrowly-scoped cases listed under "Remote calls."
+
+## Data we read
+
+The extension only reads page data when **you invoke the clipping action** (toolbar click,
+keyboard shortcut, or context menu). It does not run on un-clipped tabs and does not request
+`<all_urls>` at install time. On a clip it reads:
+
+- **Page HTML** — the active tab's DOM at the moment of the click, processed locally by
+  Defuddle (extraction) and Turndown (HTML→Markdown) in an offscreen document.
+- **Current tab URL** — used as the source/canonical URL in the frontmatter.
+- **Page metadata** — `<title>`, `<meta>`, `<link rel="canonical">`, Open Graph, JSON-LD —
+  used to populate the frontmatter.
+
+Multi-tab batch clipping needs the optional `<all_urls>` permission, which is **off by
+default** and granted only at runtime via Settings → Privacy → Multi-tab batch. Revoke it any
+time there or from `chrome://extensions`.
+
+## Data we write
+
+Persisted on your device in four locations:
+
+- **`chrome.storage.local`** — templates, custom site rules, cached license status, the FSA
+  vault folder reference, the debug-log ring buffer, image-mode preference.
+- **`chrome.storage.sync`** — small (≤8 KB) settings (UI language, default destination,
+  default frontmatter, shortcut overrides), synced by Chrome; not transmitted anywhere else.
+- **`IndexedDB`** — the `FileSystemDirectoryHandle` for your vault folder, plus highlights and
+  clip history if enabled.
+- **The folder you chose** — the converted Markdown (and co-located images, if that mode) are
+  written to the directory you granted access to. The extension cannot touch any file outside
+  that folder.
+
+GitHub Personal Access Tokens for the Gist destination live in `chrome.storage.session` by
+default (cleared on browser close); an opt-in persists them to `chrome.storage.local`, and
+toggling that back off purges the persisted token.
+
+## Remote calls
+
+The extension makes exactly these kinds of remote calls; nothing else leaves your device:
+
+- **Image fetches** — in `reference`/`co-located` image mode, images are fetched from their
+  original source domains (the same hosts the page's `<img src>` already pointed at),
+  `no-cors`, no extension-specific headers.
+- **GitHub Gist API (optional)** — only with the Gist destination + your PAT; posts converted
+  Markdown to `https://api.github.com/gists`.
+- **Obsidian URI handoff** — dispatches a local `obsidian://new?…` URL; no remote call.
+- **License verification** — at most hourly, the service worker calls
+  `https://api.markdownwebclipper.com/api/license/check` (a developer-controlled Cloudflare
+  Worker). Body contains only the license key + a per-install UUID — no email, no telemetry.
+  The Worker stores a hashed-email → license-key mapping in Workers KV; raw emails are never
+  logged.
+- **License restore (magic link)** — Settings → Pro → Restore Purchase POSTs your email to
+  `https://api.markdownwebclipper.com/api/restore`; a one-time, 10-minute magic link is sent
+  via Resend. The response is identical whether or not the email is registered (defeats
+  enumeration); 60-second per-email rate limit.
+- **Uninstall survey URL** — Chrome itself (`setUninstallURL`) opens a Tally form on uninstall;
+  a Chrome platform feature, not a Clipper-initiated call; unauthenticated and optional.
+
+## Image viewer notes
+
+By default Clipper writes image URLs as `![](https://...)` (reference mode — no network during
+clipping). Viewers that don't fetch remote URLs (macOS Preview, QuickLook) show blank images;
+network-capable viewers (Obsidian, browsers) render them. For fully-offline files, switch
+Image Handling to "Base64 inline."
+
+## Freemium model & refund policy
+
+Freemium from v1. Core clipping is free forever, no time limit or degradation (single-page
+clip to inline/clipboard/download/FSA folder, built-in templates and site rules, Obsidian URI).
+Pro (one-time via DodoPayments) adds multi-tab batch >3 tabs, co-located image mode, GitHub
+Gist destination, custom site rules, and custom templates. Pricing: **$9 launch / $19
+lifetime**, single one-time payment, no subscription. 14-day money-back guarantee — email
+support@markdownwebclipper.com from your checkout address within 14 days.
+
+## Your control
+
+- **Revoke FSA folder access** — Settings → Destinations → "Forget vault folder."
+- **Clear all stored data** — Settings → Advanced → "Reset all data" (folder contents on disk
+  are untouched).
+- **Revoke `<all_urls>`** — Settings → Privacy → Multi-tab batch toggle off.
+- **Revoke license / refund** — email support@markdownwebclipper.com.
+- **Uninstall** — removes the extension and clears `chrome.storage.*`; FSA folder contents
+  remain on disk.
+
+## Contact
+
+Questions, refunds, security reports, or trademark concerns: support@markdownwebclipper.com.
+
+---
+
+<!-- source: /blog/best-markdown-web-clippers-2026.md -->
+
+<!-- Raw Markdown twin of /blog/best-markdown-web-clippers-2026. Kept in sync manually. -->
+
+# Best Markdown web clippers for Obsidian, compared (2026)
+
+Published 2026-06-07 · ~10 min read · Comparison
+
+MarkDownload is gone. The official Obsidian Web Clipper took the throne. A wave of
+AI-handoff clippers showed up. Here's an honest side-by-side of the six Chrome Markdown
+clippers an Obsidian or Logseq user might pick from in 2026 — written by someone who built
+one of them.
+
+> **Disclosure:** I'm the developer of Markdown Web Clipper — one of the six tools in this
+> comparison. I've tried to write this honestly: pick winners by use case, name our
+> weaknesses out loud, and link the alternatives from their own sites so you can verify.
+> Spotted a factual error? Email support@markdownwebclipper.com and I'll correct it.
+
+## What changed in 2025
+
+Three structural shifts reorganized the market:
+
+- **MarkDownload was removed from the Chrome Web Store.** The long-standing community default
+  (built by deathau, then forked many times) was pulled in 2025 for "not following best
+  practices," with no substantive commit in over two years. A generation of users is now
+  searching "MarkDownload alternative."
+- **Obsidian shipped a first-party clipper.** The official Obsidian Web Clipper, built by
+  Kepano, crossed from side project to default tool — 300K+ Chrome installs, 4.81 stars.
+- **The AI-handoff niche split off.** Web2MD, BigIdeasDB Clipper and others pivoted from
+  "save the article" toward "ship clean Markdown straight to ChatGPT, Claude, or Cursor."
+
+Three audiences, at least three right answers. The honest comparison is "for whom," not
+"which is best."
+
+## How I tested
+
+Each clipper ran against five reference pages: a Wikipedia infobox heavy on
+`rowspan`/`colspan`; a long GitHub README with fenced code (language hints + indentation); a
+KaTeX math article (`$E = mc^2$` and `$$…$$`); a ChatGPT conversation (messy SPA DOM); and a
+Reddit comment thread (inline images, nested replies). I also looked at five non-extraction
+features: destinations, offline support, pricing model, open-source status, and maintenance
+posture.
+
+## Obsidian Web Clipper (official)
+
+The current default. Built by the Obsidian team; MIT-licensed; free, no Pro tier; Chrome,
+Edge, Firefox, Safari.
+
+- **Best at:** clean articles destined for an Obsidian vault. Highlights/annotations built
+  in; first-class templates; seamless vault integration.
+- **Falls short:** uses Mozilla Readability — strong on articles, weaker on SPA pages
+  (Reddit, X, Xiaohongshu). No Gist destination, no batch-clip-many-tabs.
+- **Pricing:** free.
+- **Pick if:** you live in Obsidian, clip mostly article-shaped content, want the tightest
+  vault integration. The right default.
+
+## MarkDownload (R.I.P. 2025)
+
+Included for context. Was the community default for years — open source, Turndown-based,
+configurable. **Removed from the Chrome Web Store in 2025**, last meaningful commit 2023, no
+maintained successor under the same name.
+
+- **Shined at:** a genuinely good configuration surface.
+- **Falls short, retrospectively:** single-maintainer bus-factor ended it; modern SPAs broke
+  the extractor and no one fixed it.
+- **Pick if:** you can't, anymore. If you're searching "MarkDownload alternative," you
+  probably want open-source + configurable + actively maintained.
+
+## Web2MD
+
+The cleanest of the AI-handoff-first clippers. Free Chrome extension, no signup; Pro adds
+Obsidian export, batch processing, and one-click AI integration.
+
+- **Best at:** piping articles into LLM context windows; output shaped for tokenization.
+- **Falls short:** not local-first; AI integrations route through their UI flows. Closed-source.
+- **Pricing:** free with limits; Pro is a recurring subscription.
+- **Pick if:** 80% of what you clip ends up pasted into an LLM.
+
+## MarkSnip
+
+The closest peer to the post-MarkDownload "just clip pages well" niche. Solid code-block
+accuracy, math support, a built-in editor, themes, image handling. Active development.
+
+- **Best at:** clean Markdown with a chance to tweak before it lands — the inline editor is
+  the differentiator.
+- **Falls short:** closed-source; narrower destination set; no Gist; no vault-folder write.
+- **Pricing:** free, with a Pro tier.
+- **Pick if:** you regularly want to edit the clip before saving it.
+
+## LLMFeeder
+
+The closest peer to "free, open-source, do-one-thing-well." Copies clean Markdown to
+clipboard with a token counter visible upfront. No AI integration, no destinations beyond
+clipboard, no editor.
+
+- **Best at:** the keystroke-to-clipboard loop; the token counter is a nice touch.
+- **Falls short:** single destination.
+- **Pricing:** free.
+- **Pick if:** all you do is clip-then-paste-into-an-LLM and want the smallest tool for it.
+
+## Markdown Web Clipper (this one)
+
+Disclosed up top — I built this one.
+
+- **Best at:** high-fidelity extraction of the hard cases (rowspan tables, KaTeX math, fenced
+  code with language hints, footnotes) plus a real destination set. Pipeline is Defuddle for
+  extraction (handles SPAs Readability misses) + Turndown with the Joplin GFM plugin. Five
+  destinations: local folder (File System Access API — direct vault write, no sync server),
+  clipboard, .md download, Obsidian via `obsidian://` URI, and (Pro) GitHub Gist with
+  revision history via `PATCH /gists/{id}`.
+- **Falls short:** small community; no built-in highlight/annotate; no AI handoff; the Pro
+  tier is friction for some.
+- **Pricing:** free for everyone, no time-limit or feature degradation. Pro is one-time,
+  lifetime: $9 launch / $19 standard. No subscription. See /pro-faq.
+- **Pick if:** you want fidelity-first, privacy-first, lifetime-pricing — clean rowspan
+  tables, real KaTeX math, FSA vault write, and ownership of the file you saved.
+
+## At a glance
+
+| Clipper | Extraction | Destinations | Open source | Pricing |
+|---|---|---|---|---|
+| Obsidian Web Clipper | Readability — strong on articles, weak on SPAs | Obsidian vault (native), clipboard, download | Yes (MIT) | Free |
+| MarkDownload (R.I.P.) | Removed 2025; unmaintained | Download (historical) | Yes | N/A |
+| Web2MD | LLM-tuned | Clipboard, AI tools, Obsidian (Pro) | No | Freemium / subscription |
+| MarkSnip | Strong on code | Clipboard, download, built-in editor | No | Freemium |
+| LLMFeeder | Generic Markdown | Clipboard only | Yes | Free |
+| Markdown Web Clipper | Defuddle + GFM — preserves rowspan, math, fences | Local folder (FSA), clipboard, download, Obsidian, Gist (Pro) | Yes (MIT, free edition) | Free + lifetime $9 / $19 Pro |
+
+## Verdict by use case
+
+- **Live in Obsidian, clip articles all day:** the official Obsidian Web Clipper. Free, MIT,
+  unbeatable vault integration.
+- **Clip mostly to feed ChatGPT / Claude / Cursor:** Web2MD. The category is real and they own it.
+- **Want to edit clips before saving:** MarkSnip. The inline editor is unique.
+- **Want the smallest free open-source clipboard tool:** LLMFeeder.
+- **Want lossless tables, KaTeX math, local-folder write, optional Gist, lifetime pricing,
+  and a no-telemetry posture:** ours. Free does everything except Gist and co-located images;
+  Pro is one-time $9 (launch) / $19 (standard).
+- **Searching "MarkDownload alternative":** closest successor on the open-source + maintained
+  + configurable axis is, honestly, ours; closest on the "just download a Markdown file" axis
+  is the official Obsidian Web Clipper.
+
+Five honest answers because there are five honest user populations. Pick the tool that matches
+yours.
+
+_Last updated 2026-06-07._

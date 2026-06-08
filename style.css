@@ -90,6 +90,15 @@ code, pre, .mono { font-family: var(--font-mono); }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
+/* Skip link — visually hidden until keyboard focus, then pinned top-left. */
+.skip-link { position: absolute; left: 8px; top: -48px; z-index: 1000; padding: 10px 16px; background: var(--surface); color: var(--fg-strong); border: 1px solid var(--border); border-radius: var(--r-sm); box-shadow: var(--shadow-md); font-size: 14px; font-weight: 550; transition: top .15s ease; }
+.skip-link:focus { top: 8px; }
+
+/* Breadcrumb trail — reuses .eyebrow type; just colours the links. */
+.breadcrumb { display: block; }
+.breadcrumb a { color: inherit; text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+
 /* ---------- 1. Layout primitives + tweak axes ---------- */
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 32px; }
 
@@ -275,7 +284,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 30px); }
 
 /* rendered markdown card (the "output" beside the popup) */
 .md-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 22px 24px; max-width: 360px; }
-.md-card h4 { font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--fg-strong); margin-bottom: 14px; }
+.md-card .md-h { font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--fg-strong); margin-bottom: 14px; }
 .md-card p, .md-card li { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; color: var(--fg-muted); }
 .md-card .sub { font-weight: 600; color: var(--fg-strong); margin-top: 14px; margin-bottom: 8px; }
 .code-well { background: var(--code-bg); color: var(--code-fg); border-radius: var(--r-sm); padding: 11px 13px; font-family: var(--font-mono); font-size: 12px; margin: 8px 0 14px; overflow-x: auto; }
@@ -340,7 +349,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 30px); }
 .ba-body { padding: 22px 24px; min-height: 300px; }
 
 /* rendered mode */
-.ba-render h4 { font-size: 17px; font-weight: 600; color: var(--fg-strong); margin-bottom: 12px; }
+.ba-render .md-h { font-size: 17px; font-weight: 600; color: var(--fg-strong); margin-bottom: 12px; }
 .ba-render p { font-size: 14px; color: var(--fg-muted); margin-bottom: 12px; }
 .ba-render pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px 14px; font-size: 12.5px; color: var(--fg-strong); overflow-x: auto; margin-bottom: 14px; }
 .ba-render table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -407,7 +416,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 30px); }
 .footer-brand .brand { margin-bottom: 14px; }
 .footer-brand p { font-size: 13.5px; color: var(--fg-faint); }
 .footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
-.footer-col h4 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-faint); margin-bottom: 14px; font-weight: 500; }
+.footer-col h2 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-faint); margin-bottom: 14px; font-weight: 500; }
 .footer-col a { display: block; font-size: 14px; color: var(--fg-muted); padding: 5px 0; transition: color .12s; }
 .footer-col a:hover { color: var(--accent); }
 .footer-legal { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--fg-faint); }
@@ -430,7 +439,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 30px); }
 .prose .callout { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--accent-subtle); border-radius: var(--r-md); padding: 16px 20px; margin: 24px 0; }
 .prose .callout p { color: var(--accent-ink); margin: 0; font-size: 14.5px; }
 .toc { position: sticky; top: 88px; font-size: 13.5px; }
-.toc h4 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-faint); margin-bottom: 12px; }
+.toc h2 { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-faint); margin-bottom: 12px; }
 .toc a { display: block; padding: 5px 0; color: var(--fg-muted); }
 .toc a:hover { color: var(--accent); }
 .prose-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; max-width: 980px; margin-inline: auto; padding-block: 56px; align-items: start; }

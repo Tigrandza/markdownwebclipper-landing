@@ -32,7 +32,9 @@
       if (!btn) return;
       sect.setAttribute("data-ba", btn.getAttribute("data-ba-mode"));
       tg.querySelectorAll("button").forEach(function (b) {
-        b.classList.toggle("active", b === btn);
+        var on = b === btn;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
       });
     });
   });

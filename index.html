@@ -27,13 +27,19 @@
 <title>Markdown Web Clipper — one keystroke, clean Markdown</title>
 <meta name="description" content="A Chrome extension that converts any webpage to high-fidelity Markdown — tables, code, math, footnotes — and saves it exactly where you keep your notes. No cloud, no cleanup. Free & MIT-licensed." />
 <link rel="canonical" href="https://markdownwebclipper.com/" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/index.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
 
 <!-- Theme color — paints mobile browser chrome to match the rust palette. -->
 <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<!-- color-scheme: tells the UA the page supports both, killing the dark-mode white flash. -->
+<meta name="color-scheme" content="light dark" />
 
 <!-- Open Graph + Twitter Cards. Image is the dedicated 1200×630 hero card
      (landing/og-hero.png) — Slack/Twitter/Discord/LinkedIn unfurl as
@@ -122,6 +128,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
@@ -142,7 +149,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <!-- ============================ HERO: SPLIT ============================ -->
 <section class="hero hero-split band" data-variant="split">
@@ -204,7 +211,7 @@
 
         <!-- rendered markdown output -->
         <div class="md-card">
-          <h4># Markdown</h4>
+          <p class="md-h"># Markdown</p>
           <p>From Wikipedia, the free encyclopedia</p>
           <p><b style="color:var(--fg-strong)">Markdown</b> is a lightweight markup language for creating formatted text.</p>
           <p class="sub">## Code blocks</p>
@@ -345,9 +352,9 @@
         <h2 class="display" style="margin-top:14px">See exactly what <span class="rust">survives.</span></h2>
         <p class="lede">Toggle between how a clip looks rendered and the raw Markdown source it writes to disk. Both are lossless.</p>
       </div>
-      <div class="ba-toggle" role="tablist" aria-label="View mode">
-        <button data-ba-mode="rendered" class="active">Rendered</button>
-        <button data-ba-mode="source">Markdown source</button>
+      <div class="ba-toggle" role="group" aria-label="View mode">
+        <button type="button" data-ba-mode="rendered" class="active" aria-pressed="true">Rendered</button>
+        <button type="button" data-ba-mode="source" aria-pressed="false">Markdown source</button>
       </div>
     </div>
 
@@ -386,7 +393,7 @@ Energy: E = mc^2</div>
         <div class="ba-body">
           <!-- rendered -->
           <div class="ba-show-rendered ba-render">
-            <h4>Quick reference</h4>
+            <p class="md-h">Quick reference</p>
             <p>Common usage examples:</p>
             <pre>function clip(page) {
   return md(page);
@@ -514,21 +521,21 @@ Energy: <span class="fence">$E = mc^2$</span></div>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Product</h4>
+          <h2>Product</h2>
           <a href="/">Home</a>
           <a href="#destinations">Destinations</a>
           <a href="#pro">Pro</a>
           <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif">Add to Chrome</a>
         </div>
         <div class="footer-col">
-          <h4>Reading</h4>
+          <h2>Reading</h2>
           <a href="/blog/">Blog</a>
           <a href="/pro-faq">Pro FAQ</a>
           <a href="/restore">Restore Purchase</a>
           <a href="mailto:support@markdownwebclipper.com">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Legal &amp; source</h4>
+          <h2>Legal &amp; source</h2>
           <a href="/privacy">Privacy</a>
           <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
         </div>
