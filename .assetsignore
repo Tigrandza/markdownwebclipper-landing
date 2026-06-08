@@ -5,3 +5,4 @@
 .gitignore
 wrangler.jsonc
 SPEC-AUDIT.md
+CLAUDE.md
