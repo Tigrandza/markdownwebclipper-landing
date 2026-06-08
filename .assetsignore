@@ -1,0 +1,7 @@
+# Files present in the repo but NOT meant to be served as public assets.
+# (Workers static-assets honours this like .gitignore — matched files aren't uploaded.)
+# Note: this only affects public serving; wrangler still reads wrangler.jsonc for config.
+.assetsignore
+.gitignore
+wrangler.jsonc
+SPEC-AUDIT.md

@@ -1,0 +1,23 @@
+{
+  // Mirrors the wrangler config Cloudflare auto-generated for the `clipper-landing`
+  // Worker (Git-connected, serves markdownwebclipper.com). The ONLY addition over the
+  // generated default is assets.not_found_handling — every other field is copied verbatim
+  // so the deploy is otherwise unchanged.
+  //
+  // not_found_handling: "404-page" makes unmatched routes serve the nearest 404.html with a
+  // 404 status instead of an empty body. Repo root is the asset directory (no build step).
+  // https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "clipper-landing",
+  "compatibility_date": "2026-06-08",
+  "observability": {
+    "enabled": true
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  }
+}
