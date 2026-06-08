@@ -43,8 +43,18 @@ setting was enabled — fixed). Two required-tier gaps the first pass missed, no
 
 | Finding | Fix |
 |---|---|
-| **Custom 404 page** (resilience, required) — site returned a 404 status but an empty Cloudflare-default body | Added `404.html` (site-styled, explains + links home/blog/FAQ). Pages serves it at 404 automatically. |
+| **Custom 404 page** (resilience, required) — site returned a 404 status but an empty body | Added `404.html` (site-styled, explains + links home/blog/FAQ). **Live at `/404`, but not yet wired as the not-found handler** — see note below. |
 | **Accessible data tables** (a11y, required) — comparison tables had `<th>` but no `<caption>`/`scope` | Added `<caption class="sr-only">` + `scope="col"` to the destinations matrix, the blog compare-table, and the two demo tables; added an `.sr-only` utility. |
+
+**404 handler — needs one config flag (this is a Workers static-assets project, not Pages).**
+`404.html` is deployed and serves at `/404`, but an unmatched route returns a 404 status with an
+empty body because Workers static-assets defaults `not_found_handling` to "none". Set it to
+`"404-page"` to serve `404.html` on misses. Two ways:
+- **wrangler config** (commit to repo): add `assets: { not_found_handling: "404-page" }` to a
+  `wrangler.jsonc` for the `clipper-landing` Worker. Cleanest, version-controlled — but it changes
+  deploy config for the live domain, so confirm the Worker name/asset dir first.
+- **dashboard**: `clipper-landing` → Settings → Static assets → set "Not found handling" to
+  "Single-page app off / 404 page". Lowest risk if you'd rather not touch deploy config in-repo.
 
 Still open (one required-tier item, deferred for a decision):
 - **Image optimisation** — `demo.gif` is a ~1.2 MB animated GIF. It has explicit dimensions
