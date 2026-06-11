@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — Markdown Web Clipper</title>
-<meta name="description" content="Notes from the people building Markdown Web Clipper: comparisons, technical write-ups, and the occasional honest take on the web-clipper landscape." />
-<link rel="canonical" href="https://markdownwebclipper.com/blog/" />
+<title>Changelog — Markdown Web Clipper</title>
+<meta name="description" content="User-facing changes in each release of Markdown Web Clipper." />
+<link rel="canonical" href="https://markdownwebclipper.com/changelog" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icon-128.png" />
 <link rel="manifest" href="/site.webmanifest" />
-<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<link rel="alternate" type="text/markdown" href="/changelog.md" />
 <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Blog — Markdown Web Clipper" />
-<meta property="og:description" content="Comparisons, technical write-ups, and honest takes on the web-clipper landscape." />
-<meta property="og:url" content="https://markdownwebclipper.com/blog/" />
+<meta property="og:title" content="Changelog — Markdown Web Clipper" />
+<meta property="og:description" content="User-facing changes in each release of Markdown Web Clipper." />
+<meta property="og:url" content="https://markdownwebclipper.com/changelog" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
 <meta property="og:image:width" content="1200" />
@@ -40,9 +40,9 @@
     </a>
     <nav class="nav">
       <a href="/">Home</a>
-      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
-      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
-      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-index" style="margin-left:6px">Add to Chrome</a>
+      <a href="/pro-faq">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=changelog" style="margin-left:6px">Add to Chrome</a>
     </nav>
   </div>
 </header>
@@ -50,35 +50,24 @@
 <main id="main">
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow">Notes from the build</p>
-      <h1 class="display" style="margin-top:12px">Honest takes on <span class="rust">clippers.</span></h1>
-      <p class="lede" style="margin-top:14px; max-width:60ch">Comparisons, technical write-ups, and the occasional opinion on where the Markdown web-clipper space is going. Written by the people building one of them — disclosed where it matters.</p>
+      <p class="eyebrow">Releases</p>
+      <h1 class="display" style="margin-top:12px">Change<span class="rust">log.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">User-facing changes in each release. For full source history, see <a href="https://github.com/Tigrandza/markdown-web-clipper">GitHub</a>.</p>
     </div>
   </section>
 
-  <section class="band" style="padding-block: 64px">
-    <div class="wrap">
-      <div class="blog-index">
-
-        <article class="blog-card">
-          <span class="date-pill">2026-06-07</span>
-          <div>
-            <h2><a href="/blog/best-markdown-web-clippers-2026">Best Markdown web clippers for Obsidian, compared (2026)</a></h2>
-            <p class="meta">
-              <span>~10 min read</span>
-              <span class="tag">Comparison</span>
-              <span>6 clippers reviewed</span>
-            </p>
-            <p class="excerpt">MarkDownload — the historical default — was removed from the Chrome Web Store in 2025. The official Obsidian Web Clipper took the throne. A wave of AI-handoff clippers showed up. Here's an honest side-by-side of the six tools an Obsidian or Logseq user might pick from in 2026, including the one I built.</p>
-            <a class="read-more" href="/blog/best-markdown-web-clippers-2026">Read the comparison
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
+  <div class="prose-layout">
+    <article class="prose">
+      <h2 id="0-2-0">0.2.0 — June 11, 2026</h2>
+      <ul>
+        <li>Full Page mode now captures the entire page as-is. Previously it still ran article extraction, so page chrome you may have wanted was stripped out.</li>
+        <li>Selection mode now captures your selected text the instant you clip — fixing silent empty clips on dynamic pages that re-render when the popup opens.</li>
+        <li>Clipping in Selection mode with nothing selected now shows a clear message instead of silently saving an empty file.</li>
+        <li>New tooltips on the Auto / Full Page / Selection toggle explain what each mode captures.</li>
+        <li>Smoother Pro checkout with proper loading feedback.</li>
+      </ul>
+    </article>
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -94,7 +83,7 @@
           <a href="/">Home</a>
           <a href="/#destinations">Destinations</a>
           <a href="/#pro">Pro</a>
-          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-index">Add to Chrome</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=changelog">Add to Chrome</a>
         </div>
         <div class="footer-col">
           <h2>Reading</h2>
@@ -102,11 +91,11 @@
           <a href="/pro-faq">Pro FAQ</a>
           <a href="/restore">Restore Purchase</a>
           <a href="/changelog">Changelog</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
         </div>
         <div class="footer-col">
           <h2>Legal &amp; source</h2>
           <a href="/privacy">Privacy</a>
-          <a href="mailto:support@markdownwebclipper.com">Contact</a>
           <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
         </div>
       </div>

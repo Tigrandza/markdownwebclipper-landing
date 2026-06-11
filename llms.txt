@@ -12,6 +12,7 @@
 - [Home](https://markdownwebclipper.com/): what it does, the five destinations, the fidelity before/after. ([Markdown](https://markdownwebclipper.com/index.md))
 - [Pro FAQ](https://markdownwebclipper.com/pro-faq): pricing ($9 launch / $19 standard, one-time), what Pro unlocks, activation, restore, refunds. ([Markdown](https://markdownwebclipper.com/pro-faq.md))
 - [Privacy](https://markdownwebclipper.com/privacy): exactly what data is read/written and the (minimal) remote calls. ([Markdown](https://markdownwebclipper.com/privacy.md))
+- [Changelog](https://markdownwebclipper.com/changelog): user-facing changes per release. ([Markdown](https://markdownwebclipper.com/changelog.md))
 
 ## Blog
 
