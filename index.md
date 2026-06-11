@@ -8,7 +8,7 @@ Convert any webpage to high-fidelity Markdown and save it exactly where you keep
 local folder, clipboard, download, Obsidian, or Gist. No cloud, no cleanup. No account, no
 telemetry, works offline.
 
-- [Add to Chrome — free](https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif)
+- [Add to Chrome — free](https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&utm_medium=llms-txt&utm_campaign=home)
 - [View source (MIT)](https://github.com/Tigrandza/markdown-web-clipper)
 
 ## Why it's different
