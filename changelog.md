@@ -6,6 +6,13 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.3.0 — June 21, 2026
+
+- Open in Obsidian now works reliably for short clips. Previously, sending a small page (like a
+  brief forum post) to Obsidian would bring the app to the front without creating a note, while
+  longer pages worked fine. Every clip is now written into your vault and opened, no matter its
+  length.
+
 ## 0.2.0 — June 11, 2026
 
 - Full Page mode now captures the entire page as-is. Previously it still ran article
