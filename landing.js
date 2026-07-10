@@ -22,6 +22,36 @@
 (function () {
   "use strict";
 
+  // Cloudflare Web Analytics — landing-only, cookieless, no PII (D-05). The
+  // EXTENSION never reports; this beacon runs only on markdownwebclipper.com.
+  // Injected here (not a static tag per page) because landing.js already loads
+  // on every page. Cloudflare's own snippet is type="module", so its beacon
+  // reads the token from the DOM (not document.currentScript) — dynamic
+  // injection is therefore equivalent to the hard-coded tag. This manual beacon
+  // is REQUIRED because CF "automatic injection" does not fire on this
+  // Workers-hosted static site. CSP (_headers) already allows
+  // static.cloudflareinsights.com (script-src) + cloudflareinsights.com
+  // (connect-src). Idempotent — never double-injects. Gated to the canonical
+  // production hostname so the beacon never fires on localhost, Cloudflare
+  // *.pages.dev preview deploys, or in unit tests (happy-dom's host is
+  // localhost) — the latter also keeps external beacon.min.js out of the test
+  // environment.
+  var cfHost = location.hostname;
+  if (
+    (cfHost === "markdownwebclipper.com" ||
+      cfHost.endsWith(".markdownwebclipper.com")) &&
+    !document.querySelector('script[data-cf-beacon]')
+  ) {
+    var cfBeacon = document.createElement("script");
+    cfBeacon.type = "module";
+    cfBeacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    cfBeacon.setAttribute(
+      "data-cf-beacon",
+      '{"token": "ae7110f9b2a1423abddb01902d9867b4"}'
+    );
+    (document.head || document.documentElement).appendChild(cfBeacon);
+  }
+
   // Before/after fidelity toggle. The button's data-ba-mode is mirrored
   // onto the section's [data-ba] attribute; CSS shows/hides .ba-show-*
   // children based on that.
