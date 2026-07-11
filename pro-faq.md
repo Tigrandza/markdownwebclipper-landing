@@ -1,6 +1,6 @@
 <!-- Raw Markdown twin of /pro-faq. Kept in sync manually. -->
 
-# Pro FAQ — Markdown Web Clipper
+# Pricing & Pro FAQ — Markdown Web Clipper
 
 One-time purchase. Lifetime license. $9 launch · $19 standard · 14-day refund. No subscription.
 

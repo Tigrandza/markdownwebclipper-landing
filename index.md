@@ -1,6 +1,6 @@
 <!-- Raw Markdown twin of the home page (/). Kept in sync manually. -->
 
-# Markdown Web Clipper — one keystroke, clean Markdown
+# Markdown Web Clipper — Save Any Webpage as Clean Markdown
 
 Free & MIT-licensed · Chrome · Manifest V3
 
