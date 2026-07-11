@@ -1,6 +1,6 @@
 <!-- Raw Markdown twin of /blog/pocket-alternative-markdown-obsidian. Kept in sync manually. -->
 
-# Life after Pocket: the local-first read-later setup I actually use
+# Pocket alternative: the local-first read-later setup I actually use
 
 Published 2026-07-11 · ~5 min read · Read-later
 
