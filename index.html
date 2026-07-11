@@ -69,7 +69,7 @@
 
 <!-- SoftwareApplication schema covers the free CWS install. Listed as a
      free offer because the extension itself is $0 to download/use; Pro
-     is an in-app upgrade modeled separately as a Product below. -->
+     is an in-app upgrade modeled separately as its own SoftwareApplication below. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,17 +91,17 @@
   }
 }
 </script>
-<!-- Product schema for Pro tier — drives rich-results pricing cards on
+<!-- SoftwareApplication schema for Pro tier — drives rich-results pricing cards on
      SERPs for "Markdown Web Clipper Pro" / pricing queries. Two offers
      surface the $9 promo vs $19 standard tiers honestly. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "SoftwareApplication",
   "name": "Markdown Web Clipper Pro",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Chrome",
   "description": "Pro upgrade for Markdown Web Clipper. Adds GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault routing. One-time purchase, lifetime license, no subscription.",
-  "brand": { "@type": "Brand", "name": "Markdown Web Clipper" },
-  "category": "Productivity Software Upgrade",
   "image": "https://markdownwebclipper.com/og-hero.png",
   "url": "https://markdownwebclipper.com/pro-faq",
   "offers": [
