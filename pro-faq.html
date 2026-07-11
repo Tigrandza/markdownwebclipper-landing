@@ -29,9 +29,10 @@
 <link rel="stylesheet" href="/tokens.css" />
 <link rel="stylesheet" href="/style.css" />
 
-<!-- FAQPage schema — drives Google rich-results expandable Q/A
-     cards in SERPs. Top 6 questions selected for highest pricing-
-     and-restore-decision relevance per CWS keyword research §4.4. -->
+<!-- FAQPage schema — machine-understanding aid only. Google retired FAQ
+     rich results (expandable Q/A cards) in May 2026, so this earns NO SERP
+     treatment; it exists purely to help search/AI systems parse the on-page
+     Q&A. Answers mirror the visible page prose. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -218,7 +219,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="/"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
         <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
       </div>
       <div class="footer-cols">

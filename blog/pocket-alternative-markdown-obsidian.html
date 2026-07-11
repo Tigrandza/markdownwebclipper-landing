@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pocket alternative: the local-first read-later setup I use (Markdown + Obsidian) — Markdown Web Clipper</title>
+<meta name="description" content="Pocket is gone. Here's the free, local-first Pocket alternative I use every day: clip articles as clean Markdown into an Obsidian vault, tag them readlater, read on iPad. No account, no server." />
+<link rel="canonical" href="https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/blog/pocket-alternative-markdown-obsidian.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="Pocket alternative: the local-first read-later setup I use (Markdown + Obsidian)" />
+<meta property="og:description" content="Pocket is gone. Here's the free, local-first Pocket alternative I use every day: clip articles as clean Markdown into an Obsidian vault, tag them readlater, read on iPad. No account, no server." />
+<meta property="og:url" content="https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta name="article:published_time" content="2026-07-11" />
+<meta name="article:author" content="Tigran Davtyan" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+
+<!-- BlogPosting schema — publication date, author, headline. Machine-readable
+     metadata for search/LLM crawlers; no rich-result claims implied. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Life after Pocket: the local-first read-later setup I actually use",
+  "description": "Pocket is gone. Here's the free, local-first Pocket alternative I use every day: clip articles as clean Markdown into an Obsidian vault, tag them readlater, read on iPad. No account, no server.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": {
+    "@type": "Person",
+    "name": "Tigran Davtyan",
+    "sameAs": "https://github.com/Tigrandza"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://markdownwebclipper.com/icon-128.png"
+    }
+  },
+  "mainEntityOfPage": "https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://markdownwebclipper.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Life after Pocket: the local-first read-later setup I actually use", "item": "https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian" }
+  ]
+}
+</script>
+<!-- FAQPage schema — machine-readable Q/A aid only. FAQ rich results were
+     retired May 2026; this is not a rich-result play. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I read clipped articles on my phone or iPad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — that's my daily flow. The clipper saves Markdown into the vault on desktop; Obsidian mobile (with the vault synced) does the reading. Capture itself is desktop-only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it import my old Pocket export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It clips pages going forward. Your Pocket export (a CSV/HTML file of links) can live in the same vault, but the articles it points to aren't recoverable through it — which is rather the point of switching to files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it actually free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core is free forever and MIT-licensed — clipping, all destinations, full fidelity. There's an optional one-time Pro purchase for power features; nothing about the read-later workflow above needs it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it phone home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No account, no server, no analytics in the extension. Pages convert locally in your browser and are written to your disk."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/blog/" class="hide-sm">Blog</a>
+      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <span>Read-later</span></nav>
+      <h1 class="display" style="margin-top:12px">Life after Pocket: the local-first read-later setup I actually use</h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">Pocket is gone. Here's the free, local-first Pocket alternative I use every day: clip articles as clean Markdown into an Obsidian vault, tag them readlater, read on iPad. No account, no server.</p>
+      <div class="article-meta">
+        <span>Published 2026-07-11</span>
+        <span class="dot">·</span>
+        <span>~5 min read</span>
+        <span class="dot">·</span>
+        <span class="tag">Read-later</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose-layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <a href="#what-pocket-taught">What Pocket's shutdown taught me</a>
+      <a href="#my-setup">My read-later setup now</a>
+      <a href="#llm-ready">The part Pocket never did: articles that are LLM-ready</a>
+      <a href="#honest-limits">Honest limits: this is not Pocket's ecosystem</a>
+      <a href="#other-alternatives">The other Pocket alternatives, honestly</a>
+      <a href="#set-it-up">Set it up in two minutes</a>
+      <a href="#faq">FAQ</a>
+    </aside>
+
+    <article class="prose">
+      <p>Mozilla shut Pocket down in 2025. My replacement costs nothing and lives on my own disk: a Chrome extension that clips any article as clean Markdown straight into an Obsidian vault. No account, no server, no subscription. It doesn't replace Pocket's whole ecosystem — I'll be specific about what's missing — but the core save-now, read-later loop works, and this time the files are mine.</p>
+
+      <div class="callout disclosure"><p>I should say up front: I built the extension I'm describing. That's a bias. It's also why I can tell you exactly where it falls short of Pocket, because I hit those edges myself.</p></div>
+
+      <h2 id="what-pocket-taught">What Pocket's shutdown taught me</h2>
+      <p>I used Pocket for years. When the shutdown was announced, I did what everyone did — grabbed the export before the deadline and moved on with my life.</p>
+      <p>Except the export wasn't really my reading list. It was a list of <em>URLs</em>. And my highlights — years of them — came out mangled or simply missing. The articles themselves? Not in the export at all. If a page had died since I saved it, that item was now a dead link with a title. Pocket wasn't an archive; it was a bookmarks folder with a nicer coat.</p>
+      <p>Omnivore users got the same lesson a year earlier when it wound down after the ElevenLabs acquisition. The pattern is clear enough that I stopped treating it as bad luck: <strong>a read-later service is a rented reading list.</strong> When the landlord leaves, you keep whatever fits in the moving box they hand you.</p>
+      <p>So my requirement for a replacement wasn't "the best Pocket clone." It was: the saved article must be a plain file, on my disk, in a format that will outlive any company — including mine.</p>
+
+      <h2 id="my-setup">My read-later setup now</h2>
+      <p>Here's the whole system. It's short:</p>
+      <ol>
+        <li>I keep a <strong>Read Later vault</strong> in Obsidian (a plain folder of Markdown files).</li>
+        <li>When I hit an article worth keeping, one keystroke clips it — full text, code blocks, tables, images — as clean Markdown straight into that vault.</li>
+        <li>The clipper writes YAML frontmatter automatically; I add a <code>readlater</code> tag there. Later, one tag search in Obsidian surfaces the whole queue.</li>
+        <li>I read on my iPad, in Obsidian, with the vault synced. Capture happens at my desk; reading happens on the couch.</li>
+      </ol>
+      <p>That's it. No inbox to zero, no recommendation feed, no "listen to this article" upsell. A folder of files and a tag.</p>
+      <p>The part that quietly matters: every article is <em>actually there</em>. Full text, offline, greppable. When a post disappears from the web — and they do — my copy doesn't care.</p>
+
+      <h2 id="llm-ready">The part Pocket never did: articles that are LLM-ready</h2>
+      <p>This one I didn't plan; it just became my most-used feature.</p>
+      <p>Markdown is the most token-efficient faithful format you can hand an LLM. So when I want ChatGPT or Claude to read something with me, I select the relevant part of the page, right-click, <strong>Clip selection</strong>, and paste. Structure survives — headings, tables, code stay intact.</p>
+      <p>The alternative people default to is screenshots, and screenshots are a bad deal: they burn far more tokens, they're slower for the model to process, and anything longer than one screen turns into a slideshow of crops. A pasted Markdown selection is smaller, faster, and the model can quote it back precisely.</p>
+      <p>Pocket had no answer to this because Pocket kept your articles inside Pocket. Files don't have that problem.</p>
+
+      <h2 id="honest-limits">Honest limits: this is not Pocket's ecosystem</h2>
+      <p>Pocket was an <em>ecosystem</em>: iOS and Android apps, a web app, browser extensions, offline sync, highlights, recommendations. A big machine.</p>
+      <p>Markdown Web Clipper is a light alternative, and I want to be plain about that:</p>
+      <table class="compare-table">
+        <caption class="sr-only">Pocket versus Markdown Web Clipper plus Obsidian, compared by capture, reading, storage, article content, highlights, recommendations, and cost.</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Pocket (was)</th>
+            <th scope="col">Markdown Web Clipper + Obsidian</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capture</td>
+            <td data-label="Pocket (was)">any device</td>
+            <td data-label="Markdown Web Clipper + Obsidian"><strong>desktop Chrome only</strong> (for now)</td>
+          </tr>
+          <tr>
+            <td>Reading</td>
+            <td data-label="Pocket (was)">native apps everywhere</td>
+            <td data-label="Markdown Web Clipper + Obsidian">any Markdown app — Obsidian on desktop/mobile works well</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td data-label="Pocket (was)">Pocket's servers</td>
+            <td data-label="Markdown Web Clipper + Obsidian">plain <code>.md</code> files on your disk</td>
+          </tr>
+          <tr>
+            <td>Article content</td>
+            <td data-label="Pocket (was)">stored remotely, exported as URLs</td>
+            <td data-label="Markdown Web Clipper + Obsidian">full text + images, local, offline</td>
+          </tr>
+          <tr>
+            <td>Highlights</td>
+            <td data-label="Pocket (was)">in-app (export was lossy)</td>
+            <td data-label="Markdown Web Clipper + Obsidian">your notes live in the file itself</td>
+          </tr>
+          <tr>
+            <td>Recommendations</td>
+            <td data-label="Pocket (was)">yes</td>
+            <td data-label="Markdown Web Clipper + Obsidian">no, and never</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td data-label="Pocket (was)">freemium</td>
+            <td data-label="Markdown Web Clipper + Obsidian">free, MIT-licensed, open source</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>If you save articles from your phone all day, this setup will frustrate you — capture is desktop-only. There's no reading queue UI, no listening mode, no social layer. What you get instead is ownership: with Obsidian (or any Markdown app) on the reading side, the loop closes, and no shutdown announcement can take the archive away.</p>
+
+      <h2 id="other-alternatives">The other Pocket alternatives, honestly</h2>
+      <p>I'll be straight: I didn't seriously live in any of these. When I looked, the polished ones were subscriptions and the open ones wanted me to run a server, and I didn't want either. So — documented facts, not reviews:</p>
+      <ul>
+        <li><strong>Readwise Reader</strong> — probably the most capable successor; paid subscription. If you want highlights-first workflows and money isn't the issue, it's the obvious candidate.</li>
+        <li><strong>Instapaper</strong> — the survivor of the original read-later era; free tier with a premium plan. Closest to classic Pocket in spirit.</li>
+        <li><strong>Raindrop.io</strong> — really a bookmarks manager with good clipping; generous free tier, cloud-hosted.</li>
+        <li><strong>Wallabag</strong> — open source and self-hostable, which is genuinely great <em>if</em> "spin up your own server" sounds like a weekend project rather than a chore. A paid hosted version exists.</li>
+      </ul>
+      <p>None of these are wrong choices. They're all still someone else's database. That trade-off is the entire fork in the road: features versus files. I chose files.</p>
+
+      <h2 id="set-it-up">Set it up in two minutes</h2>
+      <ol>
+        <li>Install <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog">Markdown Web Clipper</a> — free, no account.</li>
+        <li>Point it at a folder inside your Obsidian vault (or any folder — it's just files).</li>
+        <li>Clip something. Add <code>readlater</code> to the frontmatter tags.</li>
+        <li>On mobile, open the same vault in Obsidian with your sync of choice. Your queue is a tag search away.</li>
+      </ol>
+
+      <h2 id="faq">FAQ</h2>
+      <p><strong>Can I read clipped articles on my phone or iPad?</strong><br />
+      Yes — that's my daily flow. The clipper saves Markdown into the vault on desktop; Obsidian mobile (with the vault synced) does the reading. Capture itself is desktop-only.</p>
+      <p><strong>Can it import my old Pocket export?</strong><br />
+      No. It clips pages going forward. Your Pocket export (a CSV/HTML file of links) can live in the same vault, but the articles it points to aren't recoverable through it — which is rather the point of switching to files.</p>
+      <p><strong>Is it actually free?</strong><br />
+      The core is free forever and MIT-licensed — clipping, all destinations, full fidelity. There's an optional one-time Pro purchase for power features; nothing about the read-later workflow above needs it.</p>
+      <p><strong>Does it phone home?</strong><br />
+      No account, no server, no analytics in the extension. Pages convert locally in your browser and are written to your disk.</p>
+
+      <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
+        <em>Tigran Davtyan builds <a href="https://github.com/Tigrandza/markdown-web-clipper" style="color:var(--accent)">Markdown Web Clipper</a>, a free, open-source Chrome extension that converts web pages to clean Markdown. This post reflects his own setup as of July 2026.</em>
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h2>Product</h2>
+          <a href="/">Home</a>
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h2>Reading</h2>
+          <a href="/blog/">Blog</a>
+          <a href="/pro-faq">Pro FAQ</a>
+          <a href="/restore">Restore Purchase</a>
+          <a href="/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h2>Legal &amp; source</h2>
+          <a href="/privacy">Privacy</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>

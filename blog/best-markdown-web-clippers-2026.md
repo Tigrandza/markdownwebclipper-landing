@@ -141,4 +141,6 @@ Disclosed up top — I built this one.
 Five honest answers because there are five honest user populations. Pick the tool that matches
 yours.
 
+**Related reading:** if you landed here because Pocket shut down, see [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian) — the same clipper, framed as a read-later replacement.
+
 _Last updated 2026-06-07._

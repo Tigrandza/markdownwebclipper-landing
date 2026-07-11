@@ -17,6 +17,7 @@
 ## Blog
 
 - [Blog index](https://markdownwebclipper.com/blog/)
+- [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian): a free, local-first Pocket alternative — clip articles as clean Markdown into an Obsidian vault, tag readlater, read on iPad. ([Markdown](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian.md))
 - [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026): honest six-way comparison. ([Markdown](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026.md))
 
 ## Source & feeds

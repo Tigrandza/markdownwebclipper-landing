@@ -6,7 +6,14 @@
     <atom:link href="https://markdownwebclipper.com/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Comparisons, technical write-ups, and honest takes on the web-clipper landscape, from the people building Markdown Web Clipper.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Life after Pocket: the local-first read-later setup I actually use</title>
+      <link>https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian</link>
+      <guid isPermaLink="true">https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian</guid>
+      <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Pocket is gone. Here's the free, local-first Pocket alternative I use every day: clip articles as clean Markdown into an Obsidian vault, tag them readlater, read on iPad. No account, no server.</description>
+    </item>
     <item>
       <title>Best Markdown web clippers for Obsidian, compared (2026)</title>
       <link>https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026</link>
