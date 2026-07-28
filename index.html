@@ -8,7 +8,7 @@
   Companion to the May extension redesign (.design/DECISIONS.md +
   .design/markdown-clipper/). Source of truth in this private repo;
   mirror to public github.com/Tigrandza/markdownwebclipper-landing,
-  substituting pdt_0NfuGhRc7PfiD3aSfckyG at deploy time.
+  substituting __DODO_PRODUCT_ID_PLACEHOLDER__ at deploy time.
 
   Differences vs the bundle's index.html:
   - Only the SPLIT hero ships (centered + compare were dev review
@@ -462,7 +462,7 @@ Energy: <span class="fence">$E = mc^2$</span></div>
         <div style="margin-top:14px"><span class="now">$9</span><span class="was">$19</span></div>
         <p class="once">One-time purchase · lifetime updates · no subscription</p>
         <span class="badge-pro promo">$9 → $19 soon</span>
-        <a class="btn btn-primary btn-lg" href="https://checkout.dodopayments.com/buy/pdt_0NfuGhRc7PfiD3aSfckyG">Buy Pro</a>
+        <a class="btn btn-primary btn-lg" href="https://checkout.dodopayments.com/buy/__DODO_PRODUCT_ID_PLACEHOLDER__">Buy Pro</a>
         <p class="fine">Already bought it? <a href="/restore" style="color:var(--accent)">Restore your purchase</a>. Questions? <a href="/pro-faq" style="color:var(--accent)">Read the Pro FAQ</a>.</p>
       </div>
     </div>
@@ -495,10 +495,11 @@ Energy: <span class="fence">$E = mc^2$</span></div>
       </div>
     </div>
 
-    <!-- honest social-proof placeholder -->
-    <div class="tbd" style="margin-top:24px">
-      <p class="eyebrow">Reviews · TBD</p>
-      <p>The extension is pending its first Chrome Web Store review cycle. When real ratings and quotes exist, they'll live here — we won't invent testimonials to fill the space.</p>
+    <!-- real Chrome Web Store rating -- swap only when the aggregate changes, don't invent testimonials -->
+    <div class="cred-card" style="margin-top:24px; text-align:center">
+      <p class="eyebrow">Chrome Web Store</p>
+      <p style="font-size:20px; font-weight:600; margin-top:8px">★★★★★ 5.0 <span style="color:var(--fg-faint); font-weight:400">— real users, no invented quotes</span></p>
+      <a class="repo" style="justify-content:center; margin-top:10px" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif/reviews?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=reviews">Read the reviews on the Chrome Web Store</a>
     </div>
   </div>
 </section>
