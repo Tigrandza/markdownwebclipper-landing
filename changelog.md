@@ -6,6 +6,20 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.5.0 — July 11, 2026
+
+- The Chrome Web Store listing is now "Markdown Web Clipper — Save Webpage to Obsidian & Notes",
+  with a rewritten description, updated across all 16 languages, so people searching the store for
+  a Markdown clipper can find it. The extension itself is unchanged by this release.
+- The rest of the release was website work on markdownwebclipper.com: a new "Life after Pocket"
+  guide plus search and structured-data fixes.
+
+## 0.4.0 — July 10, 2026
+
+- The interface now ships in 16 languages. This release added Dutch, Indonesian, Italian, Korean,
+  Polish, Turkish, Vietnamese, and Traditional Chinese; Chrome picks the closest match to your
+  browser language automatically.
+
 ## 0.3.0 — June 21, 2026
 
 - Open in Obsidian now works reliably for short clips. Previously, sending a small page (like a

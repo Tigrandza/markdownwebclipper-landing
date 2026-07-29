@@ -69,7 +69,13 @@
 
 <!-- SoftwareApplication schema covers the free CWS install. Listed as a
      free offer because the extension itself is $0 to download/use; Pro
-     is an in-app upgrade modeled separately as its own SoftwareApplication below. -->
+     is an in-app upgrade modeled separately as its own SoftwareApplication below.
+     softwareVersion below is a PLACEHOLDER, never a real version: package.json
+     is the one canonical source (release-please bumps it, WXT reads it into the
+     built manifest) and scripts/sync-landing.sh substitutes it into the shipped
+     copy at deploy time. The private source carries no literal version, so it
+     cannot drift; the substitution is fail-closed, the same invariant as the
+     Dodo product-id placeholder. See docs/landing-sync.md. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,7 +87,7 @@
   "image": "https://markdownwebclipper.com/og-hero.png",
   "url": "https://markdownwebclipper.com/",
   "downloadUrl": "https://chromewebstore.google.com/detail/markdown-web-clipper-save-pages-to-obsidian/dpkinbemdemheacegfjbbkclcpbfedif",
-  "softwareVersion": "0.1.0",
+  "softwareVersion": "0.5.0",
   "license": "https://opensource.org/licenses/MIT",
   "offers": {
     "@type": "Offer",

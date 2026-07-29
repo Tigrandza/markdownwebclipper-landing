@@ -50,5 +50,3 @@ needs to reach out.
 The free edition is the whole product. Pro ($9 launch / $19 standard, one-time, lifetime) adds
 GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault
 routing. See [/pro-faq](https://markdownwebclipper.com/pro-faq).
-
-Buy: [Buy Pro — $9 one-time](https://checkout.dodopayments.com/buy/pdt_0NfuGhRc7PfiD3aSfckyG) · [Restore a purchase](https://markdownwebclipper.com/restore)
