@@ -2,10 +2,13 @@
 # Applied to every response served from this repo. Closes the security-header
 # gaps from SPEC-AUDIT.md + sets sane caching and the .md content-type.
 
-# NOTE: HSTS below is overridden by Cloudflare's zone-level HSTS setting, which is
-# currently disabled (serves max-age=0). To actually enable HSTS, turn it on in the
-# Cloudflare dashboard: SSL/TLS → Edge Certificates → HTTP Strict Transport Security.
-# The line here documents the intended value and is harmless once the zone setting matches.
+# HSTS is LIVE and matches the line below. Production serves
+# `strict-transport-security: max-age=31536000; includeSubDomains` — verified
+# 2026-07-29 with: curl -sI https://markdownwebclipper.com/
+# Cloudflare's zone-level HSTS setting (SSL/TLS -> Edge Certificates -> HTTP Strict
+# Transport Security) is enabled and agrees with this value. The zone setting takes
+# precedence over this file, so re-run the curl above after any Cloudflare SSL/TLS
+# change to confirm the two still agree.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
