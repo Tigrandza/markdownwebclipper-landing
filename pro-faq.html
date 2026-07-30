@@ -99,6 +99,35 @@
   ]
 }
 </script>
+<!-- SoftwareApplication schema for the Pro tier. Lives on /pro-faq because that is
+     the URL the entity declares; the free-tier app entity stays on / with its own
+     @id. One Offer only — the $9 launch price is the sole purchasable one today.
+     Standard $19 is described in prose below but not asserted as buyable. The
+     Offer url points at /#pro because that section holds the only checkout
+     button on the site; this page routes buyers through the popup. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://markdownwebclipper.com/pro-faq#pro",
+  "name": "Markdown Web Clipper Pro",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Chrome",
+  "description": "Pro upgrade for Markdown Web Clipper. Adds GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault routing. One-time purchase, lifetime license, no subscription.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "url": "https://markdownwebclipper.com/pro-faq",
+  "offers": {
+    "@type": "Offer",
+    "name": "Pro — launch promo",
+    "description": "Launch-window pricing. Lifetime, one-time. No subscription.",
+    "price": "9.00",
+    "priceCurrency": "USD",
+    "url": "https://markdownwebclipper.com/#pro",
+    "availability": "https://schema.org/InStock",
+    "category": "OneTimePayment"
+  }
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

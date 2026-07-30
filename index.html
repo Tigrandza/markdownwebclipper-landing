@@ -69,7 +69,8 @@
 
 <!-- SoftwareApplication schema covers the free CWS install. Listed as a
      free offer because the extension itself is $0 to download/use; Pro
-     is an in-app upgrade modeled separately as its own SoftwareApplication below.
+     is an in-app upgrade modeled separately as its own SoftwareApplication on
+     /pro-faq, the page that entity declares as its url.
      softwareVersion below is a PLACEHOLDER, never a real version: package.json
      is the one canonical source (release-please bumps it, WXT reads it into the
      built manifest) and scripts/sync-landing.sh substitutes it into the shipped
@@ -80,6 +81,7 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": "https://markdownwebclipper.com/#app",
   "name": "Markdown Web Clipper",
   "applicationCategory": "ProductivityApplication",
   "operatingSystem": "Chrome",
@@ -95,43 +97,6 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   }
-}
-</script>
-<!-- SoftwareApplication schema for Pro tier — drives rich-results pricing cards on
-     SERPs for "Markdown Web Clipper Pro" / pricing queries. Two offers
-     surface the $9 promo vs $19 standard tiers honestly. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Markdown Web Clipper Pro",
-  "applicationCategory": "ProductivityApplication",
-  "operatingSystem": "Chrome",
-  "description": "Pro upgrade for Markdown Web Clipper. Adds GitHub Gist destination, co-located image folders, unlimited multi-tab batch, and multi-vault routing. One-time purchase, lifetime license, no subscription.",
-  "image": "https://markdownwebclipper.com/og-hero.png",
-  "url": "https://markdownwebclipper.com/pro-faq",
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Pro — launch promo",
-      "description": "Launch-window pricing for the first wave of buyers. Same features as Standard.",
-      "price": "9.00",
-      "priceCurrency": "USD",
-      "url": "https://markdownwebclipper.com/#pro",
-      "availability": "https://schema.org/InStock",
-      "category": "OneTimePayment"
-    },
-    {
-      "@type": "Offer",
-      "name": "Pro — standard",
-      "description": "Lifetime, one-time. Same features as the launch promo.",
-      "price": "19.00",
-      "priceCurrency": "USD",
-      "url": "https://markdownwebclipper.com/#pro",
-      "availability": "https://schema.org/InStock",
-      "category": "OneTimePayment"
-    }
-  ]
 }
 </script>
 </head>
@@ -504,7 +469,7 @@ Energy: <span class="fence">$E = mc^2$</span></div>
     <!-- real Chrome Web Store rating -- swap only when the aggregate changes, don't invent testimonials -->
     <div class="cred-card" style="margin-top:24px; text-align:center">
       <p class="eyebrow">Chrome Web Store</p>
-      <p style="font-size:20px; font-weight:600; margin-top:8px">★★★★★ 5.0 <span style="color:var(--fg-faint); font-weight:400">— real users, no invented quotes</span></p>
+      <p style="font-size:20px; font-weight:600; margin-top:8px">★★★★★ 5.0 (1 rating) <span style="color:var(--fg-faint); font-weight:400">— real reviews, no invented quotes</span></p>
       <a class="repo" style="justify-content:center; margin-top:10px" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif/reviews?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=reviews">Read the reviews on the Chrome Web Store</a>
     </div>
   </div>
