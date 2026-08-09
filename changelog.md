@@ -6,6 +6,11 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.6.1 — August 9, 2026
+
+- Documentation-only release: published the 0.6.0 release notes below to this changelog.
+  No extension changes.
+
 ## 0.6.0 — August 9, 2026
 
 - After your fifth clip, Clipper may ask once for a Chrome Web Store review. There is no
