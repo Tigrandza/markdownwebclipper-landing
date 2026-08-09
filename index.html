@@ -483,7 +483,7 @@ Energy: <span class="fence">$E = mc^2$</span></div>
     <!-- Was a 1.2MB demo.gif; now MP4+WebM (~115KB total). JS plays it only when
          the visitor hasn't requested reduced motion (see landing.js) — the poster
          stays put otherwise. Fallback <img> uses the lightweight poster, not the GIF. -->
-    <video class="demo-video" width="720" height="405" muted loop playsinline preload="none"
+    <video class="demo-video" id="demo-video" width="720" height="405" muted loop playsinline preload="none"
            poster="/demo-poster.png" data-autoplay
            aria-label="Animated demo: Markdown Web Clipper popup, clipping a Wikipedia article and saving it as ~/Notes/Clippings/Markdown.md"
            style="margin:36px auto 32px; display:block; max-width:100%; width:720px; height:auto; border-radius:18px; box-shadow: var(--shadow-lg); background: var(--surface);">
@@ -493,7 +493,8 @@ Energy: <span class="fence">$E = mc^2$</span></div>
            width="720" height="405" loading="lazy" decoding="async"
            style="display:block; max-width:100%; width:720px; height:auto; border-radius:18px;" />
     </video>
-    <p class="fine reduced-motion-note" style="margin-bottom:24px">Still frame shown — your system's reduced motion setting is on.</p>
+    <p class="fine reduced-motion-note" style="margin-bottom:12px">Still frame shown — your system's reduced motion setting is on.</p>
+    <button type="button" class="btn btn-ghost reduced-motion-play" data-play-demo aria-controls="demo-video" style="margin-bottom:24px">▶ Play animation</button>
     <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=home">Add to Chrome — free</a>
   </div>
 </section>
