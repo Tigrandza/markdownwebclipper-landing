@@ -523,6 +523,18 @@ _Last updated 2026-06-07._
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.6.0 — August 9, 2026
+
+- After your fifth clip, Clipper may ask once for a Chrome Web Store review. There is no
+  nag loop and no "are you enjoying it?" quiz — one honest ask, and "Never ask again"
+  hides it forever. The request is translated into all 16 interface languages, and the
+  popup grows to fit the banner instead of pushing your content off-screen.
+- Fixed upgrade-dialog pricing text that displayed as "9 lifetime" instead of "$19
+  lifetime" (and similar clipped prices) in every language with a $-formatted price.
+- Website work on markdownwebclipper.com: structured-data and changelog fixes, a repaired
+  demo poster with a reduced-motion play button, and the real 5.0 store rating replacing
+  a placeholder.
+
 ## 0.5.0 — July 11, 2026
 
 - The Chrome Web Store listing is now "Markdown Web Clipper — Save Webpage to Obsidian & Notes",
