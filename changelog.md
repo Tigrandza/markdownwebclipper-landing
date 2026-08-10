@@ -6,6 +6,15 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.7.0 — August 10, 2026
+
+- The Settings sidebar's "Feedback" link and the popup's built-in template names (Article,
+  AI chat, arXiv) are now translated into all 16 languages, instead of always showing in
+  English.
+- Fixed the Auto / Full Page / Selection toggle in the popup: in languages where a label
+  was too long to fit, it used to get cut off unreadably. Labels now wrap onto multiple
+  lines instead, so the full text is always visible.
+
 ## 0.6.1 — August 9, 2026
 
 - Documentation-only release: published the 0.6.0 release notes below to this changelog.
