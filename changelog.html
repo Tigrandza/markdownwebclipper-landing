@@ -69,6 +69,14 @@
 
   <div class="wrap">
     <article class="prose">
+      <h2 id="0-8-0">0.8.0 — August 21, 2026</h2>
+      <ul>
+        <li>Formulas on Wikipedia and other wikis now save as real formulas. Chemistry diagrams used to arrive as a block of raw LaTeX that your notes app showed as an error; they now render properly in Obsidian and anywhere else that draws maths.</li>
+        <li>Fractions are no longer mangled. A page saying "4/3 &#960; r&#179;" used to be saved as "43 &#960; r&#179;" — a different number — because the fraction's divider was dropped during extraction.</li>
+        <li>Chemical formulas keep their shape. "H&#8322;O" and "(CH&#8323;)&#8323;CH" used to come out with spaces wedged in, as "H 2 O" and "(CH 3) 3 CH", and a formula that stacked a charge over a count could be split across two lines mid-sentence.</li>
+        <li>Footnotes now work. References used to be saved as links pointing at a page you no longer have, so clicking one went nowhere; they are now real footnotes that your notes app can jump to, with the return arrows removed.</li>
+        <li>The <code>created</code> date in a saved note now follows your own calendar. It was taken from UTC, so depending on your time zone an evening clip could be stamped with yesterday's or tomorrow's date.</li>
+      </ul>
       <h2 id="0-7-0">0.7.0 — August 10, 2026</h2>
       <ul>
         <li>The Settings sidebar's "Feedback" link and the popup's built-in template names (Article, AI chat, arXiv) are now translated into all 16 languages, instead of always showing in English.</li>

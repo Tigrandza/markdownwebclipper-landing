@@ -6,6 +6,23 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.8.0 — August 21, 2026
+
+- Formulas on Wikipedia and other wikis now save as real formulas. Chemistry diagrams
+  used to arrive as a block of raw LaTeX that your notes app showed as an error; they now
+  render properly in Obsidian and anywhere else that draws maths.
+- Fractions are no longer mangled. A page saying "4/3 π r³" used to be saved as "43 π r³"
+  — a different number — because the fraction's divider was dropped during extraction.
+- Chemical formulas keep their shape. "H₂O" and "(CH₃)₃CH" used to come out with spaces
+  wedged in, as "H 2 O" and "(CH 3) 3 CH", and a formula that stacked a charge over a
+  count could be split across two lines mid-sentence.
+- Footnotes now work. References used to be saved as links pointing at a page you no
+  longer have, so clicking one went nowhere; they are now real footnotes that your notes
+  app can jump to, with the return arrows removed.
+- The `created` date in a saved note now follows your own calendar. It was taken from UTC,
+  so depending on your time zone an evening clip could be stamped with yesterday's or
+  tomorrow's date.
+
 ## 0.7.0 — August 10, 2026
 
 - The Settings sidebar's "Feedback" link and the popup's built-in template names (Article,
