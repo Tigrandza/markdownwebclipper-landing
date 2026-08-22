@@ -88,6 +88,7 @@
   "description": "One keystroke converts any webpage to high-fidelity Markdown and saves it exactly where you keep your notes. Local-first. Privacy-respecting. Obsidian-compatible.",
   "image": "https://markdownwebclipper.com/og-hero.png",
   "url": "https://markdownwebclipper.com/",
+  "publisher": { "@id": "https://markdownwebclipper.com/#org" },
   "downloadUrl": "https://chromewebstore.google.com/detail/markdown-web-clipper-save-pages-to-obsidian/dpkinbemdemheacegfjbbkclcpbfedif",
   "softwareVersion": "0.8.0",
   "license": "https://opensource.org/licenses/MIT",
@@ -97,6 +98,49 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   }
+}
+</script>
+
+<!-- Organization + WebSite. These exist to consolidate brand identity: nothing
+     on the site stated which page IS the brand, and five pages were competing
+     for the navigational query "markdownwebclipper.com" (43 impressions,
+     position 12.7, ZERO clicks — Search Console, 90 days to 2026-08-20). Both
+     carry @id anchors so the SoftwareApplication above — and any future
+     per-page schema on /pro-faq or the blog — can reference them instead of
+     restating publisher details.
+     sameAs URLs deliberately carry NO utm_* params: the anchor tags in the body
+     do, but sameAs is an identity assertion and a tracked URL is a different
+     string. No SearchAction/sitelinks-searchbox either — Google retired that
+     feature and this site has no search endpoint to point one at. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://markdownwebclipper.com/#org",
+      "name": "Markdown Web Clipper",
+      "url": "https://markdownwebclipper.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://markdownwebclipper.com/icon-128.png",
+        "width": 128,
+        "height": 128
+      },
+      "sameAs": [
+        "https://github.com/Tigrandza/markdown-web-clipper",
+        "https://chromewebstore.google.com/detail/markdown-web-clipper-save-pages-to-obsidian/dpkinbemdemheacegfjbbkclcpbfedif"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://markdownwebclipper.com/#website",
+      "name": "Markdown Web Clipper",
+      "url": "https://markdownwebclipper.com/",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://markdownwebclipper.com/#org" }
+    }
+  ]
 }
 </script>
 </head>
