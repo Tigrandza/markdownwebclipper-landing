@@ -412,8 +412,9 @@ Edge, Firefox, Safari.
 
 - **Best at:** clean articles destined for an Obsidian vault. Highlights/annotations built
   in; first-class templates; seamless vault integration.
-- **Falls short:** uses Mozilla Readability — strong on articles, weaker on SPA pages
-  (Reddit, X, Xiaohongshu). No Gist destination, no batch-clip-many-tabs.
+- **Falls short:** no GitHub Gist destination, no batch-clip-many-tabs. Extraction runs on
+  Defuddle, which Kepano wrote for this clipper — the same engine ours uses, so on
+  article-shaped pages both tools start from the same extracted content.
 - **Pricing:** free.
 - **Pick if:** you live in Obsidian, clip mostly article-shaped content, want the tightest
   vault integration. The right default.
@@ -467,11 +468,23 @@ clipboard, no editor.
 Disclosed up top — I built this one.
 
 - **Best at:** high-fidelity extraction of the hard cases (rowspan tables, KaTeX math, fenced
-  code with language hints, footnotes) plus a real destination set. Pipeline is Defuddle for
-  extraction (handles SPAs Readability misses) + Turndown with the Joplin GFM plugin. Five
-  destinations: local folder (File System Access API — direct vault write, no sync server),
-  clipboard, .md download, Obsidian via `obsidian://` URI, and (Pro) GitHub Gist with
-  revision history via `PATCH /gists/{id}`.
+  code with language hints, footnotes) plus a real destination set. The extractor is the same
+  Defuddle the official Obsidian clipper uses; the difference is the repair work wrapped around
+  it, and conversion by Turndown with the Joplin GFM plugin. A pre-extraction pass rescues
+  MediaWiki fraction markup; post-extraction passes fix the spaces injected around `<sub>` and
+  `<sup>` and rejoin formulas stacked across a line break; a math rule unwraps MediaWiki's
+  `{\displaystyle …}` and `\ce{…}` so mhchem and KaTeX can render the result; and Turndown
+  rules turn Defuddle's footnote anchors into real `[^1]` footnotes instead of dead links.
+  Three of those are defects in Defuddle itself rather than in any clipper built on it. Each
+  reproduces from the library with a minimal fixture, and each is filed upstream with that
+  reproduction: kepano/defuddle#366, #367 and #369. The local work is a stopgap. The fraction
+  and sub/sup passes are written to be deleted outright once #366 and #367 land, and #369 can
+  only be fixed upstream, because the markup it concerns is gone before the content reaches
+  us. The current state of all three is public at those links. On ChatGPT, Claude and Gemini a bounded
+  scroll-and-expand pass runs before extraction so a virtualized conversation is fully in the
+  DOM first. Five destinations: local folder (File System Access API — direct vault write, no
+  sync server), clipboard, .md download, Obsidian via `obsidian://` URI, and (Pro) GitHub Gist
+  with revision history via `PATCH /gists/{id}`.
 - **Falls short:** small community; no built-in highlight/annotate; no AI handoff; the Pro
   tier is friction for some.
 - **Pricing:** free for everyone, no time-limit or feature degradation. Pro is one-time,
@@ -483,12 +496,12 @@ Disclosed up top — I built this one.
 
 | Clipper | Extraction | Destinations | Open source | Pricing |
 |---|---|---|---|---|
-| Obsidian Web Clipper | Readability — strong on articles, weak on SPAs | Obsidian vault (native), clipboard, download | Yes (MIT) | Free |
+| Obsidian Web Clipper | Defuddle — the same extractor we use | Obsidian vault (native), clipboard, download | Yes (MIT) | Free |
 | MarkDownload (R.I.P.) | Removed 2025; unmaintained | Download (historical) | Yes | N/A |
 | Web2MD | LLM-tuned | Clipboard, AI tools, Obsidian (Pro) | No | Freemium / subscription |
 | MarkSnip | Strong on code | Clipboard, download, built-in editor | No | Freemium |
 | LLMFeeder | Generic Markdown | Clipboard only | Yes | Free |
-| Markdown Web Clipper | Defuddle + GFM — preserves rowspan, math, fences | Local folder (FSA), clipboard, download, Obsidian, Gist (Pro) | Yes (MIT, free edition) | Free + lifetime $9 / $19 Pro |
+| Markdown Web Clipper | Defuddle + GFM, plus repair passes for fractions, sub/sup, math and footnotes | Local folder (FSA), clipboard, download, Obsidian, Gist (Pro) | Yes (MIT, free edition) | Free + lifetime $9 / $19 Pro |
 
 ## Verdict by use case
 
@@ -509,7 +522,12 @@ yours.
 
 **Related reading:** if you landed here because Pocket shut down, see [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian) — the same clipper, framed as a read-later replacement.
 
-_Last updated 2026-06-07._
+_Last updated 2026-08-22._
+
+_**Correction, 2026-08-22:** an earlier version of this post said the official Obsidian Web
+Clipper extracts with Mozilla Readability. That was wrong. It uses Defuddle — the same
+extractor this clipper uses, written by Kepano for the official clipper. The Obsidian Web
+Clipper and comparison-table entries have been rewritten accordingly._
 
 ---
 

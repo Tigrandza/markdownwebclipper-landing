@@ -42,7 +42,7 @@
   "description": "An honest 6-way comparison of Chrome Markdown clippers in 2026 — Obsidian Web Clipper, MarkDownload (R.I.P.), Web2MD, MarkSnip, LLMFeeder, and Markdown Web Clipper.",
   "image": "https://markdownwebclipper.com/og-hero.png",
   "datePublished": "2026-06-07",
-  "dateModified": "2026-06-07",
+  "dateModified": "2026-08-22",
   "author": {
     "@type": "Organization",
     "name": "Markdown Web Clipper",
@@ -147,7 +147,7 @@
       <h2 id="obsidian-web-clipper">Obsidian Web Clipper (official)</h2>
       <p>The current default. Built and shipped by the Obsidian team; <a href="https://github.com/obsidianmd/obsidian-clipper">MIT-licensed</a>; <a href="https://obsidian.md/clipper">free, no Pro tier</a>; available on Chrome, Edge, Firefox, and Safari.</p>
       <p><strong>Best at:</strong> clean articles destined for an Obsidian vault. Highlights and annotations are built in. Templates are first-class. The vault integration is what you'd expect from the people who make Obsidian — there isn't a single seam between "I clipped this" and "it's in my vault."</p>
-      <p><strong>Where it falls short:</strong> the extractor under the hood is Mozilla Readability — the same engine behind Firefox Reader View. Readability is excellent on news-shaped articles, weaker on SPA-shaped pages. The community itself has reported that the generic extractor produces sub-par output on Reddit, X, and Xiaohongshu; for those you pair it with a specialized extractor or accept the loss. No GitHub Gist destination. No batch-clip-many-tabs flow.</p>
+      <p><strong>Where it falls short:</strong> no GitHub Gist destination. No batch-clip-many-tabs flow. The extractor under the hood is <a href="https://github.com/kepano/defuddle">Defuddle</a>, which Kepano wrote for this clipper — the same engine ours uses, so on article-shaped pages both tools start from the same extracted content.</p>
       <p><strong>Pricing:</strong> free.</p>
       <p><strong>Pick this if:</strong> you live in Obsidian, you clip mostly article-shaped content, and you want the tightest possible vault integration. It's the right default.</p>
 
@@ -181,7 +181,7 @@
 
       <h2 id="our-clipper">Markdown Web Clipper (this one)</h2>
       <p>Disclosed up top — I built this one. I'll try to describe it the way the others described themselves: what it's best at, where it falls short, what it costs, and who it's for.</p>
-      <p><strong>Best at:</strong> high-fidelity extraction of the hard cases (rowspan tables, KaTeX math, fenced code with language hints, footnotes) plus a real destination set. The pipeline is <a href="https://github.com/kepano/defuddle">Defuddle</a> for extraction (which handles SPAs Readability misses) plus Turndown with the Joplin GFM plugin for conversion. Five destinations: <strong>local folder</strong> (via the File System Access API — direct write into an Obsidian vault, no sync server), <strong>clipboard</strong>, <strong>.md download</strong>, <strong>Obsidian via <code>obsidian://</code> URI</strong>, and (Pro) <strong>GitHub Gist</strong> with revision history via <code>PATCH /gists/{id}</code>.</p>
+      <p><strong>Best at:</strong> high-fidelity extraction of the hard cases (rowspan tables, KaTeX math, fenced code with language hints, footnotes) plus a real destination set. The extractor is the same <a href="https://github.com/kepano/defuddle">Defuddle</a> the official Obsidian clipper uses, with Turndown and the Joplin GFM plugin for conversion; the difference is the repair work wrapped around it. A pre-extraction pass rescues MediaWiki fraction markup before it is destroyed. Post-extraction passes remove the spaces injected around <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code> and rejoin formulas stacked across a line break. A math rule unwraps MediaWiki's <code>{\displaystyle …}</code> and <code>\ce{…}</code> wrappers so mhchem and KaTeX can render the result. Turndown rules turn Defuddle's footnote anchors into real <code>[^1]</code> footnotes instead of dead links. Three of those are defects in Defuddle itself rather than in any clipper built on it. Each reproduces from the library with a minimal fixture, and each is filed upstream with that reproduction: <a href="https://github.com/kepano/defuddle/issues/366">kepano/defuddle#366</a>, <a href="https://github.com/kepano/defuddle/issues/367">#367</a> and <a href="https://github.com/kepano/defuddle/issues/369">#369</a>. The local work is a stopgap. The fraction and sub/sup passes are written to be deleted outright once #366 and #367 land, and #369 can only be fixed upstream, because the markup it concerns is gone before the content reaches us. The current state of all three is public at those links. On ChatGPT, Claude and Gemini a bounded scroll-and-expand pass runs before extraction so a virtualized conversation is fully in the DOM first. Five destinations: <strong>local folder</strong> (via the File System Access API — direct write into an Obsidian vault, no sync server), <strong>clipboard</strong>, <strong>.md download</strong>, <strong>Obsidian via <code>obsidian://</code> URI</strong>, and (Pro) <strong>GitHub Gist</strong> with revision history via <code>PATCH /gists/{id}</code>.</p>
       <p><strong>Where it falls short:</strong> the community is small. No built-in highlight/annotate (the official Obsidian clipper wins this one). No AI handoff. The "Pro" tier exists for sustainability — that's a feature for some people and a friction for others.</p>
       <p><strong>Pricing:</strong> free for everyone, with no time-limit or feature degradation. Pro is one-time, lifetime: $9 launch / $19 standard. No subscription. <a href="/pro-faq">Full Pro FAQ here</a>.</p>
       <p><strong>Pick this if:</strong> you want the fidelity-first, privacy-first, lifetime-pricing combination — clean rowspan tables, real KaTeX math, the FSA vault write, and ownership of the file you saved. If you want subscription-style AI handoff, Web2MD will serve you better. If you want the tightest possible Obsidian integration, install the official one.</p>
@@ -201,7 +201,7 @@
         <tbody>
           <tr>
             <td>Obsidian Web Clipper</td>
-            <td data-label="Extraction"><span class="good">Readability</span> — strong on articles, weak on SPAs</td>
+            <td data-label="Extraction"><span class="good">Defuddle</span> — the same extractor we use</td>
             <td data-label="Destinations">Obsidian vault (native), clipboard, download</td>
             <td data-label="Open source"><span class="good">Yes</span> (MIT)</td>
             <td data-label="Pricing"><span class="good">Free</span></td>
@@ -236,7 +236,7 @@
           </tr>
           <tr class="us">
             <td>Markdown Web Clipper</td>
-            <td data-label="Extraction"><span class="good">Defuddle + GFM</span> — preserves rowspan, math, fences</td>
+            <td data-label="Extraction"><span class="good">Defuddle + GFM</span> — plus repair passes for fractions, sub/sup, math and footnotes</td>
             <td data-label="Destinations">Local folder (FSA), clipboard, download, Obsidian, Gist (Pro)</td>
             <td data-label="Open source"><span class="good">Yes</span> (MIT, free edition)</td>
             <td data-label="Pricing"><span class="good">Free</span> + lifetime $9 / $19 Pro</td>
@@ -259,7 +259,9 @@
       <p><strong>Related reading:</strong> if you landed here because Pocket shut down, see <a href="/blog/pocket-alternative-markdown-obsidian">Life after Pocket: the local-first read-later setup I actually use</a> — the same clipper, framed as a read-later replacement.</p>
 
       <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
-        Last updated 2026-06-07. Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+        Last updated 2026-08-22. Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+        <br><br>
+        <strong>Correction, 2026-08-22:</strong> an earlier version of this post said the official Obsidian Web Clipper extracts with Mozilla Readability. That was wrong. It uses Defuddle — the same extractor this clipper uses, written by Kepano for the official clipper. The Obsidian Web Clipper section and the comparison table have been rewritten accordingly.
       </p>
     </article>
   </div>
