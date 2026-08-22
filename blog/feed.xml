@@ -6,7 +6,14 @@
     <atom:link href="https://markdownwebclipper.com/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Comparisons, technical write-ups, and honest takes on the web-clipper landscape, from the people building Markdown Web Clipper.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Google Docs to Markdown: why your web clipper fails, and what works</title>
+      <link>https://markdownwebclipper.com/blog/google-docs-web-clipper</link>
+      <guid isPermaLink="true">https://markdownwebclipper.com/blog/google-docs-web-clipper</guid>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Google Docs renders to a canvas, so no web clipper can read the document from the page. Why that is, the three routes that do get Markdown out, and the base64-image trap in Google's own export.</description>
+    </item>
     <item>
       <title>Life after Pocket: the local-first read-later setup I actually use</title>
       <link>https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian</link>

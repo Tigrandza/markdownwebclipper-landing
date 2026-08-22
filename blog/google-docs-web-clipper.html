@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Google Docs to Markdown: why your web clipper fails, and what works</title>
+<meta name="description" content="No Chrome web clipper can read a Google Doc — since 2021 Docs paints your text into a canvas, so there is no DOM to extract. Here is why, plus the three routes that actually get Markdown out: Google's own export, the export?format=md URL, and the one extension that goes around the DOM entirely." />
+<link rel="canonical" href="https://markdownwebclipper.com/blog/google-docs-web-clipper" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/blog/google-docs-web-clipper.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="Google Docs to Markdown: why your web clipper fails, and what works" />
+<meta property="og:description" content="Google Docs paints your document into a canvas, so no web clipper can read it. The three routes that do work — File → Download → Markdown, the export?format=md URL, and an extension that reads Docs through Google's API instead of the page." />
+<meta property="og:url" content="https://markdownwebclipper.com/blog/google-docs-web-clipper" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta name="article:published_time" content="2026-08-23" />
+<meta name="article:author" content="Markdown Web Clipper" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+
+<!-- Article schema — drives the rich-results "Article" treatment in
+     Google Search (publication date, author, headline). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Google Docs to Markdown: why your web clipper fails, and what works",
+  "description": "Google Docs renders to a canvas, so no web clipper can read the document from the page. The three routes that do work, and what each one loses.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "author": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "url": "https://markdownwebclipper.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://markdownwebclipper.com/icon-128.png"
+    }
+  },
+  "mainEntityOfPage": "https://markdownwebclipper.com/blog/google-docs-web-clipper"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://markdownwebclipper.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Google Docs to Markdown: why your web clipper fails, and what works", "item": "https://markdownwebclipper.com/blog/google-docs-web-clipper" }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/blog/" class="hide-sm">Blog</a>
+      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-google-docs" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <span>Explainer</span></nav>
+      <h1 class="display" style="margin-top:12px">Google Docs to Markdown: why your web clipper <span class="rust">fails.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">You installed a Markdown web clipper, opened a Google Doc, pressed the shortcut, and got nothing. That is not a bug in the clipper you picked — no clipper that reads the page can work on Google Docs. Here is why, and the three things that do work.</p>
+      <div class="article-meta">
+        <span>Published 2026-08-23</span>
+        <span class="dot">·</span>
+        <span>~6 min read</span>
+        <span class="dot">·</span>
+        <span class="tag">Explainer</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose-layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <a href="#why-it-fails">Why your clipper fails</a>
+      <a href="#no-extension">Option 1: no extension at all</a>
+      <a href="#around-the-dom">Option 2: going around the DOM</a>
+      <a href="#what-you-lose">What you lose either way</a>
+      <a href="#where-we-fit">Where this clipper fits</a>
+    </aside>
+
+    <article class="prose">
+      <div class="callout disclosure"><p>I build <strong>Markdown Web Clipper</strong>. It does not clip Google Docs either. This post recommends other tools, including one that does this job better than anything I ship. If you spot a factual error, please <a href="mailto:support@markdownwebclipper.com">email me</a> and I'll correct it.</p></div>
+
+      <h2 id="why-it-fails">Why your clipper fails</h2>
+      <p>A web clipper works by reading the page's DOM — the tree of headings, paragraphs, lists and tables the browser builds from the HTML. Extraction finds the article inside that tree; conversion turns the tree into Markdown.</p>
+      <p>In May 2021, Google <a href="https://workspaceupdates.googleblog.com/2021/05/Google-Docs-Canvas-Based-Rendering-Update.html">moved Docs to canvas-based rendering</a>. Instead of laying your document out as HTML elements, Docs now paints it into a <code>&lt;canvas&gt;</code>.</p>
+      <p>To an extension, your document is a picture. There is no heading element to detect, no <code>&lt;table&gt;</code> to convert, no text node to read. Every clipper — mine, the official Obsidian one, the surviving MarkDownload forks — starts by asking the page for its content, and in the Docs editor there is nothing to ask for.</p>
+      <p>This is also why the extensions that <em>do</em> work on Docs make you sign in to Google. They are not reading the page at all. More on that below.</p>
+      <p><strong>One exception worth knowing:</strong> a document published with <em>File → Share → Publish to web</em> gets a <code>/d/e/…/pub</code> URL that serves ordinary HTML. Clippers work normally on those.</p>
+
+      <h2 id="no-extension">Option 1: no extension at all</h2>
+      <p>Google added <a href="https://workspaceupdates.googleblog.com/2024/07/import-and-export-markdown-in-google-docs.html">native Markdown import and export</a> in July 2024. Three forms, depending on what you are doing.</p>
+      <p><strong>One document, once.</strong> <code>File → Download → Markdown (.md)</code>.</p>
+      <p><strong>Part of a document.</strong> Select it, right-click, <code>Copy as Markdown</code>. Paste straight into your vault. (<a href="https://support.google.com/docs/answer/12014036">Google's documentation</a>.)</p>
+      <p><strong>Many documents, or scripted.</strong> Take the document URL and swap the trailing <code>/edit</code> for <code>/export?format=md</code>:</p>
+      <pre><code>https://docs.google.com/document/d/DOCUMENT_ID/edit
+https://docs.google.com/document/d/DOCUMENT_ID/export?format=md</code></pre>
+      <p>Open that in a browser you are signed into and it downloads. <code>curl -L</code> works too, for documents shared publicly.</p>
+      <p>Two traps are worth knowing before you build anything on this.</p>
+      <p><strong>Multiple Google accounts.</strong> If your URL carries <code>/u/1/</code> or <code>/u/2/</code>, keep it:</p>
+      <pre><code>https://docs.google.com/document/u/1/d/DOCUMENT_ID/export?format=md</code></pre>
+      <p>Drop that segment and you get the wrong account's answer — usually a login page, sometimes a permission error, occasionally nothing at all.</p>
+      <p><strong>Images come back as base64 blobs.</strong> This is the one that will surprise you. Google's Markdown export does not link images, it embeds them: a reference-style link in the body, and a data URI at the foot of the file.</p>
+      <pre><code>![][image1]
+
+[image1]: &lt;data:image/png;base64,iVBORw0KGgoAAAANSUhEUg…&gt;</code></pre>
+      <p>I tested this on a 37-line document holding a single screenshot. The exported <code>.md</code> was <strong>560,603 bytes</strong>. Obsidian renders it fine, but your vault now holds a half-megabyte text file, your search index carries half a megabyte of base64, and git will diff the whole blob every time you touch the note. If your documents have images in them, budget time to pull them back out.</p>
+
+      <h2 id="around-the-dom">Option 2: an extension that goes around the DOM</h2>
+      <p><a href="https://chromewebstore.google.com/detail/better-google-docs-copy/faciokbjemdddkjokcajndenapikgcml">Better Google Docs Copy</a> does the thing you originally wanted: copies a Google Doc to Markdown, with images, and with comments. It is <a href="https://github.com/shubgaur/better-google-docs-copy">open source</a>.</p>
+      <p>It works because it never touches the page. Its manifest asks for the <code>identity</code> permission and host access to <code>www.googleapis.com</code> — meaning: sign in to Google, then read the document through the Google Docs API and the comment threads through the Drive API. The text comes from Google's servers, not from your screen. That its author had to build it this way is the clearest confirmation of the canvas problem above.</p>
+      <p>That is the trade. A Google sign-in, in exchange for the only route into Docs content that actually exists.</p>
+      <p>Comments are the real reason to care. Neither export route gives you comment threads — the extension's own listing describes the alternative as copying them one at a time — so if the discussion around a document is the part you want in your notes, this is the only tool that gets it.</p>
+      <p><strong>Honest note on maturity:</strong> it had 63 active Chrome Web Store users when I checked in August 2026, from a November 2025 launch. That is small. It is also open source, so you can read exactly what it sends to Google before trusting it — which is more than most extensions in this space offer.</p>
+
+      <h2 id="what-you-lose">What you lose either way</h2>
+      <ul>
+        <li><strong>Suggestions.</strong> Suggested edits are in neither the export nor the API text. Accept or reject them first.</li>
+        <li><strong>Exact image placement.</strong> Wrapped and anchored images flatten into plain block images.</li>
+        <li><strong>Anything that is only a picture.</strong> Drawings and inserted equation images survive as images, not as structure.</li>
+      </ul>
+
+      <h2 id="where-we-fit">Where this clipper fits</h2>
+      <p>Plainly: Markdown Web Clipper does not clip Google Docs. It reads the page, and in the Docs editor there is no page to read.</p>
+      <p>What it is for is the other half of the same workflow — the research that ends up cited in the doc. Articles, GitHub READMEs, Wikipedia tables with <code>rowspan</code>, KaTeX math, ChatGPT and Claude conversations, clipped as clean Markdown straight into an Obsidian vault folder, the clipboard, a <code>.md</code> file, or a Gist. No account, no telemetry, works offline.</p>
+      <p>Should it clip Google Docs too? The route exists, and it is simpler than the one above: a content script running on <code>docs.google.com</code> can fetch that same <code>export?format=md</code> URL using the session you already have — no Google sign-in, no API project, no OAuth screen — and then run the result through the image pipeline that already localizes images, which would fix the base64 problem outright.</p>
+      <p>I have not built it, because the numbers do not yet say anyone wants it. Every Chrome extension I can find that moves content between Google Docs and Markdown, in either direction, adds up to fewer than 900 users between them. The official Obsidian Web Clipper has over 300,000.</p>
+      <p>If you are one of the people who wants it, say so: <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a>. That mail is a better signal than any keyword tool, and it is the thing that would change my mind.</p>
+
+      <p><strong>Related reading:</strong> <a href="/blog/best-markdown-web-clippers-2026">Best Markdown web clippers for Obsidian, compared (2026)</a> — an honest six-way comparison of the clippers that <em>do</em> read the page, including this one.</p>
+
+      <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
+        Last updated 2026-08-23. Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h2>Product</h2>
+          <a href="/">Home</a>
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-google-docs">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h2>Reading</h2>
+          <a href="/blog/">Blog</a>
+          <a href="/pro-faq">Pro FAQ</a>
+          <a href="/restore">Restore Purchase</a>
+          <a href="/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h2>Legal &amp; source</h2>
+          <a href="/privacy">Privacy</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics in the extension · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>
