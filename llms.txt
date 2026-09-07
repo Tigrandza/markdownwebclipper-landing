@@ -17,6 +17,7 @@
 ## Blog
 
 - [Blog index](https://markdownwebclipper.com/blog/)
+- [How to save and export ChatGPT and Claude conversations as Markdown (2026)](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown): how to get one Markdown file with every turn, code language, table and formula intact — plus a measured five-tool comparison. ([Markdown](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown.md))
 - [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian): a free, local-first Pocket alternative — clip articles as clean Markdown into an Obsidian vault, tag readlater, read on iPad. ([Markdown](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian.md))
 - [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026): honest six-way comparison. ([Markdown](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026.md))
 - [Google Docs to Markdown: why your web clipper fails, and what works](https://markdownwebclipper.com/blog/google-docs-web-clipper): why canvas rendering blocks every DOM-reading clipper, the three routes that do get Markdown out of a Google Doc, and an honest note that this clipper is not one of them. ([Markdown](https://markdownwebclipper.com/blog/google-docs-web-clipper.md))

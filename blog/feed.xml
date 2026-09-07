@@ -6,7 +6,14 @@
     <atom:link href="https://markdownwebclipper.com/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Comparisons, technical write-ups, and honest takes on the web-clipper landscape, from the people building Markdown Web Clipper.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How to save and export ChatGPT and Claude conversations as Markdown (2026)</title>
+      <link>https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown</link>
+      <guid isPermaLink="true">https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+      <description>The built-in options give you JSON in an email, a PDF, or a link on someone else's server. Here's how to get one Markdown file with every turn, code language, table and formula intact — and a measured comparison of five Chrome exporters, including the results that don't flatter me.</description>
+    </item>
     <item>
       <title>Google Docs to Markdown: why your web clipper fails, and what works</title>
       <link>https://markdownwebclipper.com/blog/google-docs-web-clipper</link>

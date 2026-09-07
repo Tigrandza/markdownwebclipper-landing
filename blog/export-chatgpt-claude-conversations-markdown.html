@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to save and export ChatGPT and Claude conversations as Markdown (2026)</title>
+<meta name="description" content="Save a ChatGPT, Claude or Gemini conversation as one Markdown file — every turn, speaker labels, code languages, tables and LaTeX intact. Includes a measured comparison of five Chrome exporters, with the results that don't flatter the author." />
+<link rel="canonical" href="https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/blog/export-chatgpt-claude-conversations-markdown.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="How to save and export ChatGPT and Claude conversations as Markdown (2026)" />
+<meta property="og:description" content="The built-in options give you JSON, a PDF or a link. Here's how to get one Markdown file with every turn intact — plus a measured five-tool comparison, including where mine only ties." />
+<meta property="og:url" content="https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta name="article:published_time" content="2026-08-24" />
+<meta name="article:author" content="Markdown Web Clipper" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+
+<!-- Article schema — drives the rich-results "Article" treatment in
+     Google Search (publication date, author, headline). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to save and export ChatGPT and Claude conversations as Markdown (2026)",
+  "description": "Save a ChatGPT, Claude or Gemini conversation as one Markdown file — every turn, speaker labels, code languages, tables and LaTeX intact — plus a measured comparison of five Chrome exporters.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "datePublished": "2026-08-24",
+  "dateModified": "2026-08-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "url": "https://markdownwebclipper.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://markdownwebclipper.com/icon-128.png"
+    }
+  },
+  "mainEntityOfPage": "https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://markdownwebclipper.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "How to save and export ChatGPT and Claude conversations as Markdown (2026)", "item": "https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown" }
+  ]
+}
+</script>
+<!-- FAQPage schema — machine-readable Q/A aid only. FAQ rich results were
+     retired May 2026; this is not a rich-result play. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this work on my own conversation, or only on shared links?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The published measurements in this article were all run against public share links, so that is what is proven. Clipping the conversation page you are signed in to uses the same site rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI chat sites are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "chatgpt.com, claude.ai and gemini.google.com have dedicated rules. Other chat sites clip with the general-purpose path, which will not add per-turn speaker headings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my conversation get uploaded anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Conversion happens locally in your browser and the file is written to your disk. No account, no server, no analytics in the extension."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it keep code blocks and their language?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, where the page exposes the language. One honest caveat: chatgpt.com does not expose a machine-readable language hint for every block, so a block that is untagged on the page stays untagged in the file. Some tools guess a language there; leaving it blank is more faithful than inventing one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I check a tool is really capturing everything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Count the turns on the page, then count the ## headings in the exported file. If a tool does not mark turns at all, that is your answer already."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/blog/" class="hide-sm">Blog</a>
+      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-ai-chat-export" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <span>AI chats</span></nav>
+      <h1 class="display" style="margin-top:12px">How to save and export ChatGPT and Claude conversations <span class="rust">as Markdown.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">The built-in options give you JSON in an email, a PDF, or a link on someone else's server. Here's how to get one Markdown file with every turn, every code language, every table and every formula intact — and a measured comparison of five Chrome exporters, including the results that don't flatter me.</p>
+      <div class="article-meta">
+        <span>Published 2026-08-24</span>
+        <span class="dot">·</span>
+        <span>~8 min read</span>
+        <span class="dot">·</span>
+        <span class="tag">AI chats</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose-layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <a href="#built-in">Why the built-in exports disappoint</a>
+      <a href="#save-chatgpt">How to save a ChatGPT conversation</a>
+      <a href="#export-fidelity">Exporting without losing code, tables or math</a>
+      <a href="#windowing">When the page won't stay put</a>
+      <a href="#print">Print to PDF, and when Markdown wins</a>
+      <a href="#measured">What I measured — including where I don't win</a>
+      <a href="#failures">What the failures look like</a>
+      <a href="#reuse">Save it once, then actually use it</a>
+      <a href="#faq">FAQ</a>
+    </aside>
+
+    <article class="prose">
+      <p class="lede" style="max-width:62ch">To save a ChatGPT, Claude or Gemini conversation as Markdown, open the conversation and clip it with a Markdown clipper that has rules for these sites. You get one <code>.md</code> file with every turn labelled by speaker, code blocks keeping their language, tables intact and LaTeX preserved. The built-in export options give you JSON, PDF or a link instead.</p>
+
+      <div class="callout disclosure"><p>I built one of the tools in this article — that's a bias. It's also why the comparison below is <strong>measured rather than asserted</strong>: every number comes from an export file committed to a public repo, which you could re-score yourself. Where a rival matches or beats mine, I've said so. If you spot a factual error, <a href="mailto:support@markdownwebclipper.com">email me</a> and I'll correct it.</p></div>
+
+      <h2 id="built-in">Why the built-in export options disappoint</h2>
+      <p>Each of the three big chat apps gives you <em>something</em>, and none of it is a Markdown file of the conversation you're looking at:</p>
+      <ul>
+        <li><strong>A share link</strong> puts the conversation on the vendor's server. It's a URL, not a copy. If the link is revoked or the vendor changes course, your "saved" conversation is a dead link.</li>
+        <li><strong>An account data export</strong> hands you an archive built for portability, not reading — JSON and HTML, everything at once, arriving by email. It's a backup, not a note.</li>
+        <li><strong>Print to PDF</strong> freezes the layout. Code blocks lose their language, tables become pictures of tables, and nothing is greppable or editable afterwards.</li>
+      </ul>
+      <p>None of those is <em>wrong</em>. They're just not "one conversation, as a file, in the same format as the rest of my notes."</p>
+      <p>That's the gap. A Markdown clip closes it: plain text, on your disk, that Obsidian, Logseq, git and every LLM read natively.</p>
+
+      <h2 id="save-chatgpt">How to save a ChatGPT conversation as Markdown</h2>
+      <ol>
+        <li>Open the conversation you want to keep.</li>
+        <li>Click the clipper (or press its shortcut).</li>
+        <li>Pick where it goes — clipboard, download, or straight into your vault folder.</li>
+      </ol>
+      <p>One file lands, and it looks like this — real output, not a mock-up:</p>
+      <pre><code class="language-markdown">## User
+
+I'm building a small time-series smoothing library. Start with a Python
+function for a simple moving average over a list of floats.
+
+## ChatGPT
+
+```python
+def moving_average(values: list[float], window: int) -&gt; list[float]:
+    if window &lt;= 0:
+        raise ValueError("window must be positive")
+```</code></pre>
+      <p>Two details in that snippet are the whole point. <code>## User</code> and <code>## ChatGPT</code> mean a Markdown outline gives you a clickable turn list. And the fence says <code>```python</code>, not a bare <code>```</code>, so syntax highlighting survives the trip.</p>
+
+      <h2 id="export-fidelity">How to export ChatGPT conversations without losing code, tables or math</h2>
+      <p>This is where clippers differ, and where most of them quietly fail.</p>
+      <p>A serious technical conversation contains four things worth measuring: <strong>every turn</strong>, <strong>who said what</strong>, <strong>code with its language tag</strong>, and <strong>tables and math that still work</strong>. I built a benchmark around exactly that — three real conversations of 24, 24 and 26 turns, one per site, each containing Python, SQL and TypeScript, a comparison table, and both inline and display LaTeX.</p>
+      <p>Here's what a table and a formula look like after a clean clip:</p>
+      <pre><code class="language-markdown">|     | Simple (SMA) | Exponential (EMA) |
+| --- | --- | --- |
+| **Lag** | Highest — average lag $(N-1)/2$ | Lowest for a given window |
+
+$$
+EMA_t = \alpha x_t + (1 - \alpha) EMA_{t-1}
+$$</code></pre>
+      <p>Still a table. Still LaTeX. Obsidian renders both.</p>
+      <p>The common failure isn't ugliness, it's <strong>silence</strong>. A tool that captures 5 turns of a 24-turn conversation produces a file that looks complete. You don't find out until you go looking for the answer that isn't there.</p>
+
+      <h2 id="windowing">How to download a conversation from ChatGPT when the page won't stay put</h2>
+      <p>Here's the part nobody warns you about, and it's specific to ChatGPT.</p>
+      <p>ChatGPT's page <strong>windows</strong>. It doesn't keep the whole conversation in the browser at once — it mounts a handful of turns near your scroll position and unmounts the rest. On the 24-turn conversation I tested, <strong>5 turns were mounted at page load and 15 at peak.</strong> No scroll position holds all 24.</p>
+      <p>That breaks the obvious approach. A clipper that reads the page in one pass gets whatever happened to be mounted at that instant, writes a tidy file, and reports success.</p>
+      <p>I know because it happened to me. The first run of my own benchmark produced 6 headings covering the last 3 exchanges of 24 — and my clipper reported success. Fixing it took three separate changes: a rotted container selector that made the scroll capture a silent no-op, then an accumulator that clones each turn the first time it's seen and re-inserts the missing ones in order, then a fix for the model's own <code>##</code> headings colliding with the turn headings.</p>
+      <p>The general lesson, if you're picking a tool: <strong>on ChatGPT, count the turns in your first export.</strong> If the number is small and round, you're looking at a window, not a conversation.</p>
+      <p>Claude and Gemini don't window this way. A tool can fail on ChatGPT and be perfectly fine on the other two — and in my results, two of them are exactly that.</p>
+
+      <h2 id="print">How to print a ChatGPT conversation (and when Markdown is better)</h2>
+      <p>Print-to-PDF still has real uses: a signature, an attachment, a record that must not be edited. <kbd>Cmd/Ctrl + P</kbd> from the conversation page gets you there.</p>
+      <p>Markdown is the better default for everything else:</p>
+      <table class="compare-table">
+        <caption class="sr-only">Print to PDF compared with a Markdown clip, across seven properties.</caption>
+        <thead>
+          <tr>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">Print to PDF</th>
+            <th scope="col">Markdown clip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Searchable in your notes app</td><td data-label="Print to PDF"><span class="bad">No</span></td><td data-label="Markdown clip"><span class="good">Yes</span></td></tr>
+          <tr><td>Editable and annotatable</td><td data-label="Print to PDF"><span class="bad">No</span></td><td data-label="Markdown clip"><span class="good">Yes</span></td></tr>
+          <tr><td>Code keeps its language</td><td data-label="Print to PDF"><span class="bad">No</span></td><td data-label="Markdown clip"><span class="good">Yes</span></td></tr>
+          <tr><td>Tables stay tables</td><td data-label="Print to PDF"><span class="bad">Picture of a table</span></td><td data-label="Markdown clip"><span class="good">Real table</span></td></tr>
+          <tr><td>Math stays math</td><td data-label="Print to PDF"><span class="bad">Frozen image</span></td><td data-label="Markdown clip"><span class="good">LaTeX Obsidian renders</span></td></tr>
+          <tr><td>Feed back to an LLM</td><td data-label="Print to PDF"><span class="partial">Costly, lossy</span></td><td data-label="Markdown clip"><span class="good">Native, cheap</span></td></tr>
+          <tr><td>Diffable in git</td><td data-label="Print to PDF"><span class="bad">No</span></td><td data-label="Markdown clip"><span class="good">Yes</span></td></tr>
+        </tbody>
+      </table>
+      <p>That last row is underrated. A conversation saved as Markdown can be version-controlled, and two of them can be diffed.</p>
+
+      <h2 id="measured">What I measured, including where I don't win</h2>
+      <p>On 2026-08-24 I ran five Chrome extensions against the same three conversations, in a clean, never-signed-in Chrome profile, each from a fresh tab with no manual scrolling, using each tool's own default export button with no settings changed. Every export is a committed file.</p>
+      <table class="compare-table">
+        <caption class="sr-only">Turn counts captured by six tools across three AI chat sites.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tool</th>
+            <th scope="col">ChatGPT (of 24)</th>
+            <th scope="col">Claude (of 24)</th>
+            <th scope="col">Gemini (of 26)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="us">
+            <td>Markdown Web Clipper</td>
+            <td data-label="ChatGPT"><span class="good">24</span></td>
+            <td data-label="Claude"><span class="good">24</span></td>
+            <td data-label="Gemini"><span class="good">26</span></td>
+          </tr>
+          <tr>
+            <td>AI Exporter</td>
+            <td data-label="ChatGPT"><span class="good">24</span></td>
+            <td data-label="Claude"><span class="partial">not run</span></td>
+            <td data-label="Gemini"><span class="good">26</span></td>
+          </tr>
+          <tr>
+            <td>Obsidian Web Clipper</td>
+            <td data-label="ChatGPT"><span class="bad">5</span></td>
+            <td data-label="Claude"><span class="good">24</span></td>
+            <td data-label="Gemini"><span class="partial">26 †</span></td>
+          </tr>
+          <tr>
+            <td>Web2MD</td>
+            <td data-label="ChatGPT"><span class="bad">5</span></td>
+            <td data-label="Claude"><span class="good">24</span></td>
+            <td data-label="Gemini"><span class="bad">13 ‡</span></td>
+          </tr>
+          <tr>
+            <td>Claude Chat Extractor</td>
+            <td data-label="ChatGPT">n/a</td>
+            <td data-label="Claude"><span class="bad">12</span></td>
+            <td data-label="Gemini">n/a</td>
+          </tr>
+          <tr>
+            <td>Echoes</td>
+            <td data-label="ChatGPT"><span class="partial">not run</span></td>
+            <td data-label="Claude"><span class="partial">not run</span></td>
+            <td data-label="Gemini"><span class="partial">not run</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:14px; color:var(--fg-faint)">† Complete text, but with <strong>no speaker labels at all</strong> — you can't tell who said what.<br />‡ Every prompt kept, every answer dropped. The file is 1,795 bytes; mine is 40,367.</p>
+
+      <p>Now the parts that don't flatter me, because a comparison that only flatters its author isn't worth reading:</p>
+      <ul>
+        <li><strong>On Claude, I tie.</strong> Obsidian Web Clipper gets all 24 turns with speakers, code, tables and math intact — same as mine. On code fences it's a three-way tie: Obsidian, Web2MD and mine each produce 12 fences, all 12 tagged, with the identical language mix. I have no edge there and I'm not going to pretend otherwise.</li>
+        <li><strong>AI Exporter matches me on ChatGPT and Gemini.</strong> It gets 24 of 24 and 26 of 26. It reaches them a different way — it reads the vendors' own conversation APIs instead of the page. That's a legitimate design with a different trade-off, not a trick. It's also why it handles ChatGPT's windowing without breaking a sweat, <em>and</em> why it won't export a Claude share link at all: a visitor to a shared page can't query that API.</li>
+        <li><strong>Two tools I couldn't measure.</strong> Echoes requires an account sign-in before it will export, so I stopped rather than create one — that's a fact about what it requires, not a verdict on its output, and I won't score it. AI Exporter can't run on Claude share links, as above.</li>
+      </ul>
+      <p>So the claim I'll actually defend is narrow: <strong>mine is the only one of these that gets a complete, faithful conversation out of all three sites by reading the page — no account, no private API, no server.</strong> Not "beats everything."</p>
+
+      <h2 id="failures">What the failures actually look like</h2>
+      <p>Ranked by how much it would cost you, not by how bad it sounds:</p>
+      <ul>
+        <li><strong>Half the conversation, silently.</strong> Web2MD drops every Gemini <em>answer</em>; Claude Chat Extractor drops every <em>prompt</em>. Both files open fine.</li>
+        <li><strong>Truncated to the visible window.</strong> Web2MD and Obsidian both took 5 of 24 turns on ChatGPT.</li>
+        <li><strong>No speaker labels.</strong> Obsidian's Gemini export has the full text with nothing marking who spoke — the same tool labels speakers correctly on Claude, so it's site-specific.</li>
+        <li><strong>Math corrupted rather than stripped.</strong> Two tools capture the rendered symbols <em>and</em> the LaTeX source and concatenate them, so you get <code>lags k=0,1,…,N−1k = 0, 1, \dots, N-1</code> with unclosed <code>$</code> delimiters. Worse than losing it — you can't fix it by hand at scale.</li>
+        <li><strong>A wrong language tag.</strong> Obsidian tags all 12 Gemini fences <code>markdown</code>, including the Python and SQL ones. A wrong tag is worse than a missing one: it silently mis-highlights.</li>
+        <li><strong>UI junk in your notes.</strong> AI Exporter's Gemini export carries 38 raw <code>&lt;Elicitation…&gt;</code> component tags — Gemini's follow-up-suggestion widget, written into the file as literal markup.</li>
+      </ul>
+      <p>One detail I found genuinely interesting: Web2MD and Obsidian Web Clipper lose ChatGPT's math at the <em>identical two places</em> in the conversation. Two independently built tools failing in the same spots isn't coincidence — it's ChatGPT rendering math in markup that neither tool hooks.</p>
+
+      <h2 id="reuse">Save it once, then actually use it</h2>
+      <p>The reason I want conversations as files isn't nostalgia for folders. It's that Markdown is the most token-efficient faithful format you can hand back to a model.</p>
+      <p>A saved conversation in your vault can be pasted into a fresh chat as context, quoted precisely, searched across months of sessions, or diffed against a later attempt at the same problem. A share link can do none of that, and a PDF makes the model work harder to read a worse copy of the same words.</p>
+
+      <h2 id="faq">FAQ</h2>
+      <p><strong>Does this work on my own conversation, or only on shared links?</strong><br />
+      The published measurements above were all run against public share links, so that's what's proven. Clipping the conversation page you're signed in to uses the same site rules.</p>
+      <p><strong>Which sites are supported?</strong><br />
+      chatgpt.com, claude.ai and gemini.google.com have dedicated rules. Other chat sites clip with the general-purpose path, which won't add per-turn speaker headings.</p>
+      <p><strong>Does my conversation get uploaded anywhere?</strong><br />
+      No. Conversion happens locally in your browser and the file is written to your disk. No account, no server, no analytics in the extension.</p>
+      <p><strong>Will it keep code blocks and their language?</strong><br />
+      Yes, where the page exposes the language. One honest caveat: chatgpt.com doesn't expose a machine-readable language hint for every block, so a block that's untagged on the page stays untagged in the file. Some tools guess a language there — I'd rather leave it blank than invent one.</p>
+      <p><strong>How do I check a tool is really capturing everything?</strong><br />
+      Count the turns on the page, then count the <code>##</code> headings in the file. If a tool doesn't mark turns, that's your answer already.</p>
+      <p><strong>Is it free?</strong><br />
+      The core is free forever and MIT-licensed. There's an optional one-time Pro purchase for power features; nothing in this article needs it.</p>
+
+      <p><strong>Related reading:</strong> <a href="/blog/best-markdown-web-clippers-2026">Best Markdown web clippers for Obsidian, compared</a> covers the same tools on article-shaped pages rather than conversations.</p>
+
+      <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
+        <em>Tigran Davtyan builds <a href="https://github.com/Tigrandza/markdown-web-clipper" style="color:var(--accent)">Markdown Web Clipper</a>, a free, open-source Chrome extension that converts web pages to clean Markdown. Benchmark run 2026-08-24 against tool versions Web2MD 1.8.3, AI Exporter 4.4.1, Echoes 8.3.1, Claude Chat Extractor 1.0.0, Obsidian Web Clipper 1.7.1; these ship weekly, so results may differ on a later version.</em>
+        <br><br>
+        Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h2>Product</h2>
+          <a href="/">Home</a>
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-ai-chat-export">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h2>Reading</h2>
+          <a href="/blog/">Blog</a>
+          <a href="/pro-faq">Pro FAQ</a>
+          <a href="/restore">Restore Purchase</a>
+          <a href="/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h2>Legal &amp; source</h2>
+          <a href="/privacy">Privacy</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics in the extension · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>
