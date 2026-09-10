@@ -37,7 +37,7 @@
   "url": "https://markdownwebclipper.com/changelog",
   "inLanguage": "en",
   "datePublished": "2026-06-11",
-  "dateModified": "2026-08-21"
+  "dateModified": "2026-09-10"
 }
 </script>
 <script type="application/ld+json">
@@ -80,6 +80,16 @@
 
   <div class="wrap">
     <article class="prose">
+      <h2 id="0-9-0">0.9.0 — September 10, 2026</h2>
+      <ul>
+        <li>AI chat conversations now save completely. ChatGPT, Claude and Gemini keep only a handful of turns in the page at a time and discard the rest as you scroll, so a long conversation used to arrive with just the last few turns and nothing before them. Clipper now collects turns as they appear, labels each one by speaker, and shows a banner on the page telling you what it still needs &#8212; usually a scroll to the top.</li>
+        <li>You can clip the conversation you are reading, instead of making a share link first.</li>
+        <li>New, optional: let Clipper start collecting the moment a conversation opens. Turn it on per site in Settings &#8594; Privacy; it is off until you do, and the extension asks for nothing extra beforehand. With it on, scrolling while you read is enough &#8212; there is no extra step when you clip.</li>
+        <li>Maths and code survive the trip. ChatGPT draws formulas in a way that leaves nothing to copy, so they used to vanish; Gemini’s code blocks arrived without their language, so nothing was highlighted in your notes.</li>
+        <li>A clip is no longer lost when folder access expires. Chrome drops an extension’s permission to write to your folder from time to time, and a long AI-chat clip used to die at the final step &#8212; after all the scrolling. It now saves to Downloads instead, and opening Clipper offers a single button to move it into your vault.</li>
+        <li>Clipper no longer opens menus on the page while it works. On Gemini, clipping could leave a message’s "&#8230;" menu sitting open afterwards.</li>
+        <li>"Clip" no longer reads as "cut" in 15 languages. The translations described cutting something with scissors rather than saving a page.</li>
+      </ul>
       <h2 id="0-8-0">0.8.0 — August 21, 2026</h2>
       <ul>
         <li>Formulas on Wikipedia and other wikis now save as real formulas. Chemistry diagrams used to arrive as a block of raw LaTeX that your notes app showed as an error; they now render properly in Obsidian and anywhere else that draws maths.</li>

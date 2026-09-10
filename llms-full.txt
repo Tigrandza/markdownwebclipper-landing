@@ -868,6 +868,30 @@ _Last updated 2026-08-23._
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.9.0 — September 10, 2026
+
+- AI chat conversations now save completely. ChatGPT, Claude and Gemini keep only a
+  handful of turns in the page at a time and discard the rest as you scroll, so a long
+  conversation used to arrive with just the last few turns and nothing before them.
+  Clipper now collects turns as they appear, labels each one by speaker, and shows a
+  banner on the page telling you what it still needs — usually a scroll to the top.
+- You can clip the conversation you are reading, instead of making a share link first.
+- New, optional: let Clipper start collecting the moment a conversation opens. Turn it
+  on per site in Settings → Privacy; it is off until you do, and the extension asks for
+  nothing extra beforehand. With it on, scrolling while you read is enough — there is no
+  extra step when you clip.
+- Maths and code survive the trip. ChatGPT draws formulas in a way that leaves nothing to
+  copy, so they used to vanish; Gemini's code blocks arrived without their language, so
+  nothing was highlighted in your notes.
+- A clip is no longer lost when folder access expires. Chrome drops an extension's
+  permission to write to your folder from time to time, and a long AI-chat clip used to
+  die at the final step — after all the scrolling. It now saves to Downloads instead, and
+  opening Clipper offers a single button to move it into your vault.
+- Clipper no longer opens menus on the page while it works. On Gemini, clipping could
+  leave a message's "…" menu sitting open afterwards.
+- "Clip" no longer reads as "cut" in 15 languages. The translations described cutting
+  something with scissors rather than saving a page.
+
 ## 0.8.0 — August 21, 2026
 
 - Formulas on Wikipedia and other wikis now save as real formulas. Chemistry diagrams
