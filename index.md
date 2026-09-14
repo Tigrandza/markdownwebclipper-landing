@@ -5,8 +5,8 @@
 Free & MIT-licensed · Chrome · Manifest V3
 
 Convert any webpage to high-fidelity Markdown and save it exactly where you keep your notes —
-local folder, clipboard, download, Obsidian, or Gist. No cloud, no cleanup. No account, no
-telemetry, works offline.
+local folder, clipboard, download, Obsidian, or Gist. Runs on your device. No cleanup. No
+account, no telemetry, works offline.
 
 - [Add to Chrome — free](https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&utm_medium=llms-txt&utm_campaign=home)
 - [View source (MIT)](https://github.com/Tigrandza/markdown-web-clipper)
@@ -39,8 +39,10 @@ needs to reach out.
 
 ## Honest by construction
 
-- **No analytics, no telemetry.** Clipper makes no network calls except the destination you
-  choose. Verify it in the source.
+- **No analytics, no telemetry.** Page content is never uploaded — conversion happens on your
+  device. The only network calls are for page images, for a GitHub Gist if you choose that
+  destination, an hourly licence check if you buy Pro, and a Restore Purchase lookup by your
+  email if you use that. Verify it in the source.
 - **MIT-licensed free edition.** Read it, fork it, audit what touches the page you're clipping.
 - **Trade-offs in the open.** Reference vs. inline images, what each destination can and can't
   do offline — documented, not hidden behind a Pro wall.
