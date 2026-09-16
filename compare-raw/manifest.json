@@ -1,0 +1,122 @@
+{
+  "capturedAt": "2026-09-16T18:51:32.974Z",
+  "chromium": "147.0.7727.15",
+  "clippers": {
+    "obsidian-web-clipper": {
+      "version": "1.7.1"
+    },
+    "marksnip": {
+      "version": "5.2.0"
+    },
+    "clipper": {
+      "version": "0.9.0"
+    }
+  },
+  "results": [
+    {
+      "caseId": "wikipedia-periodic-table",
+      "clipper": "obsidian-web-clipper",
+      "file": "wikipedia-periodic-table--obsidian-web-clipper.md",
+      "chars": 381382,
+      "ok": true
+    },
+    {
+      "caseId": "arxiv-attention",
+      "clipper": "obsidian-web-clipper",
+      "file": "arxiv-attention--obsidian-web-clipper.md",
+      "chars": 44731,
+      "ok": true
+    },
+    {
+      "caseId": "github-defuddle-readme",
+      "clipper": "obsidian-web-clipper",
+      "file": "github-defuddle-readme--obsidian-web-clipper.md",
+      "chars": 13350,
+      "ok": true
+    },
+    {
+      "caseId": "gwern-scaling-hypothesis",
+      "clipper": "obsidian-web-clipper",
+      "file": "gwern-scaling-hypothesis--obsidian-web-clipper.md",
+      "chars": 129393,
+      "ok": true
+    },
+    {
+      "caseId": "wikipedia-periodic-table",
+      "clipper": "marksnip",
+      "file": "wikipedia-periodic-table--marksnip.md",
+      "chars": 758862,
+      "ok": true
+    },
+    {
+      "caseId": "github-defuddle-readme",
+      "clipper": "marksnip",
+      "file": "github-defuddle-readme--marksnip.md",
+      "chars": 16002,
+      "ok": true
+    },
+    {
+      "caseId": "gwern-scaling-hypothesis",
+      "clipper": "marksnip",
+      "file": "gwern-scaling-hypothesis--marksnip.md",
+      "chars": 157554,
+      "ok": true
+    },
+    {
+      "caseId": "wikipedia-periodic-table",
+      "clipper": "clipper",
+      "file": "wikipedia-periodic-table--clipper.md",
+      "chars": 382909,
+      "ok": true
+    },
+    {
+      "caseId": "arxiv-attention",
+      "clipper": "clipper",
+      "file": "arxiv-attention--clipper.md",
+      "chars": 47346,
+      "ok": true
+    },
+    {
+      "caseId": "github-defuddle-readme",
+      "clipper": "clipper",
+      "file": "github-defuddle-readme--clipper.md",
+      "chars": 13028,
+      "ok": true
+    },
+    {
+      "caseId": "gwern-scaling-hypothesis",
+      "clipper": "clipper",
+      "file": "gwern-scaling-hypothesis--clipper.md",
+      "chars": 129254,
+      "ok": true
+    },
+    {
+      "caseId": "arxiv-attention",
+      "clipper": "marksnip",
+      "file": "arxiv-attention--marksnip.md",
+      "chars": 53974,
+      "ok": true
+    },
+    {
+      "caseId": "chatgpt-share",
+      "clipper": "marksnip",
+      "file": "chatgpt-share--marksnip.md",
+      "chars": 8461,
+      "ok": true
+    },
+    {
+      "caseId": "chatgpt-share",
+      "clipper": "clipper",
+      "file": "chatgpt-share--clipper.md",
+      "chars": 33106,
+      "ok": true
+    },
+    {
+      "caseId": "chatgpt-share",
+      "clipper": "obsidian-web-clipper",
+      "file": "chatgpt-share--obsidian-web-clipper.md",
+      "chars": 13970,
+      "ok": true
+    }
+  ]
+}

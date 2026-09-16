@@ -47,6 +47,10 @@
 /*.md
   Content-Type: text/markdown; charset=utf-8
 
+# /compare raw clipper outputs — explicit charset so a browser never guesses Latin-1.
+/compare-raw/*
+  Content-Type: text/markdown; charset=utf-8
+
 # Link-header discovery for agents that never parse the HTML.
 /
   Link: </llms.txt>; rel="llms-txt"
