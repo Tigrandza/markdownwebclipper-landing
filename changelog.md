@@ -6,6 +6,13 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.9.1 — September 16, 2026
+
+- Alt+Shift+M copies on the first try. After about a minute of idle, or right after
+  install, the copy shortcut used to do nothing at all, with no message.
+- Code from GitHub keeps its language. READMEs used to arrive with bare code blocks, so
+  nothing was highlighted in your notes.
+
 ## 0.9.0 — September 10, 2026
 
 - AI chat conversations now save completely. ChatGPT, Claude and Gemini keep only a
