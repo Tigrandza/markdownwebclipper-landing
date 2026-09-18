@@ -7,7 +7,7 @@ The official Obsidian Web Clipper is the right choice for most people. This page
 Every output is the unedited clipboard result. Each check is a regular expression run on the raw Markdown; the one-line verdict is the author's. If this clipper loses a row, the row stays.
 
 <!-- compare:generated:start -->
-Captured 2026-09-16 · Chromium 147.0.7727.15 · Obsidian Web Clipper 1.7.1, MarkSnip 5.2.0, Markdown Web Clipper 0.9.0
+Captured 2026-09-18 · Chromium 147.0.7727.15 · Obsidian Web Clipper 1.7.1, MarkSnip 5.2.0, Markdown Web Clipper 0.9.1
 
 ## Wikipedia: Periodic table
 
@@ -52,13 +52,13 @@ What usually breaks: Code fences lose their language tag, or indentation is refl
 
 | Check | Obsidian Web Clipper | MarkSnip | Markdown Web Clipper |
 |---|---|---|---|
-| A fence carries a language hint | ✗ | ✓ | ✗ |
+| A fence carries a language hint | ✗ | ✓ | ✓ |
 | An import statement survives verbatim | ✓ | ✓ | ✓ |
 | No raw <pre> HTML | ✓ | ✓ | ✓ |
 
 Raw outputs: [Obsidian Web Clipper](/compare-raw/github-defuddle-readme--obsidian-web-clipper.md) · [MarkSnip](/compare-raw/github-defuddle-readme--marksnip.md) · [Markdown Web Clipper](/compare-raw/github-defuddle-readme--clipper.md)
 
-Verdict: MarkSnip wins this one: it keeps ```js and ```shell on every fence. Obsidian Web Clipper and Markdown Web Clipper emit bare fences, so syntax highlighting is lost. GitHub marks the language on a wrapper div, not on the code element, and neither Defuddle-based clipper reads it. Markdown Web Clipper fixed this on 2026-09-16; the row gets recaptured when that release is in the Chrome Web Store.
+Verdict: MarkSnip and Markdown Web Clipper keep ```js, ```ts and ```shell on every fence. Obsidian Web Clipper emits bare fences, so syntax highlighting is lost. GitHub marks the language on a wrapper div, not on the code element. Markdown Web Clipper 0.9.0 missed it too; 0.9.1, captured here, reads the wrapper.
 
 ## ChatGPT shared conversation
 

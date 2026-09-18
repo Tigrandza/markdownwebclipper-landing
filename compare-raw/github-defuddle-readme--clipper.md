@@ -20,7 +20,7 @@ Defuddle can be used as a replacement for [Mozilla Readability](https://github.c
 
 ### Browser
 
-```
+```js
 import Defuddle from 'defuddle';
 
 // Parse the current document
@@ -37,7 +37,7 @@ console.log(result.);
 
 `defuddle/node` accepts a DOM `Document` from any implementation (JSDOM, linkedom, happy-dom, etc.).
 
-```
+```js
 import { parseHTML } from 'linkedom';
 import { Defuddle } from 'defuddle/node';
 
@@ -53,7 +53,7 @@ console.log(result.);
 
 Or with JSDOM:
 
-```
+```js
 import { JSDOM } from 'jsdom';
 import { Defuddle } from 'defuddle/node';
 
@@ -67,7 +67,7 @@ _Note: for `defuddle/node` to import properly, the module format in your `packag
 
 Defuddle includes a command-line interface for parsing web pages directly from the terminal. You can run it with `npx` or [install it globally](#cli-installation). The CLI accepts a file path, a URL, or HTML piped over stdin.
 
-```
+```shell
 # Parse a local HTML file
 npx defuddle parse page.html
 
@@ -117,19 +117,19 @@ When no `<source>` argument is provided, `defuddle parse` reads HTML from stdin.
 
 ## Installation
 
-```
+```shell
 npm install defuddle
 ```
 
 For Node.js usage, install a DOM implementation:
 
-```
+```shell
 npm install linkedom
 ```
 
 Or use JSDOM:
 
-```
+```shell
 npm install jsdom
 ```
 
@@ -137,13 +137,13 @@ npm install jsdom
 
 To use the `defuddle` command globally, install it with the `-g` flag:
 
-```
+```shell
 npm install -g defuddle
 ```
 
 Or use `npx` to run the CLI without installing globally:
 
-```
+```shell
 npx defuddle parse https://example.com/article
 ```
 
@@ -213,7 +213,7 @@ Defuddle attempts to standardize HTML elements to provide a consistent input for
 
 Code block are standardized. If present, line numbers and syntax highlighting are removed, but the language is retained and added as a data attribute and class.
 
-```
+```html
 <pre>
   <code data-lang="js" class="language-js">
     // code
@@ -225,7 +225,7 @@ Code block are standardized. If present, line numbers and syntax highlighting ar
 
 Inline references and footnotes are converted to a standard format:
 
-```
+```html
 Inline reference<sup id="fnref:1"><a href="#fn:1">1</a></sup>.
 
 <div id="footnotes">
@@ -243,7 +243,7 @@ Inline reference<sup id="fnref:1"><a href="#fn:1">1</a></sup>.
 
 Math elements, including MathJax and KaTeX, are converted to standard MathML:
 
-```
+```html
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" data-latex="a \neq 0">
   <mi>a</mi>
   <mo>≠</mo>
@@ -264,7 +264,7 @@ Supported sources:
 
 The standardized HTML follows the [Obsidian Publish](https://help.obsidian.md/Editing+and+formatting/Callouts) format:
 
-```
+```html
 <div data-callout="info" class="callout">
   <div class="callout-title">
     <div class="callout-title-inner">Info</div>
@@ -277,7 +277,7 @@ The standardized HTML follows the [Obsidian Publish](https://help.obsidian.md/Ed
 
 In Markdown:
 
-```
+```md
 > [!info] Info
 > This is an informational callout.
 ```
@@ -288,7 +288,7 @@ In Markdown:
 
 To build the package, you'll need Node.js and npm installed. Then run:
 
-```
+```shell
 # Install dependencies
 npm install
 
@@ -308,7 +308,7 @@ When using `parseAsync()`, if no content can be extracted from the local HTML, D
 
 You can enable debug mode by passing an options object when creating a new Defuddle instance:
 
-```
+```ts
 const result = new Defuddle(document, { debug: true }).parse();
 
 // Access debug info
@@ -344,7 +344,7 @@ Each removal entry contains:
 
 You can disable individual pipeline steps to diagnose content extraction issues:
 
-```
+```ts
 // Skip content scoring to see if it's removing content incorrectly
 const result = new Defuddle(document, { removeLowScoring: false }).parse();
 
@@ -359,7 +359,7 @@ const result = new Defuddle(document, { removeSmallImages: false }).parse();
 
 Use `contentSelector` to bypass Defuddle's auto-detection and specify the main content element directly:
 
-```
+```ts
 const result = new Defuddle(document, {
   contentSelector: 'article.post-content'
 }).parse();

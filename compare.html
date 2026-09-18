@@ -94,7 +94,7 @@
       <div class="callout"><p>Each check is a regular expression run on the raw Markdown; the rows are mechanical, the one-line verdict is mine. If this clipper loses a row, the row stays.</p></div>
 
 <!-- compare:generated:start -->
-<p class="meta">Captured 2026-09-16 · Chromium 147.0.7727.15 · Obsidian Web Clipper 1.7.1, MarkSnip 5.2.0, Markdown Web Clipper 0.9.0</p>
+<p class="meta">Captured 2026-09-18 · Chromium 147.0.7727.15 · Obsidian Web Clipper 1.7.1, MarkSnip 5.2.0, Markdown Web Clipper 0.9.1</p>
 <section class="cmp-case" id="wikipedia-periodic-table">
 <h2>Wikipedia: Periodic table</h2>
 <p class="meta"><a href="https://en.wikipedia.org/wiki/Periodic_table" rel="nofollow">https://en.wikipedia.org/wiki/Periodic_table</a></p>
@@ -219,7 +219,7 @@ While for small values of $d_{k}$ the two mechanisms perform similarly, additive
 <p class="meta"><a href="https://github.com/kepano/defuddle" rel="nofollow">https://github.com/kepano/defuddle</a></p>
 <p><strong>What usually breaks:</strong> Code fences lose their language tag, or indentation is reflowed.</p>
 <table class="cmp-matrix"><thead><tr><th>Check</th><th>Obsidian Web Clipper</th><th>MarkSnip</th><th>Markdown Web Clipper</th></tr></thead><tbody>
-<tr><th scope="row">A fence carries a language hint</th><td class="cmp-bad">✗</td><td class="cmp-ok">✓</td><td class="cmp-bad">✗</td></tr>
+<tr><th scope="row">A fence carries a language hint</th><td class="cmp-bad">✗</td><td class="cmp-ok">✓</td><td class="cmp-ok">✓</td></tr>
 <tr><th scope="row">An import statement survives verbatim</th><td class="cmp-ok">✓</td><td class="cmp-ok">✓</td><td class="cmp-ok">✓</td></tr>
 <tr><th scope="row">No raw &lt;pre&gt; HTML</th><td class="cmp-ok">✓</td><td class="cmp-ok">✓</td><td class="cmp-ok">✓</td></tr>
 </tbody></table>
@@ -255,22 +255,22 @@ Or use JSDOM:
 ```shell
 npm install jsdom</code></pre></figure>
 <figure class="cmp-panel"><figcaption>Markdown Web Clipper · <a href="/compare-raw/github-defuddle-readme--clipper.md">raw .md</a></figcaption><pre><code>
-```
+```shell
 npm install defuddle
 ```
 
 For Node.js usage, install a DOM implementation:
 
-```
+```shell
 npm install linkedom
 ```
 
 Or use JSDOM:
 
-```
+```shell
 npm install jsdom</code></pre></figure>
 </div>
-<p class="cmp-verdict"><strong>Verdict:</strong> MarkSnip wins this one: it keeps ```js and ```shell on every fence. Obsidian Web Clipper and Markdown Web Clipper emit bare fences, so syntax highlighting is lost. GitHub marks the language on a wrapper div, not on the code element, and neither Defuddle-based clipper reads it. Markdown Web Clipper fixed this on 2026-09-16; the row gets recaptured when that release is in the Chrome Web Store.</p>
+<p class="cmp-verdict"><strong>Verdict:</strong> MarkSnip and Markdown Web Clipper keep ```js, ```ts and ```shell on every fence. Obsidian Web Clipper emits bare fences, so syntax highlighting is lost. GitHub marks the language on a wrapper div, not on the code element. Markdown Web Clipper 0.9.0 missed it too; 0.9.1, captured here, reads the wrapper.</p>
 </section>
 <section class="cmp-case" id="chatgpt-share">
 <h2>ChatGPT shared conversation</h2>
