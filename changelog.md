@@ -6,6 +6,16 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.10.0 — September 28, 2026
+
+- Clips made with a keyboard shortcut or the right-click menu now count toward the
+  one-time review request. Before, only clips made from the popup counted.
+- The review request now waits until your 10th clip, and "Not now" puts it off for
+  another 20 clips. If you clip only by shortcut, it shows as a small card in the corner
+  of the page, with the same buttons as the popup.
+- "Never ask again" is phrased politely in every language. In Japanese, Russian and
+  Chinese it read as a rebuke.
+
 ## 0.9.1 — September 16, 2026
 
 - Alt+Shift+M copies on the first try. After about a minute of idle, or right after
