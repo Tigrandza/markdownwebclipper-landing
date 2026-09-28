@@ -98,6 +98,6 @@ Verdict: Obsidian Web Clipper and Markdown Web Clipper produce real footnotes: [
 
 ## Method
 
-Each page was opened in a fresh Chromium profile with exactly one extension loaded, at default settings, and clipped to the clipboard. Obsidian Web Clipper was driven through its popup's "Copy to clipboard"; MarkSnip and Markdown Web Clipper through their keyboard shortcuts. The capture script lives in the repository under `scripts/compare-capture/`; rerun it and the page regenerates.
+Each page was opened in a fresh Chromium profile with exactly one extension loaded, at default settings, and clipped to the clipboard. Obsidian Web Clipper was driven through its popup's "Copy to clipboard"; MarkSnip and Markdown Web Clipper through their keyboard shortcuts. The capture script is public: [scripts/compare-capture](https://github.com/Tigrandza/markdown-web-clipper/tree/main/scripts/compare-capture) in the MIT source repository. It runs on macOS; rerun it and you get the same raw files.
 
 Suggest a page that breaks this clipper: support@markdownwebclipper.com
