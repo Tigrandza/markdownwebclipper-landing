@@ -6,6 +6,12 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.10.1 — September 29, 2026
+
+- Claude conversations save each answer once. After a claude.ai update in mid-September,
+  every Claude reply was saved twice, and the first copy was stuck onto the end of your
+  own message above it.
+
 ## 0.10.0 — September 28, 2026
 
 - Clips made with a keyboard shortcut or the right-click menu now count toward the
