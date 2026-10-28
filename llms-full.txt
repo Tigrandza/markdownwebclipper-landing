@@ -877,6 +877,15 @@ _Last updated 2026-08-23._
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.10.2 — October 28, 2026
+
+- When a clip fails, the error message has a new "Report this problem" button. It opens
+  a short feedback form that already includes your Clipper version, the error, and the
+  site's name (for example `example.com`), never the full page address. The message also
+  stays on screen for 10 seconds instead of 4, so there is time to click it.
+- The survey that opens if you uninstall Clipper now records which version you had, so
+  a problem can be traced to the release that caused it.
+
 ## 0.10.1 — September 29, 2026
 
 - Claude conversations save each answer once. After a claude.ai update in mid-September,
