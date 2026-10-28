@@ -37,7 +37,7 @@
   "url": "https://markdownwebclipper.com/privacy",
   "inLanguage": "en",
   "datePublished": "2026-05-09",
-  "dateModified": "2026-07-29"
+  "dateModified": "2026-10-28"
 }
 </script>
 <script type="application/ld+json">
@@ -75,7 +75,7 @@
       <p class="eyebrow">Legal</p>
       <h1 class="display" style="margin-top:12px">Privacy <span class="rust">policy.</span></h1>
       <p class="lede" style="margin-top:14px; max-width:60ch">Clipper reads the page you're on, converts it locally, and sends it only to the destination you pick. Nothing else leaves your machine.</p>
-      <p class="meta">Last updated 2026-06-06 · sourced from <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md" style="color:var(--accent)">PRIVACY.md</a></p>
+      <p class="meta">Last updated 2026-10-28 · sourced from <a href="https://github.com/Tigrandza/markdown-web-clipper/blob/main/PRIVACY.md" style="color:var(--accent)">PRIVACY.md</a></p>
     </div>
   </section>
 
@@ -131,7 +131,8 @@
         <li><strong>Obsidian URI handoff</strong> — when the destination is "Obsidian", the extension dispatches an <code>obsidian://new?vault=…&amp;file=…</code> URL via <code>chrome.tabs.update</code>. This is a local OS scheme; no remote call occurs. Your Obsidian app handles the URL on-device.</li>
         <li><strong>License verification</strong> — at most once per hour, the service worker calls <code>https://api.markdownwebclipper.com/api/license/check</code> to refresh the cached Pro license state. This is a developer-controlled Cloudflare Worker that proxies the upstream license validation request to DodoPayments. The request body contains only the locally-stored DodoPayments license key and a per-install instance UUID; no email, no analytics identifier, no telemetry. The Worker stores hashed-email → license_key mapping in Cloudflare Workers KV; raw email addresses are NEVER logged.</li>
         <li><strong>License restore (magic link)</strong> — when you use Settings → Pro → Restore Purchase, the extension POSTs your email to <code>https://api.markdownwebclipper.com/api/restore</code>. If a Pro license is registered to that email, the Worker sends a one-time magic-link email via Resend (10-minute expiry, single-use). Per privacy posture, the response is identical whether the email is registered or not — we do not confirm registration status to defeat email enumeration. Per-email rate-limit (60 seconds) prevents abuse.</li>
-        <li><strong>Uninstall survey URL</strong> (<code>chrome.runtime.setUninstallURL</code>) — when you uninstall the extension via <code>chrome://extensions</code>, Chrome itself opens a Tally form in a new tab asking why. This is a Chrome platform feature, not a Clipper-initiated remote call. The URL is set once at service-worker activation; you can close the form tab without submitting. The form is unauthenticated and collects only the fields you choose to fill in. Tally privacy policy: <a href="https://tally.so/help/privacy-policy">tally.so/help/privacy-policy</a>.</li>
+        <li><strong>Uninstall survey URL</strong> (<code>chrome.runtime.setUninstallURL</code>) — when you uninstall the extension via <code>chrome://extensions</code>, Chrome itself opens a Tally form in a new tab asking why. This is a Chrome platform feature, not a Clipper-initiated remote call. The URL is set once at service-worker activation; you can close the form tab without submitting. The URL carries one query parameter, the extension version (for example <code>?version=0.10.1</code>), so a response can be matched to the build it came from. The form is unauthenticated and, apart from that version number, collects only the fields you choose to fill in. Tally privacy policy: <a href="https://tally.so/help/privacy-policy">tally.so/help/privacy-policy</a>.</li>
+        <li><strong>Report this problem link</strong> — when a clip fails, the error toast in the popup offers a "Report this problem" button. Nothing is sent unless you click it. Clicking opens Clipper's Tally feedback form in a normal new tab, with three values in the URL: the extension version; the error code, or the error message with any web addresses replaced by <code>[url]</code> and capped at 200 characters; and the hostname of the page being clipped (for example <code>example.com</code>), never its path, query or full address. You can review the form and close the tab without submitting. Tally privacy policy: <a href="https://tally.so/help/privacy-policy">tally.so/help/privacy-policy</a>.</li>
       </ul>
 
       <h2 id="image-viewer">Image viewer notes</h2>

@@ -229,7 +229,14 @@ The extension makes exactly these kinds of remote calls; nothing else leaves you
   via Resend. The response is identical whether or not the email is registered (defeats
   enumeration); 60-second per-email rate limit.
 - **Uninstall survey URL** — Chrome itself (`setUninstallURL`) opens a Tally form on uninstall;
-  a Chrome platform feature, not a Clipper-initiated call; unauthenticated and optional.
+  a Chrome platform feature, not a Clipper-initiated call; unauthenticated and optional. The URL
+  carries one query parameter, the extension version (e.g. `?version=0.10.1`), so a response can
+  be matched to its build.
+- **Report this problem link** — when a clip fails, the popup's error toast offers a "Report this
+  problem" button. Nothing is sent unless you click it. It opens Clipper's Tally feedback form in a
+  new tab with three URL values: the extension version; the error code, or the error message with
+  web addresses replaced by `[url]` (max 200 characters); and the page's hostname only (e.g.
+  `example.com`), never its path, query or full address. You can close the tab without submitting.
 
 ## Image viewer notes
 
