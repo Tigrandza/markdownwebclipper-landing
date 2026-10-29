@@ -878,6 +878,16 @@ _Last updated 2026-08-23._
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.10.3 — October 30, 2026
+
+- Images saved next to your notes now show up in any Markdown app, not only Obsidian.
+  The image links now start from the note's own folder (for example
+  `../attachments/My Page/photo.png`), which is how Typora, iA Writer, VS Code and most
+  other editors read them. Obsidian's `![[...]]` links are unchanged.
+- Saving the same page twice no longer shows the first clip's images in the second note,
+  and a page saved from the popup no longer points at an image folder that doesn't exist.
+- A clip with no saved images no longer leaves an empty folder in `attachments`.
+
 ## 0.10.2 — October 28, 2026
 
 - When a clip fails, the error message has a new "Report this problem" button. It opens
