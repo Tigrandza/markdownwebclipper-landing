@@ -63,12 +63,13 @@ The extension makes exactly these kinds of remote calls; nothing else leaves you
 - **Uninstall survey URL** — Chrome itself (`setUninstallURL`) opens a Tally form on uninstall;
   a Chrome platform feature, not a Clipper-initiated call; unauthenticated and optional. The URL
   carries one query parameter, the extension version (e.g. `?version=0.10.1`), so a response can
-  be matched to its build.
+  be matched to its build. Tally receives the version when the tab opens; answers only on submit.
 - **Report this problem link** — when a clip fails, the popup's error toast offers a "Report this
   problem" button. Nothing is sent unless you click it. It opens Clipper's Tally feedback form in a
   new tab with three URL values: the extension version; the error code, or the error message with
   web addresses replaced by `[url]` (max 200 characters); and the page's hostname only (e.g.
-  `example.com`), never its path, query or full address. You can close the tab without submitting.
+  `example.com`), never its path, query or full address. Tally receives these values as soon as the
+  tab opens, even if you close it without submitting; what you type is sent only on submit.
 
 ## Image viewer notes
 
