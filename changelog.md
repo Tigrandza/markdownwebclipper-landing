@@ -6,6 +6,16 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.11.0 — October 30, 2026
+
+- Clipper has been submitted to the Microsoft Edge Add-ons store. Until it is approved,
+  Edge users can keep installing it from the Chrome Web Store. On the Edge store
+  version, the "Rate" button opens the Edge Add-ons page instead of the Chrome Web Store.
+- "Restore purchase" and the "Installed" button on this website now find Clipper whether
+  you installed it from the Chrome Web Store or from Edge Add-ons.
+- The download is about 1 MB smaller. Translator notes inside the language files are no
+  longer shipped in the store package.
+
 ## 0.10.3 — October 30, 2026
 
 - Images saved next to your notes now show up in any Markdown app, not only Obsidian.
