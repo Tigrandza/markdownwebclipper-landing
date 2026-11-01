@@ -878,6 +878,19 @@ _Last updated 2026-08-23._
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.12.0 — November 1, 2026
+
+- Clipper now runs on Firefox 140 and newer. It has been submitted to Firefox Add-ons;
+  the install link will appear here once Mozilla approves it. On Firefox, clips go to
+  your Downloads folder, the clipboard, Obsidian or a GitHub Gist. Firefox cannot save
+  into a folder you pick, so "Save to folder" and the Pro "co-located images" option are
+  not available there.
+- On Firefox, the GitHub Gist destination and Pro ask for your permission before they
+  send any data, using Firefox's built-in data-sharing prompt. You can change your
+  answer later in Firefox under Add-ons → Clipper → Permissions and data.
+- Chrome and Edge work as before. The popup and settings pages now load about 40 KB less
+  styling code.
+
 ## 0.11.0 — October 30, 2026
 
 - Clipper has been submitted to the Microsoft Edge Add-ons store. Until it is approved,
