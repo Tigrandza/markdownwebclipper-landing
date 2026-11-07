@@ -6,6 +6,16 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.13.0 — November 7, 2026
+
+- Clipper is now on Firefox Add-ons:
+  https://addons.mozilla.org/firefox/addon/markdown-web-clipper-md/
+- A Safari version for Mac, iPhone and iPad is built. It is not on the App Store yet;
+  the link will appear here when Apple approves it.
+- Fixed: your own site rules (Settings → Site Rules) were only used by the "Test on
+  current tab" button and never changed a real clip. They now apply to every clip, in
+  every browser. The built-in arXiv rule now applies to arxiv.org abstract pages too.
+
 ## 0.12.0 — November 1, 2026
 
 - Clipper now runs on Firefox 140 and newer. It has been submitted to Firefox Add-ons;
