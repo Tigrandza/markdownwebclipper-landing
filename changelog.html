@@ -37,7 +37,7 @@
   "url": "https://markdownwebclipper.com/changelog",
   "inLanguage": "en",
   "datePublished": "2026-06-11",
-  "dateModified": "2026-11-07"
+  "dateModified": "2026-11-09"
 }
 </script>
 <script type="application/ld+json">
@@ -80,6 +80,13 @@
 
   <div class="wrap">
     <article class="prose">
+      <h2 id="0-13-1">0.13.1 — November 9, 2026</h2>
+      <ul>
+        <li>Fixed: Wikipedia clips lost math, images and the infobox. Formulas such as a² + b² = c² now come through as LaTeX (<code>$$a^2 + b^2 = c^2$$</code>), including short inline ones; images link to the image file instead of the “File:” page; the infobox at the top of the article is kept as a table.</li>
+        <li>Fixed: MDN pages lost every code example. They are back, in single clips and in batch clips.</li>
+        <li>Fixed: on Python documentation pages, links to classes and functions written as code (for example <code>datetime</code>) disappeared from the text. They are kept now.</li>
+        <li>Fixed: inside code blocks, a word like <code>author</code> or <code>share</code> could be deleted (<code>result.author</code> came out as <code>result.</code>). Code is no longer changed.</li>
+      </ul>
       <h2 id="0-13-0">0.13.0 — November 7, 2026</h2>
       <ul>
         <li>Clipper is now on <a href="https://addons.mozilla.org/firefox/addon/markdown-web-clipper-md/">Firefox Add-ons</a>.</li>

@@ -6,6 +6,19 @@
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.13.1 — November 9, 2026
+
+- Fixed: Wikipedia clips lost math, images and the infobox. Formulas such as
+  a² + b² = c² now come through as LaTeX (`$$a^2 + b^2 = c^2$$`), including short
+  inline ones; images link to the image file instead of the "File:" page; the
+  infobox at the top of the article is kept as a table.
+- Fixed: MDN pages lost every code example. They are back, in single clips and in
+  batch clips.
+- Fixed: on Python documentation pages, links to classes and functions written as
+  code (for example `datetime`) disappeared from the text. They are kept now.
+- Fixed: inside code blocks, a word like `author` or `share` could be deleted
+  (`result.author` came out as `result.`). Code is no longer changed.
+
 ## 0.13.0 — November 7, 2026
 
 - Clipper is now on Firefox Add-ons:
