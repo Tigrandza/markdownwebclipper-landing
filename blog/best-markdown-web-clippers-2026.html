@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Best Markdown web clippers for Obsidian, compared (2026)</title>
-<meta name="description" content="MarkDownload is gone, the official Obsidian Web Clipper took the throne, and a wave of AI-handoff clippers showed up. An honest side-by-side of the six Chrome Markdown clippers an Obsidian or Logseq user might pick from in 2026 — written by someone who built one of them." />
+<meta name="description" content="Six Chrome Markdown clippers for Obsidian and Logseq, compared side by side in 2026 — Obsidian Web Clipper, MarkSnip, Web2MD and more. Honest pros and cons." />
 <link rel="canonical" href="https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -42,7 +42,7 @@
   "description": "An honest 6-way comparison of Chrome Markdown clippers in 2026 — Obsidian Web Clipper, MarkDownload (R.I.P.), Web2MD, MarkSnip, LLMFeeder, and Markdown Web Clipper.",
   "image": "https://markdownwebclipper.com/og-hero.png",
   "datePublished": "2026-06-07",
-  "dateModified": "2026-08-22",
+  "dateModified": "2026-11-09",
   "author": {
     "@type": "Organization",
     "name": "Markdown Web Clipper",
@@ -139,7 +139,7 @@
         <li><strong>Wikipedia, <em>First Lord of the Admiralty</em>.</strong> The "UK (1801–1964)" infobox uses heavy <code>rowspan</code>/<code>colspan</code>. It's a known graveyard for Markdown clippers — the GFM table syntax can't express row spans, so the output either flattens to a wall of text, drops cells, or invents column counts that won't render.</li>
         <li><strong>A long GitHub README with fenced code.</strong> Specifically tested for: language hints preserved (<code>```ts</code>, not <code>```</code>), indentation intact, no stray HTML entities.</li>
         <li><strong>A math-heavy article using KaTeX.</strong> Inline <code>$E = mc^2$</code> and display <code>$$…$$</code> blocks. Plenty of clippers strip these into Unicode glyphs that don't survive a re-render.</li>
-        <li><strong>A ChatGPT conversation.</strong> The DOM is a mess of nested divs, role tags, and shifting class names. Tests both extraction and whether the clipper recognizes the page <em>type</em>.</li>
+        <li><strong>A ChatGPT conversation.</strong> The DOM is a mess of nested divs, role tags, and shifting class names. Tests both extraction and whether the clipper recognizes the page <em>type</em>. (Saving whole chat threads has <a href="/blog/export-chatgpt-claude-conversations-markdown">its own guide</a>.)</li>
         <li><strong>A Reddit comment thread.</strong> Inline images, nested replies, and the eternal question of "do you keep the structure or flatten it?"</li>
       </ol>
       <p>I also looked at five non-extraction features that decide whether a tool fits a workflow: where it can save to, whether it works offline, the pricing model, whether the source is open, and what the maintenance posture looks like.</p>
