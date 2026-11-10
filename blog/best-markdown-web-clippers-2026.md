@@ -7,7 +7,8 @@ Published 2026-06-07 · ~10 min read · Comparison
 MarkDownload is gone. The official Obsidian Web Clipper took the throne. A wave of
 AI-handoff clippers showed up. Here's an honest side-by-side of the six Chrome Markdown
 clippers an Obsidian or Logseq user might pick from in 2026 — written by someone who built
-one of them.
+one of them. (Clipping into Logseq specifically? See [how to clip web pages into your Logseq
+graph](https://markdownwebclipper.com/blog/logseq-web-clipper).)
 
 > **Disclosure:** I'm the developer of Markdown Web Clipper — one of the six tools in this
 > comparison. I've tried to write this honestly: pick winners by use case, name our

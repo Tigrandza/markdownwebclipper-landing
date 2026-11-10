@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logseq web clipper: how to clip web pages into your Logseq graph</title>
+<meta name="description" content="Clip web pages into a Logseq graph as Markdown files: save into pages/, handle properties and images, and see when another Logseq clipper fits better." />
+<link rel="canonical" href="https://markdownwebclipper.com/blog/logseq-web-clipper" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/blog/logseq-web-clipper.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="Logseq web clipper: how to clip web pages into your Logseq graph" />
+<meta property="og:description" content="A Logseq file graph is a folder of Markdown files, so a clipper that writes to a folder can save straight into it. How to set that up, what to do about properties and images, and when the Logseq Web Clipper or Logseq 2.0 change the answer." />
+<meta property="og:url" content="https://markdownwebclipper.com/blog/logseq-web-clipper" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta name="article:published_time" content="2026-11-10" />
+<meta name="article:author" content="Markdown Web Clipper" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+
+<!-- Article schema — drives the rich-results "Article" treatment in
+     Google Search (publication date, author, headline). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Logseq web clipper: how to clip web pages into your Logseq graph",
+  "description": "A Logseq file graph is a folder of Markdown files, so a clipper that writes to a folder can save into it. Setup, properties, images, and the alternatives.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "author": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "url": "https://markdownwebclipper.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://markdownwebclipper.com/icon-128.png"
+    }
+  },
+  "mainEntityOfPage": "https://markdownwebclipper.com/blog/logseq-web-clipper"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://markdownwebclipper.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Logseq web clipper: how to clip web pages into your Logseq graph", "item": "https://markdownwebclipper.com/blog/logseq-web-clipper" }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/blog/" class="hide-sm">Blog</a>
+      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-logseq" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <span>How-to</span></nav>
+      <h1 class="display" style="margin-top:12px">Logseq web clipper: clip web pages into your <span class="rust">graph.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">A Logseq file graph is a folder of Markdown files. That makes it one of the easiest places to clip into: any clipper that can write a <code>.md</code> file into a folder can put a web page into your graph, with no plugin and no sync server. Here is how to set that up, what I found when I tested it in Logseq, and when a different tool is the better pick.</p>
+      <div class="article-meta">
+        <span>Published 2026-11-10</span>
+        <span class="dot">·</span>
+        <span>~7 min read</span>
+        <span class="dot">·</span>
+        <span class="tag">How-to</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose-layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <a href="#which-logseq">First: which Logseq do you have?</a>
+      <a href="#how-it-works">How a folder clipper reaches your graph</a>
+      <a href="#setup">Setup, step by step</a>
+      <a href="#properties">Properties: YAML or <code>key:: value</code></a>
+      <a href="#images">Images</a>
+      <a href="#alternatives">The alternatives, fairly</a>
+      <a href="#where-we-fit">Where this clipper fits</a>
+    </aside>
+
+    <article class="prose">
+      <div class="callout disclosure"><p>I build <strong>Markdown Web Clipper</strong>. It was designed around Obsidian vaults and has no Logseq-specific features. What follows is what happened when I pointed it at a Logseq graph and tested the result, including the parts that do not fit well. If you spot a factual error, please <a href="mailto:support@markdownwebclipper.com">email me</a> and I'll correct it.</p></div>
+
+      <h2 id="which-logseq">First: which Logseq do you have?</h2>
+      <p>There are now two Logseq apps, and this guide only works with one of them.</p>
+      <p><strong>Logseq with a file graph</strong>, now a separate app called <a href="https://github.com/logseq/og">Logseq OG</a>. Your graph is a folder on disk with a <code>pages/</code> folder, a <code>journals/</code> folder and a <code>logseq/</code> config folder. Every page is a <code>.md</code> file you can open in any text editor. Everything below is for this one. I tested it with Logseq OG 1.0.0 on macOS in November 2026.</p>
+      <p><strong>Logseq 2.0, the database version.</strong> Its beta shipped in July 2026. A database graph keeps your notes in a SQLite file, not in Markdown files. On my Mac, a 2.0 graph is a folder holding <code>db.sqlite</code>, logs and a backup folder — no <code>pages/</code> to write into. The <a href="https://github.com/logseq/docs/blob/master/db-version-changes.md">Logseq docs</a> describe an optional Markdown mirror, but it copies from the database to files, not the other way. So no clipper that writes files can add a page to a database graph. If that is your setup, skip to <a href="#alternatives">the alternatives</a>.</p>
+      <p>Logseq has not forced anyone to migrate. File graphs keep working in Logseq OG.</p>
+
+      <figure class="post-video">
+        <video id="logseq-demo" width="1280" height="720" muted loop playsinline preload="none" poster="/blog/media/logseq-demo-poster.jpg" data-autoplay
+               aria-label="Screen recording: the Markdown Web Clipper popup clips the Wikipedia article on Markdown into a Logseq graph's pages folder, then the page is opened from Logseq search">
+          <source src="/blog/media/logseq-demo.webm" type="video/webm" />
+          <source src="/blog/media/logseq-demo.mp4" type="video/mp4" />
+          <img src="/blog/media/logseq-demo-poster.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Chrome on the left with the clipper popup open over a Wikipedia article; Logseq on the right showing the clipped page" />
+        </video>
+        <figcaption>A real recording, sped up 1.4×: open the popup, untick <em>Include frontmatter</em>, <em>Save to vault</em>, then find the page in Logseq search. <a href="/blog/media/logseq-demo.mp4">Watch it full size</a>. <span class="reduced-motion-note">Still frame shown, because your system's reduced-motion setting is on.</span> <button type="button" class="btn btn-ghost reduced-motion-play" data-play-demo aria-controls="logseq-demo">▶ Play recording</button></figcaption>
+      </figure>
+
+      <h2 id="how-it-works">How a folder clipper reaches your graph</h2>
+      <p>Chrome extensions cannot normally write to your disk. The exception is the File System Access API: you pick a folder once in a system dialog, and the extension may write files inside that folder and nowhere else. Markdown Web Clipper uses it for its <em>Save to vault</em> button. The name says "vault" because it was built for Obsidian, but the button does not care what app reads the folder.</p>
+      <p>When you save, the extension writes one file:</p>
+      <pre><code>&lt;folder you picked&gt;/Clippings/&lt;page title&gt;.md</code></pre>
+      <p>The <code>Clippings</code> folder name is fixed in the current version. (There are subfolder fields in Settings, but the save code does not read them yet. I would rather say that here than have you find out.)</p>
+      <p>Logseq picks up Markdown files that other programs put in its folders, including subfolders, so <code>pages/Clippings/</code> works. In my test the clip was in Logseq's search a second or two after saving. The page name comes from the file name, not the folder. One catch: the <em>All pages</em> list did not refresh by itself, so look for new clips with search.</p>
+
+      <h2 id="setup">Setup, step by step</h2>
+      <ol>
+        <li><a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-logseq">Install the extension</a> from the Chrome Web Store. No account.</li>
+        <li>Open any article and open the popup (click the toolbar icon, or <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>).</li>
+        <li>Click <strong>Choose vault folder</strong> and pick your graph's <code>pages</code> folder. Picking <code>pages</code> rather than the graph root keeps the clips where Logseq expects pages to live.</li>
+        <li>If the popup shows <em>"This folder isn't an Obsidian vault"</em>, that warning is only about the <em>Open in Obsidian</em> button. Saving to the folder still works.</li>
+        <li>Untick <strong>Include frontmatter</strong> in the Frontmatter section (see the next section for why), then click <strong>Save to vault</strong>.</li>
+        <li>Switch to Logseq and search for the article title. The clip is a new page with that name. If search does not find it, re-index the graph from the graph menu.</li>
+      </ol>
+      <p>From then on it is one click per page. Chrome remembers the folder. On Chrome 122 and later the permission usually persists between sessions, though Chrome can still ask you to confirm it again.</p>
+
+      <h2 id="properties">Properties: YAML front matter or <code>key:: value</code></h2>
+      <p>This is the main place where an Obsidian-shaped clipper and Logseq disagree.</p>
+      <p>By default the extension starts every note with a YAML front matter block. Here is what it wrote for the clip in the recording:</p>
+      <pre><code>---
+title: "Markdown - Wikipedia"
+source: "https://en.wikipedia.org/wiki/Markdown"
+author: ''
+published: ''
+created: "2026-11-10"
+description: ''
+tags: [clippings]
+---</code></pre>
+      <p>Logseq OG does read YAML front matter. Each key becomes a page property, <code>title</code> sets the page name, and <code>tags</code> become links. But three details of this output go wrong in Logseq:</p>
+      <ul>
+        <li><strong>Quotes stay in the page name.</strong> The extension puts quotes around any value with a space or a hyphen, which is almost every title. Logseq keeps them, so the page is named <code>"Markdown - Wikipedia"</code>, quotes included.</li>
+        <li><strong>Brackets stay in the tag.</strong> <code>tags: [clippings]</code> links to a page named <code>[clippings]</code>. With two tags, <code>[clippings, databases]</code> gives you <code>[clippings</code> and <code>databases]</code>. Without the brackets, <code>tags: clippings, databases</code> works as expected.</li>
+        <li><strong>Empty fields show as <code>''</code></strong>, for example when the page has no author.</li>
+      </ul>
+      <p>Logseq's own syntax for page properties is <code>key:: value</code> lines at the top of the page, and that avoids all three. Two ways to get there:</p>
+      <ul>
+        <li><strong>Free: leave the YAML out.</strong> Untick <em>Include frontmatter</em> in the popup before you save, as in the recording. The note starts with the article body, and Logseq names the page after the file, without quotes. The tick resets each time you open the popup, so this is one extra click per clip. (Settings also has an "Include frontmatter by default" switch. In the current release the popup ignores it. A fix is merged and ships in the next release, and after that you can switch YAML off once.)</li>
+        <li><strong>Pro: a Logseq-shaped template.</strong> Custom templates are a Pro feature. A template's note body is free text with variables, so you can write Logseq properties yourself and leave the YAML out as above:</li>
+      </ul>
+      <pre><code>source:: {{url}}
+author:: {{author}}
+clipped:: {{date}}
+tags:: clippings
+
+{{content}}</code></pre>
+      <p><strong>Coming in the next release:</strong> fixes for all three problems are merged. Values get quotes only when YAML needs them, empty fields are left blank, and a new Settings switch, <em>Logseq-compatible frontmatter</em>, writes tags as <code>tags: a, b</code> without brackets. I will test the release in Logseq and update this section then. Until it reaches the Chrome Web Store, use one of the two routes above.</p>
+      <p>That gives you real Logseq page properties, written in the format Logseq writes itself.</p>
+      <p>One more thing to expect: Logseq is an outliner, and a clipped article is ordinary Markdown with headings and paragraphs, not a list of bullets. Logseq splits such a file into blocks: in the recording, the infobox table and each paragraph are separate blocks. Expect Logseq to rewrite the file in its own bullet format once you edit the page. If you want to keep the clip exactly as it was clipped, annotate on a separate page and link to it.</p>
+
+      <h2 id="images">Images</h2>
+      <p>The extension has four image modes, set in the popup:</p>
+      <ul>
+        <li><strong>Reference</strong> (default). Images stay as links to the original site: <code>![alt](https://…)</code>. Nothing is downloaded. Logseq shows them while you are online and the site keeps them up. The Markdown logo in the recording is one.</li>
+        <li><strong>Base64.</strong> Each image is embedded inside the <code>.md</code> file as text. Fully offline, but the file gets large — a few screenshots can add hundreds of kilobytes — and Logseq's search and your git diffs carry all of it.</li>
+        <li><strong>Skip.</strong> No images at all. Good for text you will quote from.</li>
+        <li><strong>Co-located</strong> (Pro). Images are downloaded next to the note and linked by relative path. If you picked <code>pages</code>, they land in <code>pages/attachments/&lt;page title&gt;/</code> and the note links to them as <code>../attachments/&lt;page title&gt;/image.png</code>.</li>
+      </ul>
+      <p>An honest note on co-located: Logseq's own convention is an <code>assets/</code> folder at the graph root, and the extension does not write there — the <code>attachments</code> folder name is fixed today. Logseq resolves relative image links, so this should display, but I did not test co-located mode for this post. Either way, your clipped images live apart from the images you paste into Logseq.</p>
+      <p>For most Logseq use, <strong>reference</strong> is the right default: small files, nothing to manage. Switch to co-located for pages you need to keep if the site disappears.</p>
+
+      <h2 id="alternatives">The alternatives, fairly</h2>
+      <p><a href="https://chromewebstore.google.com/detail/logseq-web-clipper/fhjehofpeafndgabgbehflkncpmdldgg"><strong>Logseq Web Clipper</strong></a> (community, not by the Logseq team). A fork of the official Obsidian Web Clipper, adapted for Logseq. It does not write files. It hands the clip to the Logseq app through Logseq's <code>logseq://x-callback-url/quickCapture</code> link, and Logseq writes it. That gives it things a folder clipper cannot do:</p>
+      <ul>
+        <li>It can append a clip to <strong>today's journal</strong>, which is how many Logseq users work. A folder clipper only makes new pages.</li>
+        <li>No folder to pick and no permission to re-grant.</li>
+        <li>It inherits the Obsidian clipper's highlighter and template system.</li>
+      </ul>
+      <p>The trade-offs: the whole clip travels inside a URL, so very long pages are a weak spot for that design. Its <a href="https://github.com/j3sch/logseq-clipper">GitHub repository</a> was last updated in December 2024, and the Chrome listing shows about 1,000 users. I have not checked whether its capture link works with Logseq 2.0 database graphs. If you live in the journal, try it first.</p>
+      <p><a href="https://obsidian.md/clipper"><strong>Obsidian Web Clipper</strong></a> (official, for Obsidian). The most mature clipper in this space: highlights, a large template ecosystem, and an "Interpreter" that can fill fields using an AI model. It is built to save into Obsidian, so in a Logseq workflow you would use its copy or save-file options and move the result yourself. If you also use Obsidian, its templates are better than mine. The <a href="/blog/best-markdown-web-clippers-2026">full comparison of six clippers</a> covers it in more detail.</p>
+      <p><strong>Logseq 2.0 database graphs.</strong> No folder-writing clipper reaches them, mine included. Your options there are tools that talk to the Logseq app itself, or pasting Markdown in by hand. The extension's <em>Copy</em> button puts clean Markdown on your clipboard for that.</p>
+
+      <h2 id="where-we-fit">Where this clipper fits</h2>
+      <p>Pick it for a Logseq file graph if what matters most is <strong>what the page turns into</strong>: code blocks with their language, GitHub-style tables, KaTeX and MathJax math as LaTeX, footnotes, and ChatGPT or Claude conversations as one clean file. It runs locally — no account, no telemetry, no server between the page and your graph — and there is no URL size limit, because it writes the file directly.</p>
+      <p>Do not pick it if you want clips in your journal, Logseq-native properties without Pro, or images in <code>assets/</code>. Those are real gaps for Logseq users, and the tools above handle the first two better today.</p>
+      <p>If you use Logseq and want any of those gaps closed, tell me: <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a>. The fixed folder names are already on my list.</p>
+
+      <p><strong>Related reading:</strong> <a href="/blog/best-markdown-web-clippers-2026">Best Markdown web clippers for Obsidian, compared (2026)</a> and <a href="/blog/pocket-alternative-markdown-obsidian">a local-first read-later setup without Pocket</a>.</p>
+
+      <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
+        Last updated 2026-11-10. Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h2>Product</h2>
+          <a href="/">Home</a>
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-logseq">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h2>Reading</h2>
+          <a href="/blog/">Blog</a>
+          <a href="/pro-faq">Pro FAQ</a>
+          <a href="/restore">Restore Purchase</a>
+          <a href="/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h2>Legal &amp; source</h2>
+          <a href="/privacy">Privacy</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics in the extension · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>

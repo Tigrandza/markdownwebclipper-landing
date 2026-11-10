@@ -6,7 +6,14 @@
     <atom:link href="https://markdownwebclipper.com/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Comparisons, technical write-ups, and honest takes on the web-clipper landscape, from the people building Markdown Web Clipper.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Logseq web clipper: how to clip web pages into your Logseq graph</title>
+      <link>https://markdownwebclipper.com/blog/logseq-web-clipper</link>
+      <guid isPermaLink="true">https://markdownwebclipper.com/blog/logseq-web-clipper</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <description>A Logseq file graph is a folder of Markdown files, so a clipper that writes to a folder can save straight into it. Setup, YAML versus key:: value properties, images, Logseq 2.0 database graphs, and when the community Logseq Web Clipper fits better.</description>
+    </item>
     <item>
       <title>How to save and export ChatGPT and Claude conversations as Markdown (2026)</title>
       <link>https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown</link>
