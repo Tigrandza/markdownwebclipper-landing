@@ -882,8 +882,8 @@ clip into: any clipper that can write a `.md` file into a folder can put a web p
 graph, with no plugin and no sync server. Here is how to set that up, what I found when I
 tested it in Logseq, and when a different tool is the better pick.
 
-> **Disclosure:** I build Markdown Web Clipper. It was designed around Obsidian vaults and has
-> no Logseq-specific features. What follows is what happened when I pointed it at a Logseq
+> **Disclosure:** I build Markdown Web Clipper. It was designed around Obsidian vaults; its
+> one Logseq-specific feature is a front matter switch, covered below. What follows is what happened when I pointed it at a Logseq
 > graph and tested the result, including the parts that do not fit well. Spotted a factual error? Email
 > support@markdownwebclipper.com and I'll correct it.
 
@@ -942,8 +942,9 @@ list did not refresh by itself, so look for new clips with search.
    than the graph root keeps the clips where Logseq expects pages to live.
 4. If the popup shows *"This folder isn't an Obsidian vault"*, that warning is only about the
    *Open in Obsidian* button. Saving to the folder still works.
-5. Untick **Include frontmatter** in the Frontmatter section (see the next section for why),
-   then click **Save to vault**.
+5. Once, in Settings → General, turn on **Logseq-compatible frontmatter** (the next section
+   explains why). Or untick **Include frontmatter** in the popup, as in the recording. Then
+   click **Save to vault**.
 6. Switch to Logseq and search for the article title. The clip is a new page with that name.
    If search does not find it, re-index the graph from the graph menu.
 
@@ -955,41 +956,48 @@ it again.
 
 This is the main place where an Obsidian-shaped clipper and Logseq disagree.
 
-By default the extension starts every note with a YAML front matter block. Here is what it
-wrote for the clip in the recording:
+By default the extension starts every note with a YAML front matter block. Logseq OG reads it:
+each key becomes a page property, `title` sets the page name, and `tags` become links. But
+Logseq reads these lines one by one, not as full YAML, so two details of the default output go
+wrong:
+
+- **Brackets stay in the tag.** By default, tags are written as a YAML list:
+  `tags: [clippings, rust lang]`. Logseq makes tag pages named `[clippings` and `rust lang]`. A
+  clip with no tags gets `tags: []` and a page named `[]`.
+- **Quotes stay in the page name.** When YAML needs quotes, for example for a title with a
+  colon, the default output adds them. Logseq keeps them, so the page is named
+  `"Rust: A Language Empowering Everyone"`, quotes included.
+
+**The fix: turn on *Logseq-compatible frontmatter*** in Settings → General. It came in version
+0.14.0 and is free. With it on, this is what the extension writes for the clip in the
+recording:
 
 ```yaml
 ---
-title: "Markdown - Wikipedia"
-source: "https://en.wikipedia.org/wiki/Markdown"
-author: ''
-published: ''
-created: "2026-11-10"
-description: ''
-tags: [clippings]
+title: Markdown - Wikipedia
+source: https://en.wikipedia.org/wiki/Markdown
+author:
+published:
+created: 2026-11-10
+description: Lightweight markup language
+tags: clippings
 ---
 ```
 
-Logseq OG does read YAML front matter. Each key becomes a page property, `title` sets the page
-name, and `tags` become links. But three details of this output go wrong in Logseq:
+I tested 0.14.0 in Logseq OG 1.0.0 with four titles, including one with a colon, one with a
+comma and `#` signs, and one with real quotes in it. I checked the properties Logseq parsed for
+each file. With the switch on, every title became the page name exactly as written,
+`tags: clippings, rust lang` made the tag pages `clippings` and `rust lang`, `created` stayed
+plain text instead of a link to a journal page, and empty fields stayed blank. Leave the switch
+off if the same folder is also an Obsidian vault: Obsidian needs real YAML lists.
 
-- **Quotes stay in the page name.** The extension puts quotes around any value with a space or
-  a hyphen, which is almost every title. Logseq keeps them, so the page is named
-  `"Markdown - Wikipedia"`, quotes included.
-- **Brackets stay in the tag.** `tags: [clippings]` links to a page named `[clippings]`. With
-  two tags, `[clippings, databases]` gives you `[clippings` and `databases]`. Without the
-  brackets, `tags: clippings, databases` works as expected.
-- **Empty fields show as `''`**, for example when the page has no author.
-
-Logseq's own syntax for page properties is `key:: value` lines at the top of the page, and that
-avoids all three. Two ways to get there:
+If you would rather have Logseq's own `key:: value` property lines, or no properties at all,
+there are two other routes:
 
 - **Free: leave the YAML out.** Untick *Include frontmatter* in the popup before you save, as
-  in the recording. The note starts with the article body, and Logseq names the page after the
-  file, without quotes. The tick resets each time you open the popup, so this is one extra
-  click per clip. (Settings also has an "Include frontmatter by default" switch. In the current
-  release the popup ignores it. A fix is merged and ships in the next release, and after that
-  you can switch YAML off once.)
+  in the recording, or switch off *Include frontmatter by default* in Settings → General to
+  skip it for every clip. The note starts with the article body, and Logseq names the page
+  after the file.
 - **Pro: a Logseq-shaped template.** Custom templates are a Pro feature. A template's note body
   is free text with variables, so you can write Logseq properties yourself and leave the YAML
   out as above:
@@ -1003,13 +1011,7 @@ tags:: clippings
 {{content}}
 ```
 
-**Coming in the next release:** fixes for all three problems are merged. Values get quotes
-only when YAML needs them, empty fields are left blank, and a new Settings switch,
-*Logseq-compatible frontmatter*, writes tags as `tags: a, b` without brackets. I will test the
-release in Logseq and update this section then. Until it reaches the Chrome Web Store, use one
-of the two routes above.
-
-That gives you real Logseq page properties, written in the format Logseq writes itself.
+That gives you Logseq page properties in the format Logseq writes itself.
 
 One more thing to expect: Logseq is an outliner, and a clipped article is ordinary Markdown
 with headings and paragraphs, not a list of bullets. Logseq splits such a file into blocks: in
@@ -1079,7 +1081,7 @@ and ChatGPT or Claude conversations as one clean file. It runs locally — no ac
 telemetry, no server between the page and your graph — and there is no URL size limit,
 because it writes the file directly.
 
-Do not pick it if you want clips in your journal, Logseq-native properties without Pro, or
+Do not pick it if you want clips in your journal, Logseq `key:: value` properties without Pro, or
 images in `assets/`. Those are real gaps for Logseq users, and the tools above handle the first
 two better today.
 
