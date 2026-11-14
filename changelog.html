@@ -37,7 +37,7 @@
   "url": "https://markdownwebclipper.com/changelog",
   "inLanguage": "en",
   "datePublished": "2026-06-11",
-  "dateModified": "2026-11-10"
+  "dateModified": "2026-11-14"
 }
 </script>
 <script type="application/ld+json">
@@ -80,6 +80,14 @@
 
   <div class="wrap">
     <article class="prose">
+      <h2 id="0-14-1">0.14.1 — November 14, 2026</h2>
+      <ul>
+        <li>Fixed: ChatGPT clips lost their <code>## User</code> / <code>## ChatGPT</code> turn headings after ChatGPT redesigned its pages in early November. Shared links and your own logged-in conversations clip correctly again, including code blocks with their language, tables and math.</li>
+        <li>Fixed: ChatGPT answers that used web search lost their source links, a bold date and parts of fact cards. The “Sources” links are kept now. The small source badges inside sentences are left out, because their links only appear when you click them.</li>
+        <li>Fixed: clipping right after switching chats in the ChatGPT sidebar could mix in the chat you just left, and on a long chat it could skip the “scroll up” prompt and save only part of the conversation.</li>
+        <li>Fixed: a short ChatGPT, Claude or Gemini conversation no longer switches the clip to Full Page. Before, a short chat saved the whole page, sidebar included, and later clips on that site stayed in Full Page mode.</li>
+        <li>Fixed: on ChatGPT, a clip could press the hidden “Continue” button of the login dialog, which reloaded the page in the middle of the clip.</li>
+      </ul>
       <h2 id="0-14-0">0.14.0 — November 10, 2026</h2>
       <ul>
         <li>New: Settings → General → “Logseq-compatible frontmatter”. When it is on, properties are written the way Logseq reads them: <code>tags: clippings, databases</code> instead of <code>tags: [clippings, databases]</code>, and no quotes around values. Leave it off if you use Obsidian, which needs real YAML lists.</li>

@@ -1108,6 +1108,25 @@ Last updated 2026-11-10. Spotted a factual error? support@markdownwebclipper.com
 User-facing changes in each release. For full source history, see
 https://github.com/Tigrandza/markdown-web-clipper
 
+## 0.14.1 — November 14, 2026
+
+- Fixed: ChatGPT clips lost their `## User` / `## ChatGPT` turn headings after
+  ChatGPT redesigned its pages in early November. Shared links and your own
+  logged-in conversations clip correctly again, including code blocks with their
+  language, tables and math.
+- Fixed: ChatGPT answers that used web search lost their source links, a bold date
+  and parts of fact cards. The "Sources" links are kept now. The small source
+  badges inside sentences are left out, because their links only appear when you
+  click them.
+- Fixed: clipping right after switching chats in the ChatGPT sidebar could mix in
+  the chat you just left, and on a long chat it could skip the "scroll up" prompt
+  and save only part of the conversation.
+- Fixed: a short ChatGPT, Claude or Gemini conversation no longer switches the clip
+  to Full Page. Before, a short chat saved the whole page, sidebar included, and
+  later clips on that site stayed in Full Page mode.
+- Fixed: on ChatGPT, a clip could press the hidden "Continue" button of the login
+  dialog, which reloaded the page in the middle of the clip.
+
 ## 0.14.0 — November 10, 2026
 
 - New: Settings → General → "Logseq-compatible frontmatter". When it is on,
