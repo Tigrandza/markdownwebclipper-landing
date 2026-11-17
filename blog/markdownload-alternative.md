@@ -14,7 +14,7 @@ MarkDownload ("MarkDownload - Markdown Web Clipper", by deathau) was the communi
 
 Two things ended it on Chrome:
 
-- **It was a Manifest V2 extension.** Chrome phased Manifest V2 out between 2024 and 2025. The Chrome Web Store listing for MarkDownload is gone; its old address now leads to an empty store page.
+- **It was a Manifest V2 extension.** Chrome phased Manifest V2 out between 2024 and 2025; since Chrome 139, it runs only Manifest V3 extensions ([Google's timeline](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)). The Chrome Web Store listing for MarkDownload is gone; its old address now leads to an empty store page.
 - **It stopped being updated.** The last release on Firefox Add-ons is version 3.2.0, from September 2022. A Manifest V3 rewrite never shipped under the original name.
 
 So the extension did not break because of one bug. It was left behind by a platform change, and nobody moved it forward under the same name.
