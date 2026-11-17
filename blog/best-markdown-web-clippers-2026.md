@@ -80,13 +80,16 @@ Obsidian export, batch processing, and one-click AI integration.
 
 ## MarkSnip
 
-The closest peer to the post-MarkDownload "just clip pages well" niche. Solid code-block
-accuracy, math support, a built-in editor, themes, image handling. Active development.
+A Manifest V3 fork of MarkDownload, which makes it the closest replacement for MarkDownload
+users. Solid code-block accuracy, math support, a built-in editor, themes, image handling.
+Active development.
 
 - **Best at:** clean Markdown with a chance to tweak before it lands — the inline editor is
   the differentiator.
-- **Falls short:** closed-source; narrower destination set; no Gist; no vault-folder write.
-- **Pricing:** free, with a Pro tier.
+- **Falls short:** source-available rather than open source (PolyForm Noncommercial); no Gist;
+  no direct vault-folder write. Sends to Obsidian through the Advanced URI plugin, a webhook,
+  or a local CLI. Failed 11 of 20 checks on the hard pages in the [comparison](/compare).
+- **Pricing:** free. I found no paid tier in its store listing or README.
 - **Pick if:** you regularly want to edit the clip before saving it.
 
 ## LLMFeeder
@@ -136,7 +139,7 @@ Disclosed up top — I built this one.
 | Obsidian Web Clipper | Defuddle — the same extractor we use | Obsidian vault (native), clipboard, download | Yes (MIT) | Free |
 | MarkDownload (R.I.P.) | Removed 2025; unmaintained | Download (historical) | Yes | N/A |
 | Web2MD | LLM-tuned | Clipboard, AI tools, Obsidian (Pro) | No | Freemium / subscription |
-| MarkSnip | Strong on code | Clipboard, download, built-in editor | No | Freemium |
+| MarkSnip | Strong on code | Clipboard, download, Obsidian (Advanced URI), webhook, built-in editor | Source-available | Free |
 | LLMFeeder | Generic Markdown | Clipboard only | Yes | Free |
 | Markdown Web Clipper | Defuddle + GFM, plus repair passes for fractions, sub/sup, math and footnotes | Local folder (FSA), clipboard, download, Obsidian, Gist (Pro) | Yes (MIT, free edition) | Free + lifetime $9 / $19 Pro |
 
@@ -150,18 +153,23 @@ Disclosed up top — I built this one.
 - **Want lossless tables, KaTeX math, local-folder write, optional Gist, lifetime pricing,
   and a no-telemetry posture:** ours. Free does everything except Gist and co-located images;
   Pro is one-time $9 (launch) / $19 (standard).
-- **Searching "MarkDownload alternative":** closest successor on the open-source + maintained
-  + configurable axis is, honestly, ours; closest on the "just download a Markdown file" axis
-  is the official Obsidian Web Clipper.
+- **Searching "MarkDownload alternative":** the closest replacement is MarkSnip, a fork of
+  MarkDownload; for the hard pages, ours. The full answer is in [MarkDownload was removed from
+  the Chrome Web Store — what to use instead](https://markdownwebclipper.com/blog/markdownload-alternative).
 
 Five honest answers because there are five honest user populations. Pick the tool that matches
 yours.
 
 **Related reading:** if you landed here because Pocket shut down, see [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian) — the same clipper, framed as a read-later replacement.
 
-_Last updated 2026-08-22._
+_Last updated 2026-11-17._
 
 _**Correction, 2026-08-22:** an earlier version of this post said the official Obsidian Web
 Clipper extracts with Mozilla Readability. That was wrong. It uses Defuddle — the same
 extractor this clipper uses, written by Kepano for the official clipper. The Obsidian Web
 Clipper and comparison-table entries have been rewritten accordingly._
+
+_**Correction, 2026-11-17:** this post called MarkSnip closed-source and freemium, with no
+Obsidian destination. It is a Manifest V3 fork of MarkDownload with its source on GitHub under
+the PolyForm Noncommercial license, it is free, and it can send to Obsidian. The MarkSnip
+section, the table and the MarkDownload-alternative verdict have been corrected._

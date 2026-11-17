@@ -18,6 +18,7 @@
 ## Blog
 
 - [Blog index](https://markdownwebclipper.com/blog/)
+- [MarkDownload was removed from the Chrome Web Store — what to use instead (2026)](https://markdownwebclipper.com/blog/markdownload-alternative): why MarkDownload left Chrome, whether it still installs, and MarkSnip, the official Obsidian Web Clipper and this clipper compared on five measured hard pages. ([Markdown](https://markdownwebclipper.com/blog/markdownload-alternative.md))
 - [How to save and export ChatGPT and Claude conversations as Markdown (2026)](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown): how to get one Markdown file with every turn, code language, table and formula intact — plus a measured five-tool comparison. ([Markdown](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown.md))
 - [Life after Pocket: the local-first read-later setup I actually use](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian): a free, local-first Pocket alternative — clip articles as clean Markdown into an Obsidian vault, tag readlater, read on iPad. ([Markdown](https://markdownwebclipper.com/blog/pocket-alternative-markdown-obsidian.md))
 - [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026): honest six-way comparison. ([Markdown](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026.md))
