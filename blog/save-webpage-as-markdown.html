@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-density="standard" data-accent="100">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to save a webpage as Markdown: 5 ways compared (2026)</title>
+<meta name="description" content="Five ways to save a webpage as Markdown, tested on one page: browser extension, URL service, copy-paste converter, CLI and print to PDF." />
+<link rel="canonical" href="https://markdownwebclipper.com/blog/save-webpage-as-markdown" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/icon-128.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/markdown" href="/blog/save-webpage-as-markdown.md" />
+<link rel="alternate" type="application/rss+xml" title="Markdown Web Clipper Blog" href="/blog/feed.xml" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:title" content="How to save a webpage as Markdown: 5 ways compared (2026)" />
+<meta property="og:description" content="Browser extension, URL-to-Markdown service, copy-paste converter, command-line tool and print-to-PDF, each run on the same arXiv paper and scored on math, tables, images and clutter. Raw outputs linked." />
+<meta property="og:url" content="https://markdownwebclipper.com/blog/save-webpage-as-markdown" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://markdownwebclipper.com/og-hero.png" />
+<meta name="article:published_time" content="2026-11-18" />
+<meta name="article:author" content="Markdown Web Clipper" />
+<link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/tokens.css" />
+<link rel="stylesheet" href="/style.css" />
+
+<!-- Article schema — drives the rich-results "Article" treatment in
+     Google Search (publication date, author, headline). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to save a webpage as Markdown: 5 ways compared (2026)",
+  "description": "Five ways to save a webpage as Markdown, tested on one page: browser extension, URL service, copy-paste converter, CLI and print to PDF.",
+  "image": "https://markdownwebclipper.com/og-hero.png",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "author": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "url": "https://markdownwebclipper.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Markdown Web Clipper",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://markdownwebclipper.com/icon-128.png"
+    }
+  },
+  "mainEntityOfPage": "https://markdownwebclipper.com/blog/save-webpage-as-markdown"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://markdownwebclipper.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://markdownwebclipper.com/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "How to save a webpage as Markdown: 5 ways compared (2026)", "item": "https://markdownwebclipper.com/blog/save-webpage-as-markdown" }
+  ]
+}
+</script>
+<!-- FAQPage: machine aid only (no rich result since May 2026); mirrors the visible FAQ section. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the fastest way to turn a webpage into Markdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A browser extension. Install it once, then each page takes one click or keystroke, and you get a file without any copy-pasting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert a URL to Markdown without installing anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Put a URL-to-Markdown service's address in front of the page address, for example https://r.jina.ai/ plus the URL. For a short page, copying it into a converter such as clipboard2markdown also works. Both struggled with math and tables in my test."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which method keeps images, code, and tables intact?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In my test, the two browser extensions: both kept images, math and tables, including a table with spanning cells kept as HTML. Every other method lost the math, and the URL service dropped the results tables."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I batch-convert many pages to Markdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A command-line tool such as MarkItDown handles hundreds of files in a script; expect to strip page clutter afterwards. Some extensions clip all open tabs at once; Markdown Web Clipper does up to 3 tabs on the free version and unlimited with Pro."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Markdown Web Clipper home">
+      <img src="/icon-128.png" alt="" />
+      <span class="wordmark">Markdown Web Clipper</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/blog/" class="hide-sm">Blog</a>
+      <a href="/pro-faq" class="hide-sm">Pro FAQ</a>
+      <a href="https://github.com/Tigrandza/markdown-web-clipper" class="hide-sm">Source</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-save-webpage" style="margin-left:6px">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="eyebrow breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <span>How-to</span></nav>
+      <h1 class="display" style="margin-top:12px">How to save a webpage as Markdown: <span class="rust">5 ways, tested.</span></h1>
+      <p class="lede" style="margin-top:14px; max-width:60ch">The fastest way to save a webpage as Markdown is a browser extension: one click, and it converts the page you are looking at, after JavaScript has run. Without installing anything, a URL-to-Markdown service or a copy-paste converter works for simple pages. For many pages at once, use a command-line tool. Printing to PDF and converting is the worst option.</p>
+      <div class="article-meta">
+        <span>Published 2026-11-18</span>
+        <span class="dot">·</span>
+        <span>~8 min read</span>
+        <span class="dot">·</span>
+        <span class="tag">How-to</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="prose-layout">
+    <aside class="toc">
+      <h2>On this page</h2>
+      <a href="#how-i-tested">How I tested</a>
+      <a href="#the-results">The results</a>
+      <a href="#1-a-browser-extension-fastest-best-output">1. A browser extension (fastest, best output)</a>
+      <a href="#2-a-url-to-markdown-service-no-install">2. A URL-to-Markdown service (no install)</a>
+      <a href="#3-copy-and-paste-into-a-converter-no-install">3. Copy and paste into a converter (no install)</a>
+      <a href="#4-a-command-line-tool-best-for-batches">4. A command-line tool (best for batches)</a>
+      <a href="#5-print-to-pdf-then-convert-avoid">5. Print to PDF, then convert (avoid)</a>
+      <a href="#faq">FAQ</a>
+    </aside>
+
+    <article class="prose">
+      <div class="callout disclosure"><p>I build Markdown Web Clipper, one of the tools tested here. Every result below comes from the raw files linked in each section, scored with the same regular expressions for every method. If you spot a factual error, email <a href="mailto:support@markdownwebclipper.com">support@markdownwebclipper.com</a> and I'll correct it.</p></div>
+
+      <h2 id="how-i-tested">How I tested</h2>
+
+      <p>One page, five methods: the HTML version of the paper "Attention Is All You Need" on arXiv (<code>https://arxiv.org/html/1706.03762v7</code>). It is a hard but fair test, because it has display and inline equations, tables with spanning cells, figures, footnote-style citations, and arXiv's own buttons and banners around the article. The <code>v7</code> in the address pins the paper's version, so every method saw the same content.</p>
+
+      <p>Each output was scored on nine checks: display equations as <code>$$</code> blocks, inline math as <code>$…$</code>, the <code>\sqrt{d_k}</code> scaling kept as LaTeX, no equation duplicated as Unicode next to its LaTeX, no raw <code>&lt;math&gt;</code> HTML, at least one Markdown table, images kept as links, no arXiv page clutter ("Report GitHub Issue", "Back to arXiv", the license banner), and real headings.</p>
+
+      <p>The extension results were captured on 2026-09-18 for the <a href="/compare">comparison page</a>; the other four methods were run on 2026-11-18. Both runs used Chromium 147.0.7727.15.</p>
+
+      <h2 id="the-results">The results</h2>
+
+      <table class="compare-table">
+      <thead><tr><th>Method</th><th>Tool tested</th><th>Install</th><th>Math as LaTeX</th><th>Tables</th><th>Images</th><th>No clutter</th><th>Checks passed</th></tr></thead>
+      <tbody>
+      <tr><td>Browser extension</td><td data-label="Tool tested">Markdown Web Clipper 0.9.1</td><td data-label="Install">Once</td><td data-label="Math as LaTeX">✓</td><td data-label="Tables">✓</td><td data-label="Images">✓</td><td data-label="No clutter">✓</td><td data-label="Checks passed">8/9</td></tr>
+      <tr><td>Browser extension</td><td data-label="Tool tested">Obsidian Web Clipper 1.7.1</td><td data-label="Install">Once</td><td data-label="Math as LaTeX">✓</td><td data-label="Tables">✓</td><td data-label="Images">✓</td><td data-label="No clutter">✓</td><td data-label="Checks passed">8/9</td></tr>
+      <tr><td>URL service</td><td data-label="Tool tested">Jina Reader</td><td data-label="Install">None</td><td data-label="Math as LaTeX">Display only</td><td data-label="Tables">✗ dropped</td><td data-label="Images">✓</td><td data-label="No clutter">✓</td><td data-label="Checks passed">6/9</td></tr>
+      <tr><td>Copy-paste converter</td><td data-label="Tool tested">clipboard2markdown</td><td data-label="Install">None</td><td data-label="Math as LaTeX">✗ Unicode</td><td data-label="Tables">✓</td><td data-label="Images">✓</td><td data-label="No clutter">✗</td><td data-label="Checks passed">5/9</td></tr>
+      <tr><td>Command-line tool</td><td data-label="Tool tested">MarkItDown 0.1.9</td><td data-label="Install">pip</td><td data-label="Math as LaTeX">✗ Unicode + LaTeX</td><td data-label="Tables">✓</td><td data-label="Images">✓</td><td data-label="No clutter">✗</td><td data-label="Checks passed">5/9</td></tr>
+      <tr><td>Print to PDF, convert</td><td data-label="Tool tested">Chrome PDF → MarkItDown</td><td data-label="Install">None</td><td data-label="Math as LaTeX">✗ blank</td><td data-label="Tables">Partly</td><td data-label="Images">✗</td><td data-label="No clutter">✗</td><td data-label="Checks passed">3/9</td></tr>
+      </tbody></table>
+
+      <h2 id="1-a-browser-extension-fastest-best-output">1. A browser extension (fastest, best output)</h2>
+
+      <p>An extension runs inside the page you are reading. It sees the page after JavaScript has run, picks out the article, and converts it in one click or keystroke.</p>
+
+      <ul>
+        <li><strong>What I got:</strong> both extensions kept every equation as LaTeX (<code>\mathrm{softmax}(\frac{QK^{T}}{\sqrt{d_{k}}})V</code>), kept the figures, and left arXiv's buttons and banners out. Both missed one check: a results table that has cells spanning several rows and columns stays as an HTML table, and inside it some math is still raw <code>&lt;math&gt;</code> markup. Markdown tables cannot express spanning cells, so keeping that table as HTML is the lossless choice.</li>
+        <li><strong>Good for:</strong> everyday saving, pages that need a login, pages built with JavaScript (AI chats, web apps), and saving straight into a notes folder.</li>
+        <li><strong>Limits:</strong> you install something. It works on the page you have open, so for hundreds of URLs a script is better.</li>
+        <li><strong>Which one:</strong> the official <a href="https://obsidian.md/clipper">Obsidian Web Clipper</a> is the natural pick inside Obsidian. Markdown Web Clipper (mine) also writes to any local folder, a <code>.md</code> download or a Gist, and handles ChatGPT and Claude conversations; its free version clips up to 3 tabs at once.</li>
+        <li>Raw outputs: <a href="/compare-raw/arxiv-attention--clipper.md">Markdown Web Clipper</a> · <a href="/compare-raw/arxiv-attention--obsidian-web-clipper.md">Obsidian Web Clipper</a></li>
+      </ul>
+
+      <h2 id="2-a-url-to-markdown-service-no-install">2. A URL-to-Markdown service (no install)</h2>
+
+      <p>Services such as Jina Reader fetch the page on their servers and send back Markdown. You put their address in front of the page's: <code>https://r.jina.ai/https://arxiv.org/html/1706.03762v7</code>.</p>
+
+      <ul>
+        <li><strong>What I got:</strong> clean text with no page clutter, figures kept, and the main equation kept as LaTeX. But inline math lost its <code>$</code> delimiters (<code>d_{k}</code> instead of <code>$d_{k}$</code>), so it shows as raw text, display equations were not in <code>$$</code> blocks, and the results tables were <strong>dropped completely</strong>: the rows of the paper's BLEU table are not in the output at all.</li>
+        <li><strong>Good for:</strong> a quick conversion from any device, and feeding a public page into an LLM or a script.</li>
+        <li><strong>Limits:</strong> the page address goes to a third party, and it only works on public pages (no logins). Check the service's current rate limits before building on it.</li>
+        <li>Raw output: <a href="/compare-raw/arxiv-attention--jina-reader.md">Jina Reader</a></li>
+      </ul>
+
+      <h2 id="3-copy-and-paste-into-a-converter-no-install">3. Copy and paste into a converter (no install)</h2>
+
+      <p>Select the page, copy it, and paste it into a converter page such as <a href="https://euangoddard.github.io/clipboard2markdown/">clipboard2markdown</a>, which turns the rich text on your clipboard into Markdown.</p>
+
+      <ul>
+        <li><strong>What I got:</strong> tables, images and headings came through. Math did not: the attention formula became <code>Attention⁡(Q,K,V)=softmax⁡(Q​KTdk)​V</code>, with the fraction and the square root gone. Because I selected the whole page, arXiv's license banner came along too.</li>
+        <li><strong>Good for:</strong> a short article or one section, when you can't install anything.</li>
+        <li><strong>Limits:</strong> what you get depends on what you select. Select only the article and the clutter goes away; the math does not come back.</li>
+        <li>Raw output: <a href="/compare-raw/arxiv-attention--clipboard2markdown.md">clipboard2markdown</a></li>
+      </ul>
+
+      <h2 id="4-a-command-line-tool-best-for-batches">4. A command-line tool (best for batches)</h2>
+
+      <p>Tools like Microsoft's <a href="https://github.com/microsoft/markitdown">MarkItDown</a> convert files to Markdown. I downloaded the page with <code>curl</code> and ran <code>markitdown page.html &gt; page.md</code>.</p>
+
+      <ul>
+        <li><strong>What I got:</strong> tables, images and headings, but also every arXiv button and banner ("Report GitHub Issue", "Back to arXiv"), because the tool converts the whole HTML file, not just the article. Each equation came out twice, glued together: once as Unicode and once as LaTeX with escaped underscores.</li>
+        <li><strong>Good for:</strong> converting hundreds of saved pages or URLs in a script, and documents beyond web pages (Word, PDF, slides).</li>
+        <li><strong>Limits:</strong> it converts the HTML it is given and does not run JavaScript, so pages that build their content in the browser come out nearly empty. You clean up the page clutter yourself.</li>
+        <li>Raw output: <a href="/compare-raw/arxiv-attention--markitdown.md">MarkItDown</a></li>
+      </ul>
+
+      <h2 id="5-print-to-pdf-then-convert-avoid">5. Print to PDF, then convert (avoid)</h2>
+
+      <p>Every browser can print a page to PDF, and tools such as MarkItDown can turn the PDF into Markdown.</p>
+
+      <ul>
+        <li><strong>What I got:</strong> the worst result. Headings were gone, the attention formula became <code>Attention (𝑄,𝐾,𝑉) = softmax ( ) 𝑉</code> with the fraction missing, images were gone, and the toolbar text came out doubled ("RReeppoorrtt"). The results table did survive as a Markdown table, but some equations were also chopped into table cells.</li>
+        <li><strong>Good for:</strong> almost nothing, unless a PDF is the only copy you have.</li>
+        <li>Raw output: <a href="/compare-raw/arxiv-attention--print-pdf.md">Chrome PDF → MarkItDown</a></li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+
+      <p><strong>What's the fastest way to turn a webpage into Markdown?</strong><br />A browser extension. Install it once, then each page takes one click or keystroke, and you get a file without any copy-pasting.</p>
+
+      <p><strong>How do I convert a URL to Markdown without installing anything?</strong><br />Put a URL-to-Markdown service's address in front of the page address, for example <code>https://r.jina.ai/</code> plus the URL. For a short page, copying it into a converter such as clipboard2markdown also works. Both struggled with math and tables in my test.</p>
+
+      <p><strong>Which method keeps images, code, and tables intact?</strong><br />In my test, the two browser extensions: both kept images, math and tables, including a table with spanning cells kept as HTML. Every other method lost the math, and the URL service dropped the results tables.</p>
+
+      <p><strong>Can I batch-convert many pages to Markdown?</strong><br />Yes. A command-line tool such as MarkItDown handles hundreds of files in a script; expect to strip page clutter afterwards. Some extensions clip all open tabs at once; Markdown Web Clipper does up to 3 tabs on the free version and unlimited with Pro.</p>
+
+      <p><strong>Related reading:</strong> <a href="/blog/export-chatgpt-claude-conversations-markdown">Save ChatGPT and Claude conversations as Markdown</a> · <a href="/blog/markdownload-alternative">MarkDownload was removed from the Chrome Web Store — what to use instead</a> · <a href="/blog/best-markdown-web-clippers-2026">Best Markdown web clippers for Obsidian, compared</a> · <a href="/compare">Clipper comparison on hard pages</a></p>
+
+      <p style="margin-top:36px; color:var(--fg-faint); font-size:14px; font-family:var(--font-mono); border-top:1px solid var(--border); padding-top:24px">
+        Last updated 2026-11-18. Spotted a factual error? <a href="mailto:support@markdownwebclipper.com" style="color:var(--accent)">support@markdownwebclipper.com</a>.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Markdown Web Clipper home"><img src="/icon-128.png" alt="" /><span class="wordmark">Markdown Web Clipper</span></a>
+        <p>A Chrome extension that turns any webpage into clean Markdown, saved exactly where you keep your notes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h2>Product</h2>
+          <a href="/">Home</a>
+          <a href="/#destinations">Destinations</a>
+          <a href="/#pro">Pro</a>
+          <a href="https://chromewebstore.google.com/detail/dpkinbemdemheacegfjbbkclcpbfedif?utm_source=markdownwebclipper.com&amp;utm_medium=website&amp;utm_campaign=blog-save-webpage">Add to Chrome</a>
+        </div>
+        <div class="footer-col">
+          <h2>Reading</h2>
+          <a href="/blog/">Blog</a>
+          <a href="/pro-faq">Pro FAQ</a>
+          <a href="/restore">Restore Purchase</a>
+          <a href="/changelog">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h2>Legal &amp; source</h2>
+          <a href="/privacy">Privacy</a>
+          <a href="mailto:support@markdownwebclipper.com">Contact</a>
+          <a href="https://github.com/Tigrandza/markdown-web-clipper">Source (MIT)</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Markdown Web Clipper · MIT-licensed free edition</span>
+      <span>No analytics in the extension · No telemetry · No account</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/landing.js"></script>
+</body>
+</html>

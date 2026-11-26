@@ -92,6 +92,6 @@ For the most familiar experience, MarkSnip, which is a fork of MarkDownload and 
 **Which MarkDownload alternative handles code, tables and math best?**
 In my five-page test, Markdown Web Clipper failed 1 of 20 checks (a results table on arXiv still holds raw `<math>` HTML, as it does in Obsidian Web Clipper). Obsidian Web Clipper failed 4 and MarkSnip 11. The raw outputs are public, so you can check that yourself.
 
-**Related reading:** [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026) — six clippers, by use case. [How to save ChatGPT and Claude conversations as Markdown](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown).
+**Related reading:** [How to save a webpage as Markdown: 5 ways compared](https://markdownwebclipper.com/blog/save-webpage-as-markdown) — extensions against URL services, CLIs and print-to-PDF on one page. [Best Markdown web clippers for Obsidian, compared (2026)](https://markdownwebclipper.com/blog/best-markdown-web-clippers-2026) — six clippers, by use case. [How to save ChatGPT and Claude conversations as Markdown](https://markdownwebclipper.com/blog/export-chatgpt-claude-conversations-markdown).
 
 _Last updated 2026-11-17._

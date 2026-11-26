@@ -6,7 +6,14 @@
     <atom:link href="https://markdownwebclipper.com/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Comparisons, technical write-ups, and honest takes on the web-clipper landscape, from the people building Markdown Web Clipper.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How to save a webpage as Markdown: 5 ways compared (2026)</title>
+      <link>https://markdownwebclipper.com/blog/save-webpage-as-markdown</link>
+      <guid isPermaLink="true">https://markdownwebclipper.com/blog/save-webpage-as-markdown</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Five ways to save a webpage as Markdown, each run on the same arXiv paper: a browser extension, a URL-to-Markdown service, a copy-paste converter, a command-line tool and print-to-PDF. Scored on math, tables, images and clutter, with raw outputs.</description>
+    </item>
     <item>
       <title>MarkDownload was removed from the Chrome Web Store — what to use instead (2026)</title>
       <link>https://markdownwebclipper.com/blog/markdownload-alternative</link>
